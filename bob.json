@@ -1,0 +1,19 @@
+{
+  "name": "Bob",
+  "expressions": {
+    "early_morning": "troubled",
+    "morning": "normal",
+    "afternoon": "happy",
+    "evening": "surprised",
+    "night": "normal",
+    "midnight": "troubled"
+  },
+  "lines": {
+    "early_morning": "早起きはちょっと苦手かも……",
+    "morning": "おはようございます！",
+    "afternoon": "いい天気でうれしいな！",
+    "evening": "うわっ、今の見た！？",
+    "night": "ゆっくり休んでくださいね",
+    "midnight": "こんな時間まで…無理しないで！"
+  }
+}

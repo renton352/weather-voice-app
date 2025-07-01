@@ -1,0 +1,19 @@
+{
+  "name": "Alice",
+  "expressions": {
+    "early_morning": "normal",
+    "morning": "happy",
+    "afternoon": "surprised",
+    "evening": "troubled",
+    "night": "normal",
+    "midnight": "troubled"
+  },
+  "lines": {
+    "early_morning": "ふぁ〜、まだ眠いよ……",
+    "morning": "おはよう！今日も頑張ろうね！",
+    "afternoon": "びっくりした！？",
+    "evening": "ちょっと疲れた？ゆっくりしてね",
+    "night": "今日も一日おつかれさま！",
+    "midnight": "もう夜中だよ、早く寝よう？"
+  }
+}

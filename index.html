@@ -1,55 +1,149 @@
-<script>
-let characterData = {};
-let characterName = "alice";
-let weather = "sunny";
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>推し天気予報 × 1日1セリフ</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+      background-color: #000;
+    }
 
-// 初期化
-async function loadCharacterData() {
-  const res = await fetch("data.json");
-  characterData = await res.json();
-  updateUI();
-}
+    .background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
 
-// 時間帯判定
-function getTimeSlot(hour) {
-  if (hour >= 4 && hour < 7) return 'early_morning';
-  if (hour >= 7 && hour < 11) return 'morning';
-  if (hour >= 11 && hour < 15) return 'afternoon';
-  if (hour >= 15 && hour < 18) return 'evening';
-  if (hour >= 18 && hour < 22) return 'night';
-  return 'midnight';
-}
+    .container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
 
-function updateUI() {
-  const hour = new Date().getHours();
-  const timeSlot = getTimeSlot(hour);
-  const charInfo = characterData[characterName];
-  const expression = charInfo.expressions[timeSlot];
-  const line = charInfo.lines[timeSlot];
+    .character {
+      max-height: 80vh;
+      max-width: 100%;
+      object-fit: contain;
+    }
 
-  document.getElementById("character").src = `img/${characterName}_${expression}.png`;
-  document.getElementById("background").style.backgroundImage =
-    `url('img/background_${timeSlot}_${weather}.png')`;
-  document.getElementById("caption").textContent = line;
-}
+    .dialogue {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      text-align: center;
+      font-size: 1.8rem;
+      color: white;
+      text-shadow: 2px 2px 4px #000;
+      z-index: 2;
+    }
 
-// キャラ・天気変更
-function setCharacter(name) {
-  characterName = name;
-  updateUI();
-}
+    .weather-buttons, .character-select {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-function setWeather(newWeather) {
-  weather = newWeather;
-  updateUI();
-}
+    .weather-buttons button, .character-select select {
+      font-size: 1rem;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="weather-buttons">
+    <button onclick="setWeather('sunny')">☀️ 晴れ</button>
+    <button onclick="setWeather('cloudy')">☁️ 曇り</button>
+    <button onclick="setWeather('rainy')">🌧️ 雨</button>
+    <button onclick="setWeather('snowy')">❄️ 雪</button>
+    <select id="characterSelector" onchange="setCharacter(this.value)">
+      <option value="alice">Alice</option>
+      <option value="bob">Bob</option>
+      <option value="clara">Clara</option>
+    </select>
+  </div>
 
-// 起動時
-window.onload = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.has("char")) {
-    characterName = urlParams.get("char");
-  }
-  loadCharacterData();
-};
-</script>
+  <div class="background" id="background"></div>
+  <div class="container">
+    <img id="character" class="character" src="" alt="キャラクター" />
+    <div id="caption" class="dialogue"></div>
+  </div>
+
+  <script>
+    let weather = "cloudy";
+    let characterName = "alice";
+    let characterData = {};
+
+    function getTimeSlot(hour) {
+      if (hour >= 4 && hour < 7) return 'early_morning';
+      if (hour >= 7 && hour < 11) return 'morning';
+      if (hour >= 11 && hour < 15) return 'afternoon';
+      if (hour >= 15 && hour < 18) return 'evening';
+      if (hour >= 18 && hour < 22) return 'night';
+      return 'midnight';
+    }
+
+    async function loadCharacterData() {
+      try {
+        const response = await fetch(`data/${characterName}.json`);
+        characterData = await response.json();
+        updateUI();
+      } catch (e) {
+        console.error("データの読み込みに失敗しました", e);
+      }
+    }
+
+    function updateUI() {
+      const hour = new Date().getHours();
+      const timeSlot = getTimeSlot(hour);
+
+      const expression = characterData.expressions[timeSlot];
+      const message = characterData.lines[timeSlot];
+
+      const img = document.getElementById("character");
+      const caption = document.getElementById("caption");
+      const background = document.getElementById("background");
+
+      img.src = `img/${characterName}_${expression}.png`;
+      background.style.backgroundImage = `url('img/background_${timeSlot}_${weather}.png')`;
+      caption.textContent = message;
+    }
+
+    function setWeather(newWeather) {
+      weather = newWeather;
+      updateUI();
+    }
+
+    function setCharacter(name) {
+      characterName = name;
+      loadCharacterData();
+    }
+
+    window.onload = loadCharacterData;
+  </script>
+</body>
+</html>

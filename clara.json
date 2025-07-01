@@ -1,0 +1,19 @@
+{
+  "name": "Clara",
+  "expressions": {
+    "early_morning": "surprised",
+    "morning": "normal",
+    "afternoon": "happy",
+    "evening": "troubled",
+    "night": "normal",
+    "midnight": "troubled"
+  },
+  "lines": {
+    "early_morning": "もう朝！？びっくりした…",
+    "morning": "おはよう♪今日もよろしくね！",
+    "afternoon": "えへへ、うれしいな！",
+    "evening": "ちょっとだけ、休憩しよ？",
+    "night": "おつかれさま、いい夢見てね",
+    "midnight": "そろそろ寝ないと明日が大変だよ〜"
+  }
+}
