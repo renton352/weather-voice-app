@@ -56,7 +56,7 @@
       top: 10px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 3;
+      z-index: 2;
       background-color: rgba(0, 0, 0, 0.5);
       padding: 10px;
       border-radius: 10px;
@@ -72,14 +72,21 @@
       border-radius: 4px;
       cursor: pointer;
     }
+
+    .temp {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 1.2rem;
+      text-shadow: 1px 1px 2px #000;
+      z-index: 2;
+    }
   </style>
 </head>
 <body>
   <div class="weather-buttons">
-    <button onclick="setWeather('sunny')">☀️ 晴れ</button>
-    <button onclick="setWeather('cloudy')">☁️ 曇り</button>
-    <button onclick="setWeather('rainy')">🌧️ 雨</button>
-    <button onclick="setWeather('snowy')">❄️ 雪</button>
     <select id="characterSelector" onchange="setCharacter(this.value)">
       <option value="alice">Alice</option>
       <option value="bob">Bob</option>
@@ -87,6 +94,7 @@
     </select>
   </div>
 
+  <div class="temp" id="temperature"></div>
   <div class="background" id="background"></div>
   <div class="container">
     <img id="character" class="character" src="" alt="キャラクター" />
@@ -105,6 +113,29 @@
       if (hour >= 15 && hour < 18) return 'evening';
       if (hour >= 18 && hour < 22) return 'night';
       return 'midnight';
+    }
+
+    async function fetchWeather() {
+      const API_KEY = "your_api_key_here";
+      const city = "Tokyo"; // 必要に応じて変更
+      try {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=ja`);
+        const data = await response.json();
+        const temp = data.main.temp;
+        const condition = data.weather[0].main.toLowerCase();
+
+        document.getElementById("temperature").textContent = `現在の気温: ${temp.toFixed(1)}℃`;
+
+        if (condition.includes("rain")) weather = "rainy";
+        else if (condition.includes("snow")) weather = "snowy";
+        else if (condition.includes("cloud")) weather = "cloudy";
+        else weather = "sunny";
+
+        updateUI();
+      } catch (e) {
+        console.error("天気の取得に失敗しました", e);
+        updateUI(); // fallback 表示
+      }
     }
 
     async function loadCharacterData() {
@@ -133,17 +164,15 @@
       caption.textContent = message;
     }
 
-    function setWeather(newWeather) {
-      weather = newWeather;
-      updateUI();
-    }
-
     function setCharacter(name) {
       characterName = name;
       loadCharacterData();
     }
 
-    window.onload = loadCharacterData;
+    window.onload = () => {
+      loadCharacterData();
+      fetchWeather();
+    }
   </script>
 </body>
 </html>
