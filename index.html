@@ -32,6 +32,7 @@
       text-align: center;
       position: relative;
       z-index: 1;
+      padding-top: 120px; /* キャラとUIが重ならないように調整 */
     }
 
     .character {
@@ -53,7 +54,7 @@
 
     .weather-buttons, .character-select {
       position: absolute;
-      top: 10px;
+      top: 20px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 2;
@@ -95,16 +96,7 @@
 
   <script>
     let weather = "cloudy"; // 初期状態
-
-    // キャラクター名はURLのパラメータで初期化
-    const params = new URLSearchParams(window.location.search);
-    let characterName = params.get("character") || "alice";
-
-    // ドロップダウンにも反映
-    window.onload = () => {
-      document.getElementById("characterSelector").value = characterName;
-      updateUI();
-    };
+    let characterName = "alice";
 
     function getTimeSlot(hour) {
       if (hour >= 4 && hour < 7) return 'early_morning';
@@ -179,6 +171,8 @@
       characterName = name;
       updateUI();
     }
+
+    window.onload = updateUI;
   </script>
 </body>
 </html>
