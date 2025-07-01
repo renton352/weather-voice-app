@@ -95,7 +95,16 @@
 
   <script>
     let weather = "cloudy"; // 初期状態
-    let characterName = "alice";
+
+    // キャラクター名はURLのパラメータで初期化
+    const params = new URLSearchParams(window.location.search);
+    let characterName = params.get("character") || "alice";
+
+    // ドロップダウンにも反映
+    window.onload = () => {
+      document.getElementById("characterSelector").value = characterName;
+      updateUI();
+    };
 
     function getTimeSlot(hour) {
       if (hour >= 4 && hour < 7) return 'early_morning';
@@ -170,8 +179,6 @@
       characterName = name;
       updateUI();
     }
-
-    window.onload = updateUI;
   </script>
 </body>
 </html>
