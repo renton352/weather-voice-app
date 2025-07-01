@@ -27,34 +27,38 @@
       height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
       text-align: center;
       position: relative;
       z-index: 1;
-      padding-top: 120px; /* キャラとUIが重ならないように調整 */
+      padding-bottom: 80px; /* キャプションのためのスペース */
     }
 
     .character {
-      max-height: 90vh;
+      max-height: 80vh;
       max-width: 100%;
       object-fit: contain;
     }
 
     .dialogue {
       position: absolute;
-      bottom: 40px;
-      width: 100%;
+      bottom: 20px;
+      width: 90%;
+      margin: 0 auto;
+      padding: 10px 20px;
       text-align: center;
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       color: white;
+      background-color: rgba(0, 0, 0, 0.4);
       text-shadow: 2px 2px 4px #000;
-      z-index: 2;
+      border-radius: 10px;
+      z-index: 3;
     }
 
     .weather-buttons, .character-select {
       position: absolute;
-      top: 20px;
+      top: 10px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 2;
@@ -95,7 +99,7 @@
   </div>
 
   <script>
-    let weather = "cloudy"; // 初期状態
+    let weather = "cloudy";
     let characterName = "alice";
 
     function getTimeSlot(hour) {
