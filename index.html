@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>推し天気予報 × 1日1セリフ</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+      background-color: #000;
+    }
+
+    .background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    .container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .character {
+      max-height: 90vh;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .dialogue {
+      position: absolute;
+      bottom: 40px;
+      width: 100%;
+      text-align: center;
+      font-size: 1.8rem;
+      color: white;
+      text-shadow: 2px 2px 4px #000;
+      z-index: 2;
+    }
+
+    .weather-buttons, .character-select {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .weather-buttons button, .character-select select {
+      font-size: 1rem;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="weather-buttons">
+    <button onclick="setWeather('sunny')">☀️ 晴れ</button>
+    <button onclick="setWeather('cloudy')">☁️ 曇り</button>
+    <button onclick="setWeather('rainy')">🌧️ 雨</button>
+    <button onclick="setWeather('snowy')">❄️ 雪</button>
+    <select id="characterSelector" onchange="setCharacter(this.value)">
+      <option value="alice">Alice</option>
+      <option value="bob">Bob</option>
+      <option value="clara">Clara</option>
+    </select>
+  </div>
+
+  <div class="background" id="background"></div>
+  <div class="container">
+    <img id="character" class="character" src="" alt="キャラクター" />
+    <div id="caption" class="dialogue"></div>
+  </div>
+
+  <script>
+    let weather = "cloudy"; // 初期状態
+    let characterName = "alice";
+
+    function getTimeSlot(hour) {
+      if (hour >= 4 && hour < 7) return 'early_morning';
+      if (hour >= 7 && hour < 11) return 'morning';
+      if (hour >= 11 && hour < 15) return 'afternoon';
+      if (hour >= 15 && hour < 18) return 'evening';
+      if (hour >= 18 && hour < 22) return 'night';
+      return 'midnight';
+    }
+
+    function getExpression(timeSlot) {
+      switch (timeSlot) {
+        case 'early_morning': return 'sleepy';
+        case 'morning': return 'normal';
+        case 'afternoon': return 'happy';
+        case 'evening': return 'troubled';
+        case 'night': return 'surprised';
+        case 'midnight': return 'normal';
+      }
+    }
+
+    function getMessage(character, timeSlot) {
+      const messages = {
+        alice: {
+          early_morning: "ふぁ〜、まだ眠いよ……",
+          morning: "おはよう！今日も頑張ろうね！",
+          afternoon: "お昼だね！元気にいこう！",
+          evening: "ちょっと疲れた？ゆっくりしてね",
+          night: "夜更かししすぎないでね？",
+          midnight: "こんな時間まで起きてるの……？"
+        },
+        bob: {
+          early_morning: "朝早すぎるよ…もう少し寝たいな",
+          morning: "よっ！今日も1日、楽しもうぜ！",
+          afternoon: "お腹空いた〜、昼飯まだ？",
+          evening: "そろそろ休憩タイムかな〜",
+          night: "夜は静かで落ち着くね",
+          midnight: "こんな時間まで起きてるのか…？"
+        },
+        clara: {
+          early_morning: "うぅ…目が開かない…",
+          morning: "おはようございます♪いい朝ですね！",
+          afternoon: "午後も張り切っていきましょう！",
+          evening: "お疲れ様です。今日はどうでした？",
+          night: "そろそろおやすみの時間です",
+          midnight: "夜更かしはお肌の敵ですよ？"
+        }
+      };
+      return messages[character][timeSlot];
+    }
+
+    function updateUI() {
+      const hour = new Date().getHours();
+      const timeSlot = getTimeSlot(hour);
+      const expression = getExpression(timeSlot);
+
+      const img = document.getElementById("character");
+      const caption = document.getElementById("caption");
+      const background = document.getElementById("background");
+
+      img.src = `img/${characterName}_${expression}.png`;
+      background.style.backgroundImage = `url('img/background_${timeSlot}_${weather}.png')`;
+      caption.textContent = getMessage(characterName, timeSlot);
+    }
+
+    function setWeather(newWeather) {
+      weather = newWeather;
+      updateUI();
+    }
+
+    function setCharacter(name) {
+      characterName = name;
+      updateUI();
+    }
+
+    window.onload = updateUI;
+  </script>
+</body>
+</html>
