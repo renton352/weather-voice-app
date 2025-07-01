@@ -1,0 +1,59 @@
+{
+  "alice": {
+    "name": "Alice",
+    "expressions": {
+      "early_morning": "sleepy",
+      "morning": "normal",
+      "afternoon": "happy",
+      "evening": "troubled",
+      "night": "surprised",
+      "midnight": "normal"
+    },
+    "lines": {
+      "early_morning": "ふぁ〜、まだ眠いよ……",
+      "morning": "おはよう！今日も頑張ろうね！",
+      "afternoon": "お昼だね！元気にいこう！",
+      "evening": "ちょっと疲れた？ゆっくりしてね",
+      "night": "夜更かししすぎないでね？",
+      "midnight": "こんな時間まで起きてるの……？"
+    }
+  },
+  "bob": {
+    "name": "Bob",
+    "expressions": {
+      "early_morning": "sleepy",
+      "morning": "normal",
+      "afternoon": "happy",
+      "evening": "troubled",
+      "night": "surprised",
+      "midnight": "normal"
+    },
+    "lines": {
+      "early_morning": "朝早すぎるよ…もう少し寝たいな",
+      "morning": "よっ！今日も1日、楽しもうぜ！",
+      "afternoon": "お腹空いた〜、昼飯まだ？",
+      "evening": "そろそろ休憩タイムかな〜",
+      "night": "夜は静かで落ち着くね",
+      "midnight": "こんな時間まで起きてるのか…？"
+    }
+  },
+  "clara": {
+    "name": "Clara",
+    "expressions": {
+      "early_morning": "sleepy",
+      "morning": "normal",
+      "afternoon": "happy",
+      "evening": "troubled",
+      "night": "surprised",
+      "midnight": "normal"
+    },
+    "lines": {
+      "early_morning": "うぅ…目が開かない…",
+      "morning": "おはようございます♪いい朝ですね！",
+      "afternoon": "午後も張り切っていきましょう！",
+      "evening": "お疲れ様です。今日はどうでした？",
+      "night": "そろそろおやすみの時間です",
+      "midnight": "夜更かしはお肌の敵ですよ？"
+    }
+  }
+}

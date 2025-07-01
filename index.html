@@ -1,179 +1,55 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>推し天気予報 × 1日1セリフ</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background-color: #000;
-      overflow: hidden;
-    }
+<script>
+let characterData = {};
+let characterName = "alice";
+let weather = "sunny";
 
-    .background {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center;
-      z-index: -1;
-    }
+// 初期化
+async function loadCharacterData() {
+  const res = await fetch("data.json");
+  characterData = await res.json();
+  updateUI();
+}
 
-    .container {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
+// 時間帯判定
+function getTimeSlot(hour) {
+  if (hour >= 4 && hour < 7) return 'early_morning';
+  if (hour >= 7 && hour < 11) return 'morning';
+  if (hour >= 11 && hour < 15) return 'afternoon';
+  if (hour >= 15 && hour < 18) return 'evening';
+  if (hour >= 18 && hour < 22) return 'night';
+  return 'midnight';
+}
 
-    .character {
-      max-height: 85vh;
-      max-width: 100%;
-      object-fit: contain;
-    }
+function updateUI() {
+  const hour = new Date().getHours();
+  const timeSlot = getTimeSlot(hour);
+  const charInfo = characterData[characterName];
+  const expression = charInfo.expressions[timeSlot];
+  const line = charInfo.lines[timeSlot];
 
-    .weather-buttons {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 10px;
-      border-radius: 10px;
-      z-index: 10;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+  document.getElementById("character").src = `img/${characterName}_${expression}.png`;
+  document.getElementById("background").style.backgroundImage =
+    `url('img/background_${timeSlot}_${weather}.png')`;
+  document.getElementById("caption").textContent = line;
+}
 
-    .weather-buttons button, .weather-buttons select {
-      font-size: 1rem;
-      padding: 6px 12px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+// キャラ・天気変更
+function setCharacter(name) {
+  characterName = name;
+  updateUI();
+}
 
-    .dialogue {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 600px;
-      padding: 10px 15px;
-      background-color: rgba(0, 0, 0, 0.7);
-      color: white;
-      font-size: 1.2rem;
-      border-radius: 10px;
-      text-align: center;
-      z-index: 20;
-      text-shadow: 1px 1px 2px #000;
-    }
-  </style>
-</head>
-<body>
-  <div class="weather-buttons">
-    <button onclick="setWeather('sunny')">☀️ 晴れ</button>
-    <button onclick="setWeather('cloudy')">☁️ 曇り</button>
-    <button onclick="setWeather('rainy')">🌧️ 雨</button>
-    <button onclick="setWeather('snowy')">❄️ 雪</button>
-    <select id="characterSelector" onchange="setCharacter(this.value)">
-      <option value="alice">Alice</option>
-      <option value="bob">Bob</option>
-      <option value="clara">Clara</option>
-    </select>
-  </div>
+function setWeather(newWeather) {
+  weather = newWeather;
+  updateUI();
+}
 
-  <div class="background" id="background"></div>
-
-  <div class="container">
-    <img id="character" class="character" src="" alt="キャラクター" />
-  </div>
-
-  <div class="dialogue" id="caption">セリフがここに表示されます</div>
-
-  <script>
-    let weather = "cloudy";
-    let characterName = "alice";
-
-    function getTimeSlot(hour) {
-      if (hour >= 4 && hour < 7) return 'early_morning';
-      if (hour >= 7 && hour < 11) return 'morning';
-      if (hour >= 11 && hour < 15) return 'afternoon';
-      if (hour >= 15 && hour < 18) return 'evening';
-      if (hour >= 18 && hour < 22) return 'night';
-      return 'midnight';
-    }
-
-    function getExpression(timeSlot) {
-      switch (timeSlot) {
-        case 'early_morning': return 'sleepy';
-        case 'morning': return 'normal';
-        case 'afternoon': return 'happy';
-        case 'evening': return 'troubled';
-        case 'night': return 'surprised';
-        case 'midnight': return 'normal';
-      }
-    }
-
-    function getMessage(character, timeSlot) {
-      const messages = {
-        alice: {
-          early_morning: "ふぁ〜、まだ眠いよ……",
-          morning: "おはよう！今日も頑張ろうね！",
-          afternoon: "お昼だね！元気にいこう！",
-          evening: "ちょっと疲れた？ゆっくりしてね",
-          night: "夜更かししすぎないでね？",
-          midnight: "こんな時間まで起きてるの……？"
-        },
-        bob: {
-          early_morning: "朝早すぎるよ…もう少し寝たいな",
-          morning: "よっ！今日も1日、楽しもうぜ！",
-          afternoon: "お腹空いた〜、昼飯まだ？",
-          evening: "そろそろ休憩タイムかな〜",
-          night: "夜は静かで落ち着くね",
-          midnight: "こんな時間まで起きてるのか…？"
-        },
-        clara: {
-          early_morning: "うぅ…目が開かない…",
-          morning: "おはようございます♪いい朝ですね！",
-          afternoon: "午後も張り切っていきましょう！",
-          evening: "お疲れ様です。今日はどうでした？",
-          night: "そろそろおやすみの時間です",
-          midnight: "夜更かしはお肌の敵ですよ？"
-        }
-      };
-      return messages[character][timeSlot];
-    }
-
-    function updateUI() {
-      const hour = new Date().getHours();
-      const timeSlot = getTimeSlot(hour);
-      const expression = getExpression(timeSlot);
-
-      document.getElementById("character").src = `img/${characterName}_${expression}.png`;
-      document.getElementById("background").style.backgroundImage = `url('img/background_${timeSlot}_${weather}.png')`;
-      document.getElementById("caption").textContent = getMessage(characterName, timeSlot);
-    }
-
-    function setWeather(newWeather) {
-      weather = newWeather;
-      updateUI();
-    }
-
-    function setCharacter(name) {
-      characterName = name;
-      updateUI();
-    }
-
-    window.onload = updateUI;
-  </script>
-</body>
-</html>
+// 起動時
+window.onload = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has("char")) {
+    characterName = urlParams.get("char");
+  }
+  loadCharacterData();
+};
+</script>
