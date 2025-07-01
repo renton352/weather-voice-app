@@ -51,7 +51,7 @@
       z-index: 2;
     }
 
-    .weather-buttons, .character-select {
+    .weather-buttons {
       position: absolute;
       top: 10px;
       left: 50%;
@@ -61,11 +61,12 @@
       padding: 10px;
       border-radius: 10px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
     }
 
-    .weather-buttons button, .character-select select {
+    .weather-buttons select {
       font-size: 1rem;
       padding: 6px 12px;
       border: none;
@@ -74,14 +75,9 @@
     }
 
     .temp {
-      position: absolute;
-      top: 60px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
       font-size: 1.2rem;
+      color: white;
       text-shadow: 1px 1px 2px #000;
-      z-index: 2;
     }
   </style>
 </head>
@@ -92,9 +88,9 @@
       <option value="bob">Bob</option>
       <option value="clara">Clara</option>
     </select>
+    <div class="temp" id="temperature">気温取得中...</div>
   </div>
 
-  <div class="temp" id="temperature"></div>
   <div class="background" id="background"></div>
   <div class="container">
     <img id="character" class="character" src="" alt="キャラクター" />
@@ -116,8 +112,8 @@
     }
 
     async function fetchWeather() {
-      const API_KEY = "your_api_key_here";
-      const city = "Tokyo"; // 必要に応じて変更
+      const API_KEY = "a8bc86e4c135f3c44f72bb4b957aa213";
+      const city = "Tokyo";
       try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=ja`);
         const data = await response.json();
@@ -134,7 +130,8 @@
         updateUI();
       } catch (e) {
         console.error("天気の取得に失敗しました", e);
-        updateUI(); // fallback 表示
+        document.getElementById("temperature").textContent = "気温取得失敗";
+        updateUI(); // fallback
       }
     }
 
@@ -144,7 +141,7 @@
         characterData = await response.json();
         updateUI();
       } catch (e) {
-        console.error("データの読み込みに失敗しました", e);
+        console.error("キャラデータの読み込みに失敗しました", e);
       }
     }
 
