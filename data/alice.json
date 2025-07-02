@@ -1,41 +1,47 @@
 {
   "expressions": {
     "early_morning": "normal",
-    "morning": "happy",
+    "morning": "normal",
     "afternoon": "normal",
-    "evening": "surprised",
-    "night": "worried",
+    "evening": "normal",
+    "night": "normal",
     "midnight": "normal"
   },
   "lines": {
-    "early_morning": "おはよう、今日もいい一日にしようね！",
-    "morning": "朝ごはんちゃんと食べた？元気にいこう！",
-    "afternoon": "そろそろ疲れてきた？無理しないでね。",
-    "evening": "今日も一日お疲れさま！",
-    "night": "夜更かししすぎないでね？",
-    "midnight": "こんな時間まで起きてるなんて…！"
+    "early_morning": "おはよう、今日もいい一日になりますように！",
+    "morning": "元気にいってらっしゃい！",
+    "afternoon": "おつかれさま、少し休憩しよう？",
+    "evening": "こんばんは！今日もおつかれさま！",
+    "night": "そろそろ寝る時間だね。",
+    "midnight": "こんな時間まで起きてるの？無理しないでね。"
   },
   "weatherLines": {
+    "early_morning": {
+      "cloudy": "朝から曇ってるね。気をつけてね。"
+    },
     "morning": {
-      "sunny": "朝日がまぶしいね、気持ちいい〜！",
-      "cloudy": "ちょっと曇ってるけど、元気にいこう！",
-      "rainy": "雨だね…傘忘れないようにね！",
-      "snowy": "雪が降ってる…少しロマンチックかも？"
+      "cloudy": "曇ってるけど気分は晴れやかに！"
+    },
+    "afternoon": {
+      "cloudy": "午後はゆったり曇り空。"
     },
     "evening": {
-      "sunny": "夕焼けがとっても綺麗だよ！",
-      "cloudy": "雲が広がってきたね、夜は寒くなるかも。",
-      "rainy": "雨音が心地よいね、一緒に聴こう？",
-      "snowy": "雪の中の帰り道、気をつけてね。"
+      "cloudy": "曇ってるね、気をつけて帰ってきてね。"
+    },
+    "night": {
+      "cloudy": "夜空は曇り。星は見えないかも。"
+    },
+    "midnight": {
+      "cloudy": "夜更かしには曇りが似合う？"
     }
   },
   "weekdayLines": {
-    "monday": "月曜日、がんばりすぎないでね。",
-    "tuesday": "火曜日、ちょっと慣れてきた？",
-    "wednesday": "水曜日、週の真ん中、あと少し！",
-    "thursday": "木曜日、あと一息だね！",
-    "friday": "金曜日、週末が近いよ〜！",
-    "saturday": "土曜日、ゆっくり休もうね♪",
-    "sunday": "日曜日、リラックスして過ごそう！"
+    "sunday": "今日は日曜日！のんびり過ごそう♪",
+    "monday": "月曜日だね。一緒にがんばろう！",
+    "tuesday": "火曜日！まだまだ始まったばかり！",
+    "wednesday": "もう週の真ん中だよ、がんばろうね！",
+    "thursday": "木曜日！あと少しで週末！",
+    "friday": "金曜日だね！あとひとふんばり！",
+    "saturday": "土曜日だよ！今日は楽しもう♪"
   }
 }
