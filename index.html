@@ -37,36 +37,34 @@
       height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: center;
       align-items: center;
       text-align: center;
       position: relative;
       z-index: 1;
-      padding-bottom: 20vh; /* キャラに被せる余裕を作る */
     }
 
     .character {
-      max-height: 75vh;
+      max-height: 80vh;
       max-width: 100%;
       object-fit: contain;
     }
 
     .dialogue {
       position: absolute;
-      bottom: 0;
+      bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
       width: 95%;
-      max-width: 650px;
-      padding: 0.5rem;
-      text-align: center;
-      font-size: 1.8rem;
-      line-height: 1.6;
+      padding: 0.5rem 1rem;
+      font-size: 1.6rem;
+      line-height: 1.5;
       white-space: pre-wrap;
       color: white;
       text-shadow: 2px 2px 4px #000;
       z-index: 2;
-      background: rgba(0, 0, 0, 0.2);
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
     }
 
     .weather-buttons, .character-select {
@@ -115,10 +113,7 @@
 
     @media (max-width: 600px) {
       .dialogue {
-        font-size: 1.4rem;
-        line-height: 1.4;
-        bottom: 0;
-        padding: 0.5rem;
+        font-size: 1.3rem;
       }
     }
   </style>
