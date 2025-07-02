@@ -189,6 +189,7 @@
       canvas.height = window.innerHeight;
 
       let particles = [];
+      const timeSlot = getTimeSlot(new Date().getHours());
 
       if (weather === "snowy") {
         for (let i = 0; i < 100; i++) {
@@ -243,7 +244,7 @@
           ctx.arc(x, y, r, 0, Math.PI * 2);
           ctx.fill();
         }
-      } else if (weather === "cloudy" && getTimeSlot(new Date().getHours()) === "night") {
+      } else if (weather === "sunny" && timeSlot === "night") {
         for (let i = 0; i < 80; i++) {
           particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 1.5 + 0.5 });
         }
