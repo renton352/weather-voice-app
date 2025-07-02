@@ -1,19 +1,41 @@
 {
-  "name": "Bob",
   "expressions": {
-    "early_morning": "troubled",
-    "morning": "normal",
-    "afternoon": "happy",
+    "early_morning": "normal",
+    "morning": "happy",
+    "afternoon": "normal",
     "evening": "surprised",
-    "night": "normal",
-    "midnight": "troubled"
+    "night": "worried",
+    "midnight": "normal"
   },
   "lines": {
-    "early_morning": "早起きはちょっと苦手かも……",
-    "morning": "おはようございます！",
-    "afternoon": "いい天気でうれしいな！",
-    "evening": "うわっ、今の見た！？",
-    "night": "ゆっくり休んでくださいね",
-    "midnight": "こんな時間まで…無理しないで！"
+    "early_morning": "早起きって気持ちいいな！今日も全力でいこう！",
+    "morning": "おはよう！今日も楽しもうぜ！",
+    "afternoon": "午後もまだまだこれから！ファイト！",
+    "evening": "今日も頑張ったな、ナイス！",
+    "night": "夜はゆっくり休まないとね。",
+    "midnight": "こんな時間まで起きてるのか！？すげぇ！"
+  },
+  "weatherLines": {
+    "morning": {
+      "sunny": "晴れてるとやる気出るなー！",
+      "cloudy": "曇っててもオレは元気だぜ！",
+      "rainy": "雨の日も走り回りたいな！…でも風邪引くなよ！",
+      "snowy": "雪だ！雪合戦しようぜ！"
+    },
+    "evening": {
+      "sunny": "夕陽がカッコイイなぁ…",
+      "cloudy": "曇ってるとちょっとさびしいな。",
+      "rainy": "雨音って、意外と落ち着くかも。",
+      "snowy": "帰り道、滑らないように気をつけてな！"
+    }
+  },
+  "weekdayLines": {
+    "monday": "月曜日スタート！オレについてこい！",
+    "tuesday": "火曜はまだまだウォーミングアップ！",
+    "wednesday": "水曜日、もう半分きたぞ！",
+    "thursday": "木曜って一番微妙な日だよな、でも負けるな！",
+    "friday": "金曜日キター！週末までもう少し！",
+    "saturday": "土曜は遊ぶ日！どこ行こうか！",
+    "sunday": "日曜はのんびりしていいんだぜ。"
   }
 }

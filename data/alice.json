@@ -1,19 +1,41 @@
 {
-  "name": "Alice",
   "expressions": {
     "early_morning": "normal",
     "morning": "happy",
-    "afternoon": "surprised",
-    "evening": "troubled",
-    "night": "normal",
-    "midnight": "troubled"
+    "afternoon": "normal",
+    "evening": "surprised",
+    "night": "worried",
+    "midnight": "normal"
   },
   "lines": {
-    "early_morning": "ふぁ〜、まだ眠いよ……",
-    "morning": "おはよう！今日も頑張ろうね！",
-    "afternoon": "びっくりした！？",
-    "evening": "ちょっと疲れた？ゆっくりしてね",
-    "night": "今日も一日おつかれさま！",
-    "midnight": "もう夜中だよ、早く寝よう？"
+    "early_morning": "おはよう、今日もいい一日にしようね！",
+    "morning": "朝ごはんちゃんと食べた？元気にいこう！",
+    "afternoon": "そろそろ疲れてきた？無理しないでね。",
+    "evening": "今日も一日お疲れさま！",
+    "night": "夜更かししすぎないでね？",
+    "midnight": "こんな時間まで起きてるなんて…！"
+  },
+  "weatherLines": {
+    "morning": {
+      "sunny": "朝日がまぶしいね、気持ちいい〜！",
+      "cloudy": "ちょっと曇ってるけど、元気にいこう！",
+      "rainy": "雨だね…傘忘れないようにね！",
+      "snowy": "雪が降ってる…少しロマンチックかも？"
+    },
+    "evening": {
+      "sunny": "夕焼けがとっても綺麗だよ！",
+      "cloudy": "雲が広がってきたね、夜は寒くなるかも。",
+      "rainy": "雨音が心地よいね、一緒に聴こう？",
+      "snowy": "雪の中の帰り道、気をつけてね。"
+    }
+  },
+  "weekdayLines": {
+    "monday": "月曜日、がんばりすぎないでね。",
+    "tuesday": "火曜日、ちょっと慣れてきた？",
+    "wednesday": "水曜日、週の真ん中、あと少し！",
+    "thursday": "木曜日、あと一息だね！",
+    "friday": "金曜日、週末が近いよ〜！",
+    "saturday": "土曜日、ゆっくり休もうね♪",
+    "sunday": "日曜日、リラックスして過ごそう！"
   }
 }

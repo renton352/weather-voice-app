@@ -138,6 +138,10 @@
       return 'midnight';
     }
 
+    function getDayName() {
+      return ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][new Date().getDay()];
+    }
+
     async function fetchWeather() {
       const API_KEY = "your_api_key_here";
       const city = "Tokyo";
@@ -174,11 +178,21 @@
     }
 
     function updateUI() {
-      const hour = new Date().getHours();
+      const now = new Date();
+      const hour = now.getHours();
       const timeSlot = getTimeSlot(hour);
+      const dayName = getDayName();
 
       const expression = characterData.expressions[timeSlot];
-      const message = characterData.lines[timeSlot];
+      let message = characterData.lines[timeSlot];
+
+      if (characterData.weatherLines && characterData.weatherLines[timeSlot] && characterData.weatherLines[timeSlot][weather]) {
+        message = characterData.weatherLines[timeSlot][weather];
+      }
+
+      if (characterData.weekdayLines && characterData.weekdayLines[dayName]) {
+        message += "\n" + characterData.weekdayLines[dayName];
+      }
 
       const img = document.getElementById("character");
       const caption = document.getElementById("caption");
@@ -188,90 +202,12 @@
       background.style.backgroundImage = `url('img/background_${timeSlot}_${weather}.png')`;
       caption.textContent = message;
 
-      document.getElementById("debugInfo").textContent = `天気: ${weather} ／ 時間帯: ${timeSlot}`;
+      document.getElementById("debugInfo").textContent = `天気: ${weather} ／ 時間帯: ${timeSlot} ／ 曜日: ${dayName}`;
     }
 
     function setCharacter(name) {
       characterName = name;
       loadCharacterData();
-    }
-
-    function triggerEffect() {
-      const canvas = document.getElementById("effectCanvas");
-      const ctx = canvas.getContext("2d");
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      let particles = [];
-      const timeSlot = getTimeSlot(new Date().getHours());
-
-      if (weather === "snowy") {
-        for (let i = 0; i < 100; i++) {
-          particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 3 + 1, d: Math.random() + 1 });
-        }
-        setInterval(() => {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.fillStyle = "white";
-          ctx.beginPath();
-          for (let p of particles) {
-            ctx.moveTo(p.x, p.y);
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          }
-          ctx.fill();
-          for (let p of particles) {
-            p.y += p.d;
-            if (p.y > canvas.height) {
-              p.y = 0;
-              p.x = Math.random() * canvas.width;
-            }
-          }
-        }, 33);
-      } else if (weather === "rainy") {
-        for (let i = 0; i < 200; i++) {
-          particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, l: Math.random() * 20 + 10 });
-        }
-        setInterval(() => {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.strokeStyle = "rgba(174,194,224,0.5)";
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          for (let p of particles) {
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p.x, p.y + p.l);
-          }
-          ctx.stroke();
-          for (let p of particles) {
-            p.y += 4;
-            if (p.y > canvas.height) {
-              p.y = 0;
-              p.x = Math.random() * canvas.width;
-            }
-          }
-        }, 33);
-      } else if (weather === "sunny") {
-        ctx.fillStyle = "rgba(255, 255, 0, 0.1)";
-        for (let i = 0; i < 100; i++) {
-          ctx.beginPath();
-          const x = Math.random() * canvas.width;
-          const y = Math.random() * canvas.height;
-          const r = Math.random() * 30 + 20;
-          ctx.arc(x, y, r, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      } else if (weather === "sunny" && timeSlot === "night") {
-        for (let i = 0; i < 80; i++) {
-          particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 1.5 + 0.5 });
-        }
-        setInterval(() => {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.fillStyle = "white";
-          for (let p of particles) {
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        }, 100);
-      }
     }
 
     window.onload = () => {

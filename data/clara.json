@@ -1,19 +1,41 @@
 {
-  "name": "Clara",
   "expressions": {
-    "early_morning": "surprised",
-    "morning": "normal",
-    "afternoon": "happy",
-    "evening": "troubled",
-    "night": "normal",
-    "midnight": "troubled"
+    "early_morning": "normal",
+    "morning": "happy",
+    "afternoon": "normal",
+    "evening": "surprised",
+    "night": "worried",
+    "midnight": "normal"
   },
   "lines": {
-    "early_morning": "もう朝！？びっくりした…",
-    "morning": "おはよう♪今日もよろしくね！",
-    "afternoon": "えへへ、うれしいな！",
-    "evening": "ちょっとだけ、休憩しよ？",
-    "night": "おつかれさま、いい夢見てね",
-    "midnight": "そろそろ寝ないと明日が大変だよ〜"
+    "early_morning": "おはようございます。まだ少し眠たいですね…ふふっ",
+    "morning": "今日も素敵な一日になりますように。",
+    "afternoon": "午後は少し休憩も大切ですよ。",
+    "evening": "一日お疲れさまでした。ちゃんとご飯、食べました？",
+    "night": "夜風が冷たいですね。温かくしておやすみくださいね。",
+    "midnight": "こんな夜更けまで…無理は禁物ですよ？"
+  },
+  "weatherLines": {
+    "morning": {
+      "sunny": "ポカポカのお日さま、気持ちいいですね。",
+      "cloudy": "少し曇り空。でも心は晴れやかに♪",
+      "rainy": "雨の朝も、静かで好きですよ。",
+      "snowy": "雪が積もってますね…お出かけの際は足元にご注意を。"
+    },
+    "evening": {
+      "sunny": "夕焼けがとても綺麗…一緒に見ましょうか？",
+      "cloudy": "曇り空でも、あなたといれば暖かいです。",
+      "rainy": "しっとりとした夕方ですね…",
+      "snowy": "夜の雪景色、静かで好きなんです。"
+    }
+  },
+  "weekdayLines": {
+    "monday": "月曜日、無理せず一歩ずついきましょう。",
+    "tuesday": "火曜日ですね、まだまだ焦らずに。",
+    "wednesday": "週の真ん中、少しひと息入れましょうか。",
+    "thursday": "木曜日、あと少しで週末です。",
+    "friday": "金曜日、お疲れさまがもうすぐ言えますね。",
+    "saturday": "土曜日、たまには自分にご褒美を。",
+    "sunday": "日曜日は大切な人とゆっくり過ごせますように。"
   }
 }
