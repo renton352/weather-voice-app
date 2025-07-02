@@ -52,16 +52,19 @@
 
     .dialogue {
       position: absolute;
-      bottom: 5vh;
-      width: 100%;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 600px;
       padding: 0 1rem;
       text-align: center;
       font-size: 1.8rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
       color: white;
       text-shadow: 2px 2px 4px #000;
-      z-index: 3;
-      pointer-events: none;
-      box-sizing: border-box;
+      z-index: 2;
     }
 
     .weather-buttons, .character-select {
@@ -106,6 +109,12 @@
       font-size: 0.9rem;
       text-shadow: 1px 1px 2px #000;
       z-index: 2;
+    }
+
+    @media (max-width: 600px) {
+      .dialogue {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
