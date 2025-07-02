@@ -1,17 +1,17 @@
 [
   {
     "name": "alice",
-    "label": "Alice",
+    "label": "アリス",
     "birthday": "3/3"
   },
   {
     "name": "bob",
-    "label": "Bob",
+    "label": "ボブ",
     "birthday": "6/5"
   },
   {
     "name": "clara",
-    "label": "Clara",
-    "birthday": "10/10"
+    "label": "クララ",
+    "birthday": "12/10"
   }
 ]
