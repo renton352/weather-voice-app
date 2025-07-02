@@ -16,10 +16,20 @@
       position: fixed;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      z-index: -2;
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
+    }
+
+    .effect-layer {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: -1;
     }
 
     .container {
@@ -42,22 +52,21 @@
 
     .dialogue {
       position: absolute;
-      bottom: 10vh; /* ← 埋もれないよう調整 */
+      bottom: 30px;
       width: 100%;
       text-align: center;
       font-size: 1.8rem;
       color: white;
       text-shadow: 2px 2px 4px #000;
-      z-index: 5; /* ← 前面に表示 */
+      z-index: 2;
     }
 
-    .weather-buttons,
-    .character-select {
+    .weather-buttons, .character-select {
       position: absolute;
       top: 10px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 10;
+      z-index: 2;
       background-color: rgba(0, 0, 0, 0.5);
       padding: 10px;
       border-radius: 10px;
@@ -66,8 +75,7 @@
       gap: 10px;
     }
 
-    .weather-buttons button,
-    .character-select select {
+    .weather-buttons button, .character-select select {
       font-size: 1rem;
       padding: 6px 12px;
       border: none;
@@ -83,7 +91,7 @@
       color: white;
       font-size: 1.2rem;
       text-shadow: 1px 1px 2px #000;
-      z-index: 10;
+      z-index: 2;
     }
   </style>
 </head>
@@ -98,6 +106,7 @@
 
   <div class="temp" id="temperature"></div>
   <div class="background" id="background"></div>
+  <canvas id="effectCanvas" class="effect-layer"></canvas>
   <div class="container">
     <img id="character" class="character" src="" alt="キャラクター" />
     <div id="caption" class="dialogue"></div>
@@ -118,7 +127,7 @@
     }
 
     async function fetchWeather() {
-      const API_KEY = "a8bc86e4c135f3c44f72bb4b957aa213"; // ← ここに正しいAPIキー
+      const API_KEY = "your_api_key_here";
       const city = "Tokyo";
       try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=ja`);
@@ -134,9 +143,11 @@
         else weather = "sunny";
 
         updateUI();
+        triggerEffect();
       } catch (e) {
         console.error("天気の取得に失敗しました", e);
-        updateUI(); // fallback 表示
+        updateUI();
+        triggerEffect();
       }
     }
 
@@ -157,21 +168,95 @@
       const expression = characterData.expressions[timeSlot];
       const message = characterData.lines[timeSlot];
 
-      console.log("時刻帯:", timeSlot);
-      console.log("セリフ:", message);
-
       const img = document.getElementById("character");
       const caption = document.getElementById("caption");
       const background = document.getElementById("background");
 
       img.src = `img/${characterName}_${expression}.png`;
       background.style.backgroundImage = `url('img/background_${timeSlot}_${weather}.png')`;
-      caption.textContent = message || "（セリフ未設定）";
+      caption.textContent = message;
     }
 
     function setCharacter(name) {
       characterName = name;
       loadCharacterData();
+    }
+
+    function triggerEffect() {
+      const canvas = document.getElementById("effectCanvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let particles = [];
+
+      if (weather === "snowy") {
+        for (let i = 0; i < 100; i++) {
+          particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 3 + 1, d: Math.random() + 1 });
+        }
+        setInterval(() => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.fillStyle = "white";
+          ctx.beginPath();
+          for (let p of particles) {
+            ctx.moveTo(p.x, p.y);
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          }
+          ctx.fill();
+          for (let p of particles) {
+            p.y += p.d;
+            if (p.y > canvas.height) {
+              p.y = 0;
+              p.x = Math.random() * canvas.width;
+            }
+          }
+        }, 33);
+      } else if (weather === "rainy") {
+        for (let i = 0; i < 200; i++) {
+          particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, l: Math.random() * 20 + 10 });
+        }
+        setInterval(() => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.strokeStyle = "rgba(174,194,224,0.5)";
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          for (let p of particles) {
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p.x, p.y + p.l);
+          }
+          ctx.stroke();
+          for (let p of particles) {
+            p.y += 4;
+            if (p.y > canvas.height) {
+              p.y = 0;
+              p.x = Math.random() * canvas.width;
+            }
+          }
+        }, 33);
+      } else if (weather === "sunny") {
+        ctx.fillStyle = "rgba(255, 255, 0, 0.1)";
+        for (let i = 0; i < 100; i++) {
+          ctx.beginPath();
+          const x = Math.random() * canvas.width;
+          const y = Math.random() * canvas.height;
+          const r = Math.random() * 30 + 20;
+          ctx.arc(x, y, r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      } else if (weather === "cloudy" && getTimeSlot(new Date().getHours()) === "night") {
+        for (let i = 0; i < 80; i++) {
+          particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 1.5 + 0.5 });
+        }
+        setInterval(() => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.fillStyle = "white";
+          for (let p of particles) {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }, 100);
+      }
     }
 
     window.onload = () => {
