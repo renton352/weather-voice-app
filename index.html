@@ -1,92 +1,21 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>推し天気予報 × 1日1セリフ</title>
+  <title>天気キャラアプリ</title>
   <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      overflow: hidden;
-      background: #eee;
-      position: relative;
-    }
-    .background {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-size: cover;
-      background-position: center;
-      z-index: -2;
-    }
-    .character {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      max-height: 80vh;
-      z-index: 0;
-    }
-    .dialogue {
-      position: absolute;
-      bottom: 22vh;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255,255,255,0.9);
-      padding: 1em 1.5em;
-      border-radius: 1em;
-      font-size: 1em;
-      max-width: 90%;
-      text-align: center;
-      white-space: pre-line;
-      z-index: 1;
-    }
-    #debugInfo {
-      position: absolute;
-      top: 1em;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.8em;
-      background: rgba(255,255,255,0.7);
-      padding: 0.3em 0.6em;
-      border-radius: 0.5em;
-      z-index: 2;
-    }
+    body { margin: 0; font-family: sans-serif; background: #000; color: white; overflow: hidden; }
+    #background { position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+    #character-img { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); max-height: 80vh; z-index: 1; }
+    #message { position: absolute; bottom: 25vh; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,0.8); color: black; padding: 1em; border-radius: 10px; max-width: 80%; text-align: center; z-index: 2; }
+    #character-select { position: absolute; top: 1em; right: 1em; z-index: 3; }
   </style>
 </head>
 <body>
-  <div class="background" id="background"></div>
-  <img id="character" class="character" src="img/alice_normal.png" alt="キャラ">
-  <div class="dialogue" id="caption">セリフがここに表示されます</div>
-  <div id="debugInfo">読み込み中...</div>
-  <script>
-    const weather = "cloudy";
-    const timeSlot = "afternoon";
-    const dayName = "tuesday";
-    const character = {
-      name: "alice",
-      expressions: { afternoon: "normal" },
-      lines: { afternoon: "今日も一日がんばろうね！" },
-      weekdayLines: { tuesday: "火曜日はちょっと眠いかも…" },
-      birthday: "3/3"
-    };
-
-    const caption = document.getElementById("caption");
-    const img = document.getElementById("character");
-    const background = document.getElementById("background");
-    const debug = document.getElementById("debugInfo");
-
-    let message = character.lines[timeSlot] || "";
-    if (character.weekdayLines[dayName]) {
-      message += "\n" + character.weekdayLines[dayName];
-    }
-
-    img.src = `img/${character.name}_${character.expressions[timeSlot]}.png`;
-    background.style.backgroundImage = `url('img/background_${timeSlot}_${weather}.png')`;
-    caption.textContent = message;
-    debug.textContent = `天気: ${weather}／時間帯: ${timeSlot}／曜日: ${dayName}`;
-  </script>
+  <select id="character-select"></select>
+  <img id="background" />
+  <img id="character-img" />
+  <div id="message">セリフがここに出ます</div>
+  <script src="main.js"></script>
 </body>
 </html>
