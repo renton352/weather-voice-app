@@ -141,7 +141,7 @@
 
     async function loadCharacterData() {
       try {
-        const response = await fetch(`data/${characterName}.json`);
+        const response = await fetch("data/" + characterName + ".json");
         characterData = await response.json();
         updateUI();
       } catch (e) {
