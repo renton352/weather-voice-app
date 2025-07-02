@@ -1,0 +1,17 @@
+[
+  {
+    "name": "alice",
+    "label": "Alice",
+    "birthday": "3/3"
+  },
+  {
+    "name": "bob",
+    "label": "Bob",
+    "birthday": "6/5"
+  },
+  {
+    "name": "clara",
+    "label": "Clara",
+    "birthday": "10/10"
+  }
+]
