@@ -119,12 +119,12 @@
         "1/1": {
           label: "元日",
           message: "あけましておめでとう！今年もよろしくね！",
-          background: "img/background_special_newyear.png"
+          background: "/weather-voice-app/img/background_special_newyear.png"
         },
         "12/25": {
           label: "クリスマス",
           message: "メリークリスマス！今日は特別に一緒に過ごそ♪",
-          background: "img/background_special_christmas.png"
+          background: "/weather-voice-app/img/background_special_christmas.png"
         }
       };
 
@@ -132,7 +132,7 @@
         return {
           label: "誕生日",
           message: "お誕生日おめでとう！とっておきの一日になるといいね！",
-          background: "img/background_special_birthday.png"
+          background: "/weather-voice-app/img/background_special_birthday.png"
         };
       }
 
@@ -163,7 +163,7 @@
       if (special) {
         background.style.backgroundImage = `url('${special.background}')`;
         caption.textContent = special.message;
-        img.src = `img/${characterName}_happy.png`;
+        img.src = `/weather-voice-app/img/${characterName}_happy.png`;
         document.getElementById("debugInfo").textContent = `🎉 特別日: ${special.label}`;
         return;
       }
@@ -179,8 +179,8 @@
         message += "\n" + characterData.weekdayLines[dayName];
       }
 
-      img.src = `img/${characterName}_${expression}.png`;
-      background.style.backgroundImage = `url('img/background_${timeSlot}_${weather}.png')`;
+      img.src = `/weather-voice-app/img/${characterName}_${expression}.png`;
+      background.style.backgroundImage = `url('/weather-voice-app/img/background_${timeSlot}_${weather}.png')`;
       caption.textContent = message;
 
       document.getElementById("debugInfo").textContent = `天気: ${weather} ／ 時間帯: ${timeSlot} ／ 曜日: ${dayName}`;
