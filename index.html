@@ -1,218 +1,67 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>推し天気予報 × 1日1セリフ</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      overflow: hidden;
-      position: relative;
+<script>
+  async function loadCharacterData() {
+    try {
+      const response = await fetch(`./data/${characterName}.json`);
+      characterData = await response.json();
+      updateUI();
+    } catch (e) {
+      console.error("❌ キャラクターデータの読み込みに失敗:", e);
     }
-    .background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      z-index: -2;
-    }
-    .effect-layer {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-    .container {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      z-index: 1;
-    }
-    .character {
-      max-height: 80vh;
-      object-fit: contain;
-    }
-    .dialogue {
-      position: absolute;
-      bottom: 22vh;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.9);
-      padding: 1em 1.5em;
-      border-radius: 1em;
-      font-size: 1em;
-      max-width: 90%;
-      text-align: center;
-      white-space: pre-line;
-      z-index: 2;
-    }
-    #debugInfo {
-      position: absolute;
-      top: 1em;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.8em;
-      color: #333;
-      background: rgba(255,255,255,0.7);
-      padding: 0.3em 0.6em;
-      border-radius: 0.5em;
-      z-index: 2;
-    }
-    .weather-buttons {
-      position: absolute;
-      top: 1em;
-      right: 1em;
-      z-index: 2;
-    }
-  </style>
-</head>
-<body>
-  <div class="weather-buttons">
-    <label for="characterSelector" class="visually-hidden">キャラクター選択</label>
-    <select id="characterSelector" title="キャラクター選択" onchange="onCharacterChange(this.value)"></select>
-  </div>
+  }
 
-  <div class="temp" id="temperature"></div>
-  <div class="debug" id="debugInfo"></div>
-  <div class="background" id="background"></div>
-  <canvas id="effectCanvas" class="effect-layer"></canvas>
-  <div class="container">
-    <img id="character" class="character" src="" alt="キャラクター画像" />
-    <div id="caption" class="dialogue"></div>
-  </div>
+  async function initCharacters() {
+    try {
+      const response = await fetch("./data/characters.json");
+      characterList = await response.json();
 
-  <script>
-    let weather = "cloudy";
-    let characterName = "alice";
-    let characterData = {};
-    let characterList = [];
+      const selector = document.getElementById("characterSelector");
+      selector.innerHTML = characterList.map(c => `<option value="${c.name}">${c.label}</option>`).join("");
 
-    function getTimeSlot(hour) {
-      if (hour >= 4 && hour < 7) return 'early_morning';
-      if (hour >= 7 && hour < 11) return 'morning';
-      if (hour >= 11 && hour < 15) return 'afternoon';
-      if (hour >= 15 && hour < 18) return 'evening';
-      if (hour >= 18 && hour < 22) return 'night';
-      return 'midnight';
+      const urlParams = new URLSearchParams(window.location.search);
+      const charParam = urlParams.get("character");
+      if (charParam) characterName = charParam;
+      else characterName = characterList[0]?.name || "alice";
+
+      await loadCharacterData();
+    } catch (e) {
+      console.error("❌ キャラクター一覧の読み込みに失敗:", e);
+    }
+  }
+
+  function updateUI() {
+    const now = new Date();
+    const hour = now.getHours();
+    const timeSlot = getTimeSlot(hour);
+    const dayName = getDayName();
+    const special = checkSpecialDay();
+
+    const img = document.getElementById("character");
+    const caption = document.getElementById("caption");
+    const background = document.getElementById("background");
+
+    if (special) {
+      background.style.backgroundImage = `url('./${special.background}')`;
+      caption.textContent = special.message;
+      img.src = `./img/${characterName}_happy.png`;
+      document.getElementById("debugInfo").textContent = `🎉 特別日: ${special.label}`;
+      return;
     }
 
-    function getDayName() {
-      return ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][new Date().getDay()];
+    const expression = characterData.expressions?.[timeSlot] || "normal";
+    let message = characterData.lines?.[timeSlot] || "";
+
+    if (characterData.weatherLines?.[timeSlot]?.[weather]) {
+      message = characterData.weatherLines[timeSlot][weather];
     }
 
-    function checkSpecialDay() {
-      const today = new Date();
-      const todayStr = `${today.getMonth() + 1}/${today.getDate()}`;
-      const birthdays = Object.fromEntries(characterList.map(c => [c.name, c.birthday]));
-
-      const specialDays = {
-        "1/1": {
-          label: "元日",
-          message: "あけましておめでとう！今年もよろしくね！",
-          background: "img/background_special_newyear.png"
-        },
-        "12/25": {
-          label: "クリスマス",
-          message: "メリークリスマス！今日は特別に一緒に過ごそ♪",
-          background: "img/background_special_christmas.png"
-        }
-      };
-
-      if (birthdays[characterName] === todayStr) {
-        return {
-          label: "誕生日",
-          message: "お誕生日おめでとう！とっておきの一日になるといいね！",
-          background: "img/background_special_birthday.png"
-        };
-      }
-
-      return specialDays[todayStr] || null;
+    if (characterData.weekdayLines?.[dayName]) {
+      message += "\n" + characterData.weekdayLines[dayName];
     }
 
-    async function loadCharacterData() {
-      try {
-        const response = await fetch(`data/${characterName}.json`);
-        characterData = await response.json();
-        updateUI();
-      } catch (e) {
-        console.error("キャラクターデータの読み込みに失敗しました", e);
-      }
-    }
+    img.src = `./img/${characterName}_${expression}.png`;
+    background.style.backgroundImage = `url('./img/background_${timeSlot}_${weather}.png')`;
+    caption.textContent = message;
 
-    function updateUI() {
-      const now = new Date();
-      const hour = now.getHours();
-      const timeSlot = getTimeSlot(hour);
-      const dayName = getDayName();
-      const special = checkSpecialDay();
-
-      const img = document.getElementById("character");
-      const caption = document.getElementById("caption");
-      const background = document.getElementById("background");
-
-      if (special) {
-        background.style.backgroundImage = `url('${special.background}')`;
-        caption.textContent = special.message;
-        img.src = `img/${characterName}_happy.png`;
-        document.getElementById("debugInfo").textContent = `🎉 特別日: ${special.label}`;
-        return;
-      }
-
-      const expression = characterData.expressions?.[timeSlot] || "normal";
-      let message = characterData.lines?.[timeSlot] || "";
-
-      if (characterData.weatherLines?.[timeSlot]?.[weather]) {
-        message = characterData.weatherLines[timeSlot][weather];
-      }
-
-      if (characterData.weekdayLines?.[dayName]) {
-        message += "\n" + characterData.weekdayLines[dayName];
-      }
-
-      img.src = `img/${characterName}_${expression}.png`;
-      background.style.backgroundImage = `url('img/background_${timeSlot}_${weather}.png')`;
-      caption.textContent = message;
-
-      document.getElementById("debugInfo").textContent = `天気: ${weather} ／ 時間帯: ${timeSlot} ／ 曜日: ${dayName}`;
-    }
-
-    function onCharacterChange(name) {
-      characterName = name;
-      loadCharacterData();
-    }
-
-    async function initCharacters() {
-      try {
-        const response = await fetch("data/characters.json");
-        characterList = await response.json();
-
-        const selector = document.getElementById("characterSelector");
-        selector.innerHTML = characterList.map(c => `<option value="${c.name}">${c.label}</option>`).join("");
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const charParam = urlParams.get("character");
-        if (charParam) characterName = charParam;
-        else characterName = characterList[0]?.name || "alice";
-
-        loadCharacterData();
-      } catch (e) {
-        console.error("キャラクター一覧の読み込みに失敗しました", e);
-      }
-    }
-
-    window.onload = () => {
-      initCharacters();
-    };
-  </script>
-</body>
-</html>
+    document.getElementById("debugInfo").textContent = `天気: ${weather} ／ 時間帯: ${timeSlot} ／ 曜日: ${dayName}`;
+  }
+</script>
