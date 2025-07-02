@@ -1,58 +1,47 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>推し天気予報 × 1日1セリフ</title>
   <style>
     body {
       margin: 0;
       font-family: sans-serif;
       overflow: hidden;
+      background: #eee;
       position: relative;
     }
     .background {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-size: cover;
       background-position: center;
       z-index: -2;
     }
-    .effect-layer {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-    .container {
+    .character {
       position: absolute;
       bottom: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-    }
-    .character {
+      left: 50%;
+      transform: translateX(-50%);
       max-height: 80vh;
-      object-fit: contain;
+      z-index: 0;
     }
     .dialogue {
       position: absolute;
-      bottom: 30vh;
+      bottom: 22vh;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255,255,255,0.9);
       padding: 1em 1.5em;
       border-radius: 1em;
       font-size: 1em;
       max-width: 90%;
       text-align: center;
       white-space: pre-line;
+      z-index: 1;
     }
     #debugInfo {
       position: absolute;
@@ -60,157 +49,44 @@
       left: 50%;
       transform: translateX(-50%);
       font-size: 0.8em;
-      color: #333;
       background: rgba(255,255,255,0.7);
       padding: 0.3em 0.6em;
       border-radius: 0.5em;
-      z-index: 10;
-    }
-    .weather-buttons {
-      position: absolute;
-      top: 1em;
-      right: 1em;
-      z-index: 10;
-    }
-  </style>
-
-  <style>
-    .dialogue {
-      z-index: 1000;
-      display: block;
+      z-index: 2;
     }
   </style>
 </head>
-
 <body>
-  <div class="weather-buttons">
-    <select id="characterSelector" onchange="onCharacterChange(this.value)"></select>
-  </div>
-
-  <div class="temp" id="temperature"></div>
-  <div class="debug" id="debugInfo"></div>
   <div class="background" id="background"></div>
-  <canvas id="effectCanvas" class="effect-layer"></canvas>
-  <div class="container">
-    <img id="character" class="character" src="" alt="キャラクター" />
-    <div id="caption" class="dialogue"></div>
-  </div>
-
+  <img id="character" class="character" src="img/alice_normal.png" alt="キャラ">
+  <div class="dialogue" id="caption">セリフがここに表示されます</div>
+  <div id="debugInfo">読み込み中...</div>
   <script>
-    let weather = "cloudy";
-    let characterName = "alice";
-    let characterData = {};
-    let characterList = [];
-
-    function getTimeSlot(hour) {
-      if (hour >= 4 && hour < 7) return 'early_morning';
-      if (hour >= 7 && hour < 11) return 'morning';
-      if (hour >= 11 && hour < 15) return 'afternoon';
-      if (hour >= 15 && hour < 18) return 'evening';
-      if (hour >= 18 && hour < 22) return 'night';
-      return 'midnight';
-    }
-
-    function getDayName() {
-      return ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][new Date().getDay()];
-    }
-
-    function checkSpecialDay() {
-      const today = new Date();
-      const todayStr = `${today.getMonth() + 1}/${today.getDate()}`;
-      const birthdays = Object.fromEntries(characterList.map(c => [c.name, c.birthday]));
-
-      const specialDays = {
-        "1/1": {
-          label: "元日",
-          message: "あけましておめでとう！今年もよろしくね！",
-          background: "img/background_special_newyear.png"
-        },
-        "12/25": {
-          label: "クリスマス",
-          message: "メリークリスマス！今日は特別に一緒に過ごそ♪",
-          background: "img/background_special_christmas.png"
-        }
-      };
-
-      if (birthdays[characterName] === todayStr) {
-        return {
-          label: "誕生日",
-          message: "お誕生日おめでとう！とっておきの一日になるといいね！",
-          background: "img/background_special_birthday.png"
-        };
-      }
-
-      return specialDays[todayStr] || null;
-    }
-
-    async function fetchWeather() {
-      // 天気API取得処理は省略
-    }
-
-    async function loadCharacterData() {
-      const response = await fetch(`data/${characterName}.json`);
-      characterData = await response.json();
-      updateUI();
-    }
-
-    function updateUI() {
-      const now = new Date();
-      const hour = now.getHours();
-      const timeSlot = getTimeSlot(hour);
-      const dayName = getDayName();
-      const special = checkSpecialDay();
-
-      const img = document.getElementById("character");
-      const caption = document.getElementById("caption");
-      const background = document.getElementById("background");
-
-      if (special) {
-        background.style.backgroundImage = `url('${special.background}')`;
-        caption.textContent = special.message;
-        img.src = `img/${characterName}_happy.png`;
-        document.getElementById("debugInfo").textContent = `🎉 特別日: ${special.label}`;
-        return;
-      }
-
-      const expression = characterData.expressions[timeSlot];
-      let message = characterData.lines[timeSlot];
-
-      if (characterData.weatherLines?.[timeSlot]?.[weather]) {
-        message = characterData.weatherLines[timeSlot][weather];
-      }
-
-      if (characterData.weekdayLines?.[dayName]) {
-        message += "\n" + characterData.weekdayLines[dayName];
-      }
-
-      img.src = `img/${characterName}_${expression}.png`;
-      background.style.backgroundImage = `url('img/background_${timeSlot}_${weather}.png')`;
-      caption.textContent = message;
-
-      document.getElementById("debugInfo").textContent = `天気: ${weather} ／ 時間帯: ${timeSlot} ／ 曜日: ${dayName}`;
-    }
-
-    function onCharacterChange(name) {
-      characterName = name;
-      loadCharacterData();
-    }
-
-    async function initCharacters() {
-      const response = await fetch("data/characters.json");
-      characterList = await response.json();
-
-      const selector = document.getElementById("characterSelector");
-      selector.innerHTML = characterList.map(c => `<option value="${c.name}">${c.label}</option>`).join("");
-
-      characterName = characterList[0]?.name || "alice";
-      loadCharacterData();
-      fetchWeather();
-    }
-
-    window.onload = () => {
-      initCharacters();
+    const weather = "cloudy";
+    const timeSlot = "afternoon";
+    const dayName = "tuesday";
+    const character = {
+      name: "alice",
+      expressions: { afternoon: "normal" },
+      lines: { afternoon: "今日も一日がんばろうね！" },
+      weekdayLines: { tuesday: "火曜日はちょっと眠いかも…" },
+      birthday: "3/3"
     };
+
+    const caption = document.getElementById("caption");
+    const img = document.getElementById("character");
+    const background = document.getElementById("background");
+    const debug = document.getElementById("debugInfo");
+
+    let message = character.lines[timeSlot] || "";
+    if (character.weekdayLines[dayName]) {
+      message += "\n" + character.weekdayLines[dayName];
+    }
+
+    img.src = `img/${character.name}_${character.expressions[timeSlot]}.png`;
+    background.style.backgroundImage = `url('img/background_${timeSlot}_${weather}.png')`;
+    caption.textContent = message;
+    debug.textContent = `天気: ${weather}／時間帯: ${timeSlot}／曜日: ${dayName}`;
   </script>
 </body>
 </html>
