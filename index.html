@@ -36,6 +36,7 @@
       display: flex;
       justify-content: center;
       align-items: flex-end;
+      z-index: 1;
     }
     .character {
       max-height: 80vh;
@@ -43,7 +44,7 @@
     }
     .dialogue {
       position: absolute;
-      bottom: 30vh;
+      bottom: 22vh;
       left: 50%;
       transform: translateX(-50%);
       background: rgba(255, 255, 255, 0.9);
@@ -53,6 +54,7 @@
       max-width: 90%;
       text-align: center;
       white-space: pre-line;
+      z-index: 2;
     }
     #debugInfo {
       position: absolute;
@@ -64,19 +66,20 @@
       background: rgba(255,255,255,0.7);
       padding: 0.3em 0.6em;
       border-radius: 0.5em;
-      z-index: 20;
+      z-index: 2;
     }
     .weather-buttons {
       position: absolute;
       top: 1em;
       right: 1em;
-      z-index: 10;
+      z-index: 2;
     }
   </style>
 </head>
 <body>
   <div class="weather-buttons">
-    <select id="characterSelector" onchange="onCharacterChange(this.value)"></select>
+    <label for="characterSelector" class="visually-hidden">キャラクター選択</label>
+    <select id="characterSelector" title="キャラクター選択" onchange="onCharacterChange(this.value)"></select>
   </div>
 
   <div class="temp" id="temperature"></div>
@@ -84,7 +87,7 @@
   <div class="background" id="background"></div>
   <canvas id="effectCanvas" class="effect-layer"></canvas>
   <div class="container">
-    <img id="character" class="character" src="" alt="キャラクター" />
+    <img id="character" class="character" src="" alt="キャラクター画像" />
     <div id="caption" class="dialogue"></div>
   </div>
 
@@ -136,14 +139,14 @@
       return specialDays[todayStr] || null;
     }
 
-    async function fetchWeather() {
-      // 天気API取得処理は省略
-    }
-
     async function loadCharacterData() {
-      const response = await fetch(`data/${characterName}.json`);
-      characterData = await response.json();
-      updateUI();
+      try {
+        const response = await fetch(`data/${characterName}.json`);
+        characterData = await response.json();
+        updateUI();
+      } catch (e) {
+        console.error("キャラクターデータの読み込みに失敗しました", e);
+      }
     }
 
     function updateUI() {
@@ -165,8 +168,8 @@
         return;
       }
 
-      const expression = characterData.expressions[timeSlot];
-      let message = characterData.lines[timeSlot];
+      const expression = characterData.expressions?.[timeSlot] || "normal";
+      let message = characterData.lines?.[timeSlot] || "";
 
       if (characterData.weatherLines?.[timeSlot]?.[weather]) {
         message = characterData.weatherLines[timeSlot][weather];
@@ -189,15 +192,22 @@
     }
 
     async function initCharacters() {
-      const response = await fetch("data/characters.json");
-      characterList = await response.json();
+      try {
+        const response = await fetch("data/characters.json");
+        characterList = await response.json();
 
-      const selector = document.getElementById("characterSelector");
-      selector.innerHTML = characterList.map(c => `<option value="${c.name}">${c.label}</option>`).join("");
+        const selector = document.getElementById("characterSelector");
+        selector.innerHTML = characterList.map(c => `<option value="${c.name}">${c.label}</option>`).join("");
 
-      characterName = characterList[0]?.name || "alice";
-      loadCharacterData();
-      fetchWeather();
+        const urlParams = new URLSearchParams(window.location.search);
+        const charParam = urlParams.get("character");
+        if (charParam) characterName = charParam;
+        else characterName = characterList[0]?.name || "alice";
+
+        loadCharacterData();
+      } catch (e) {
+        console.error("キャラクター一覧の読み込みに失敗しました", e);
+      }
     }
 
     window.onload = () => {
