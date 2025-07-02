@@ -42,31 +42,32 @@
 
     .dialogue {
       position: absolute;
-      bottom: 30px;
+      bottom: 10vh; /* ← 埋もれないよう調整 */
       width: 100%;
       text-align: center;
       font-size: 1.8rem;
       color: white;
       text-shadow: 2px 2px 4px #000;
-      z-index: 2;
+      z-index: 5; /* ← 前面に表示 */
     }
 
-    .weather-buttons {
+    .weather-buttons,
+    .character-select {
       position: absolute;
       top: 10px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 2;
+      z-index: 10;
       background-color: rgba(0, 0, 0, 0.5);
       padding: 10px;
       border-radius: 10px;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    .weather-buttons select {
+    .weather-buttons button,
+    .character-select select {
       font-size: 1rem;
       padding: 6px 12px;
       border: none;
@@ -75,9 +76,14 @@
     }
 
     .temp {
-      font-size: 1.2rem;
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
       color: white;
+      font-size: 1.2rem;
       text-shadow: 1px 1px 2px #000;
+      z-index: 10;
     }
   </style>
 </head>
@@ -88,9 +94,9 @@
       <option value="bob">Bob</option>
       <option value="clara">Clara</option>
     </select>
-    <div class="temp" id="temperature">気温取得中...</div>
   </div>
 
+  <div class="temp" id="temperature"></div>
   <div class="background" id="background"></div>
   <div class="container">
     <img id="character" class="character" src="" alt="キャラクター" />
@@ -112,7 +118,7 @@
     }
 
     async function fetchWeather() {
-      const API_KEY = "a8bc86e4c135f3c44f72bb4b957aa213";
+      const API_KEY = "a8bc86e4c135f3c44f72bb4b957aa213"; // ← ここに正しいAPIキー
       const city = "Tokyo";
       try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=ja`);
@@ -130,8 +136,7 @@
         updateUI();
       } catch (e) {
         console.error("天気の取得に失敗しました", e);
-        document.getElementById("temperature").textContent = "気温取得失敗";
-        updateUI(); // fallback
+        updateUI(); // fallback 表示
       }
     }
 
@@ -141,7 +146,7 @@
         characterData = await response.json();
         updateUI();
       } catch (e) {
-        console.error("キャラデータの読み込みに失敗しました", e);
+        console.error("データの読み込みに失敗しました", e);
       }
     }
 
@@ -152,13 +157,16 @@
       const expression = characterData.expressions[timeSlot];
       const message = characterData.lines[timeSlot];
 
+      console.log("時刻帯:", timeSlot);
+      console.log("セリフ:", message);
+
       const img = document.getElementById("character");
       const caption = document.getElementById("caption");
       const background = document.getElementById("background");
 
       img.src = `img/${characterName}_${expression}.png`;
       background.style.backgroundImage = `url('img/background_${timeSlot}_${weather}.png')`;
-      caption.textContent = message;
+      caption.textContent = message || "（セリフ未設定）";
     }
 
     function setCharacter(name) {
