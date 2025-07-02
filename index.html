@@ -37,7 +37,7 @@
       height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
       text-align: center;
       position: relative;
@@ -45,22 +45,19 @@
     }
 
     .character {
-      max-height: 80vh;
+      max-height: 75vh;
       max-width: 100%;
       object-fit: contain;
     }
 
     .dialogue {
-      position: absolute;
-      bottom: 5%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 600px;
+      margin-top: 0.5rem;
+      width: 95%;
+      max-width: 720px;
       padding: 0 1rem;
       text-align: center;
-      font-size: 1.8rem;
-      line-height: 1.6;
+      font-size: 1.7rem;
+      line-height: 1.8;
       white-space: pre-wrap;
       color: white;
       text-shadow: 2px 2px 4px #000;
@@ -113,7 +110,10 @@
 
     @media (max-width: 600px) {
       .dialogue {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        bottom: 0;
+        padding: 0 0.5rem;
+        line-height: 1.6;
       }
     }
   </style>
