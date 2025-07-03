@@ -45,7 +45,7 @@ async function setCharacter(name) {
     const entry = characterData[key];
 
     document.getElementById('background').src = `./img/${entry.background}`;
-    document.getElementById('character').src = `./img/${character.expressions[entry.expression]}`;
+    document.getElementById('character_image').src = `./img/${character.expressions[entry.expression]}`;
     document.getElementById('text').innerText = entry.text;
 
   } catch (e) {
