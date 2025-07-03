@@ -9,3 +9,27 @@
     }
   }
 }
+{
+  "name": "アリス",
+  "image_prefix": "alice",
+  "lines": {
+    "morning_clear": "アリスだよ。朝も晴れてて気持ちいいね。",
+    "morning_cloudy": "アリスだよ。朝から曇ってるけど、がんばろうね。",
+    "morning_rain": "アリスだよ。雨だけど、元気出していこう！",
+    "afternoon_clear": "アリスだよ。午後も晴れてて嬉しいね。",
+    "afternoon_cloudy": "アリスだよ。午後は曇り空、ゆっくりいこう。",
+    "afternoon_rain": "アリスだよ。午後の雨は少しさびしいね。",
+    "evening_clear": "アリスだよ。夕方の空ってなんかロマンチック。",
+    "evening_cloudy": "アリスだよ。夕方の曇り空も悪くないよね。",
+    "evening_rain": "アリスだよ。夕方に降る雨って少し切ないね。",
+    "night_clear": "アリスだよ。夜も晴れてて星がきれい！",
+    "night_cloudy": "アリスだよ。夜の曇り空は静かで好き。",
+    "night_rain": "アリスだよ。夜の雨音って落ち着くね。",
+    "midnight_clear": "アリスだよ。こんな時間まで起きてるの？",
+    "midnight_cloudy": "アリスだよ。夜更かしはほどほどにね。",
+    "midnight_rain": "アリスだよ。雨の夜はぐっすり眠れそう。",
+    "dawn_clear": "アリスだよ。朝焼けがきれいだよ。",
+    "dawn_cloudy": "アリスだよ。少し雲があるけどいい朝になりそう。",
+    "dawn_rain": "アリスだよ。雨の夜明けも悪くないね。"
+  }
+}
