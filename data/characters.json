@@ -1,14 +1,5 @@
 [
-  {
-    "name": "alice",
-    "file": "data/alice.json"
-  },
-  {
-    "name": "bob",
-    "file": "data/bob.json"
-  },
-  {
-    "name": "clara",
-    "file": "data/clara.json"
-  }
+  "alice",
+  "bob",
+  "clara"
 ]

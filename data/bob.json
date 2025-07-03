@@ -1,31 +1,33 @@
 {
   "name": "Bob",
-  "image": {
-    "happy": "bob_happy.png",
-    "normal": "bob_normal.png",
-    "surprised": "bob_surprised.png",
-    "troubled": "bob_troubled.png"
+  "defaultExpression": "normal",
+  "defaultMessage": "Bobだよ。今日も頑張ろうね！",
+  "expressions": {
+    "morning_clear": "happy",
+    "morning_cloudy": "normal",
+    "morning_rain": "surprised",
+    "morning_snow": "sleepy",
+    "afternoon_clear": "happy",
+    "afternoon_cloudy": "normal",
+    "afternoon_rain": "surprised",
+    "afternoon_snow": "sleepy",
+    "night_clear": "happy",
+    "night_cloudy": "normal",
+    "night_rain": "surprised",
+    "night_snow": "sleepy"
   },
-  "lines": {
-    "morning": {
-      "sunny": "Bobだよ。morningのsunny、素敵な時間だね。",
-      "cloudy": "Bobだよ。morningのcloudy、素敵な時間だね。",
-      "rainy": "Bobだよ。morningのrainy、素敵な時間だね。"
-    },
-    "afternoon": {
-      "sunny": "Bobだよ。afternoonのsunny、素敵な時間だね。",
-      "cloudy": "Bobだよ。afternoonのcloudy、素敵な時間だね。",
-      "rainy": "Bobだよ。afternoonのrainy、素敵な時間だね。"
-    },
-    "evening": {
-      "sunny": "Bobだよ。eveningのsunny、素敵な時間だね。",
-      "cloudy": "Bobだよ。eveningのcloudy、素敵な時間だね。",
-      "rainy": "Bobだよ。eveningのrainy、素敵な時間だね。"
-    },
-    "night": {
-      "sunny": "Bobだよ。nightのsunny、素敵な時間だね。",
-      "cloudy": "Bobだよ。nightのcloudy、素敵な時間だね。",
-      "rainy": "Bobだよ。nightのrainy、素敵な時間だね。"
-    }
+  "messages": {
+    "morning_clear": "Bobだよ。morningのclear、素敵な時間だね。",
+    "morning_cloudy": "Bobだよ。morningのcloudy、素敵な時間だね。",
+    "morning_rain": "Bobだよ。morningのrain、素敵な時間だね。",
+    "morning_snow": "Bobだよ。morningのsnow、素敵な時間だね。",
+    "afternoon_clear": "Bobだよ。afternoonのclear、素敵な時間だね。",
+    "afternoon_cloudy": "Bobだよ。afternoonのcloudy、素敵な時間だね。",
+    "afternoon_rain": "Bobだよ。afternoonのrain、素敵な時間だね。",
+    "afternoon_snow": "Bobだよ。afternoonのsnow、素敵な時間だね。",
+    "night_clear": "Bobだよ。nightのclear、素敵な時間だね。",
+    "night_cloudy": "Bobだよ。nightのcloudy、素敵な時間だね。",
+    "night_rain": "Bobだよ。nightのrain、素敵な時間だね。",
+    "night_snow": "Bobだよ。nightのsnow、素敵な時間だね。"
   }
 }

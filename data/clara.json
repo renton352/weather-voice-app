@@ -1,31 +1,33 @@
 {
   "name": "Clara",
-  "image": {
-    "happy": "clara_happy.png",
-    "normal": "clara_normal.png",
-    "surprised": "clara_surprised.png",
-    "troubled": "clara_troubled.png"
+  "defaultExpression": "normal",
+  "defaultMessage": "Claraだよ。今日も頑張ろうね！",
+  "expressions": {
+    "morning_clear": "happy",
+    "morning_cloudy": "normal",
+    "morning_rain": "surprised",
+    "morning_snow": "sleepy",
+    "afternoon_clear": "happy",
+    "afternoon_cloudy": "normal",
+    "afternoon_rain": "surprised",
+    "afternoon_snow": "sleepy",
+    "night_clear": "happy",
+    "night_cloudy": "normal",
+    "night_rain": "surprised",
+    "night_snow": "sleepy"
   },
-  "lines": {
-    "morning": {
-      "sunny": "Claraだよ。morningのsunny、素敵な時間だね。",
-      "cloudy": "Claraだよ。morningのcloudy、素敵な時間だね。",
-      "rainy": "Claraだよ。morningのrainy、素敵な時間だね。"
-    },
-    "afternoon": {
-      "sunny": "Claraだよ。afternoonのsunny、素敵な時間だね。",
-      "cloudy": "Claraだよ。afternoonのcloudy、素敵な時間だね。",
-      "rainy": "Claraだよ。afternoonのrainy、素敵な時間だね。"
-    },
-    "evening": {
-      "sunny": "Claraだよ。eveningのsunny、素敵な時間だね。",
-      "cloudy": "Claraだよ。eveningのcloudy、素敵な時間だね。",
-      "rainy": "Claraだよ。eveningのrainy、素敵な時間だね。"
-    },
-    "night": {
-      "sunny": "Claraだよ。nightのsunny、素敵な時間だね。",
-      "cloudy": "Claraだよ。nightのcloudy、素敵な時間だね。",
-      "rainy": "Claraだよ。nightのrainy、素敵な時間だね。"
-    }
+  "messages": {
+    "morning_clear": "Claraだよ。morningのclear、素敵な時間だね。",
+    "morning_cloudy": "Claraだよ。morningのcloudy、素敵な時間だね。",
+    "morning_rain": "Claraだよ。morningのrain、素敵な時間だね。",
+    "morning_snow": "Claraだよ。morningのsnow、素敵な時間だね。",
+    "afternoon_clear": "Claraだよ。afternoonのclear、素敵な時間だね。",
+    "afternoon_cloudy": "Claraだよ。afternoonのcloudy、素敵な時間だね。",
+    "afternoon_rain": "Claraだよ。afternoonのrain、素敵な時間だね。",
+    "afternoon_snow": "Claraだよ。afternoonのsnow、素敵な時間だね。",
+    "night_clear": "Claraだよ。nightのclear、素敵な時間だね。",
+    "night_cloudy": "Claraだよ。nightのcloudy、素敵な時間だね。",
+    "night_rain": "Claraだよ。nightのrain、素敵な時間だね。",
+    "night_snow": "Claraだよ。nightのsnow、素敵な時間だね。"
   }
 }

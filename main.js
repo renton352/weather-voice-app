@@ -1,93 +1,92 @@
+const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
+const city = "Tokyo";
 
-const characterSelect = document.getElementById('characterSelect');
-const backgroundSelect = document.getElementById('backgroundSelect');
-const backgroundImage = document.getElementById('backgroundImage');
-const characterImage = document.getElementById('characterImage');
-const lineText = document.getElementById('lineText');
-const weatherApiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
+document.addEventListener("DOMContentLoaded", async () => {
+  const characterSelect = document.getElementById("characterSelect");
+  const backgroundSelect = document.getElementById("backgroundSelect");
 
-let characters = [];
-let currentCharacterData = null;
+  const charactersRes = await fetch("data/characters.json");
+  const characters = await charactersRes.json();
 
-// 時間帯の判定
-function getTimePeriod() {
-  const hour = new Date().getHours();
-  if (hour < 10) return 'morning';
-  if (hour < 16) return 'afternoon';
-  if (hour < 19) return 'evening';
-  return 'night';
-}
-
-// 天気取得（東京固定）
-async function getWeather() {
-  try {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid=${weatherApiKey}&lang=ja`;
-    const res = await fetch(url);
-    const data = await res.json();
-    const main = data.weather[0].main.toLowerCase();
-    if (main.includes('cloud')) return 'cloudy';
-    if (main.includes('rain')) return 'rainy';
-    return 'sunny';
-  } catch (e) {
-    console.error("天気取得エラー:", e);
-    return 'sunny';
-  }
-}
-
-async function loadCharacters() {
-  const res = await fetch("data/characters.json");
-  characters = await res.json();
-  characters.forEach(c => {
+  characters.forEach((char) => {
     const option = document.createElement("option");
-    option.value = c.name.toLowerCase();
-    option.textContent = c.name;
+    option.value = char;
+    option.textContent = char.charAt(0).toUpperCase() + char.slice(1);
     characterSelect.appendChild(option);
   });
-}
 
-async function loadCharacterData(name) {
-  try {
-    const res = await fetch(`data/${name}.json`);
-    currentCharacterData = await res.json();
-    updateDisplay();
-  } catch (e) {
-    console.error("データ読み込みエラー:", e);
-    lineText.textContent = "セリフの読み込みに失敗しました";
-  }
-}
+  characterSelect.value = getURLParam("character") || characters[0];
 
-async function updateDisplay() {
-  const period = getTimePeriod();
-  const weather = await getWeather();
-  const line = currentCharacterData.lines[period]?.[weather] || "セリフなし";
-  const expressionFile = currentCharacterData.image["normal"];
+  backgroundSelect.addEventListener("change", () => {
+    const bg = backgroundSelect.value;
+    document.getElementById("backgroundImage").src = bg !== "default" ? `img/${bg}` : "";
+  });
 
-  characterImage.src = `img/${expressionFile}`;
-  characterImage.alt = "キャラ画像";
-  lineText.textContent = line;
+  characterSelect.addEventListener("change", () => {
+    updateContent();
+  });
 
-  const bgValue = backgroundSelect.value;
-  if (bgValue) {
-    backgroundImage.src = `img/${bgValue}`;
-    backgroundImage.style.display = "inline";
-  } else {
-    backgroundImage.style.display = "none";
-  }
-}
-
-characterSelect.addEventListener("change", () => {
-  const selected = characterSelect.value;
-  if (selected) loadCharacterData(selected);
+  updateContent();
 });
 
-backgroundSelect.addEventListener("change", () => updateDisplay());
+function getURLParam(name) {
+  const url = new URL(window.location.href);
+  return url.searchParams.get(name);
+}
 
-(async () => {
-  await loadCharacters();
-  const urlParams = new URLSearchParams(window.location.search);
-  const defaultChar = urlParams.get("character");
-  if (defaultChar) {
-    characterSelect.value = defaultChar.toLowerCase();
-    await loadCharacterData(defaultChar.toLowerCase());
+async function updateContent() {
+  const character = document.getElementById("characterSelect").value;
+
+  document.getElementById("message").textContent = "セリフを読み込み中…";
+
+  const timeSlot = getTimeSlot();
+  const weather = await getWeather();
+
+  loadCharacterData(character, timeSlot, weather);
+}
+
+function getTimeSlot() {
+  const hour = new Date().getHours();
+  if (hour < 12) return "morning";
+  if (hour < 18) return "afternoon";
+  return "night";
+}
+
+async function getWeather() {
+  try {
+    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=ja`);
+    const data = await res.json();
+    const id = data.weather[0].id;
+
+    if (id < 600) return "rain"; // 雨や曇り
+    if (id < 700) return "snow"; // 雪
+    if (id < 800) return "cloudy";
+    if (id === 800) return "clear";
+    return "cloudy";
+  } catch (e) {
+    console.error("天気取得エラー", e);
+    return "clear"; // fallback
   }
-})();
+}
+
+function getBackgroundImageName(timeSlot, weather) {
+  return `img/bg_${timeSlot}_${weather}.png`;
+}
+
+async function loadCharacterData(characterName, timeSlot, weather) {
+  try {
+    const res = await fetch(`data/${characterName}.json`);
+    const data = await res.json();
+
+    const expressionKey = `${timeSlot}_${weather}`;
+    const expression = data.expressions?.[expressionKey] || data.defaultExpression || "normal";
+    const message = data.messages?.[expressionKey] || data.defaultMessage || "こんにちは！";
+
+    document.getElementById("characterImage").src = `img/${characterName}_${expression}.png`;
+    document.getElementById("backgroundImage").src = getBackgroundImageName(timeSlot, weather);
+    document.getElementById("message").textContent = message;
+  } catch (error) {
+    console.error("データ読み込みエラー:", error);
+    document.getElementById("message").textContent = "セリフの読み込みに失敗しました";
+  }
+}

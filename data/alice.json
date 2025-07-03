@@ -1,30 +1,33 @@
 {
   "name": "Alice",
-  "image": {
-    "normal": "alice_normal.png",
-    "surprised": "alice_surprised.png",
-    "troubled": "alice_troubled.png"
+  "defaultExpression": "normal",
+  "defaultMessage": "Aliceだよ。今日も頑張ろうね！",
+  "expressions": {
+    "morning_clear": "happy",
+    "morning_cloudy": "normal",
+    "morning_rain": "surprised",
+    "morning_snow": "sleepy",
+    "afternoon_clear": "happy",
+    "afternoon_cloudy": "normal",
+    "afternoon_rain": "surprised",
+    "afternoon_snow": "sleepy",
+    "night_clear": "happy",
+    "night_cloudy": "normal",
+    "night_rain": "surprised",
+    "night_snow": "sleepy"
   },
-  "lines": {
-    "morning": {
-      "sunny": "Aliceだよ。morningのsunny、素敵な時間だね。",
-      "cloudy": "Aliceだよ。morningのcloudy、素敵な時間だね。",
-      "rainy": "Aliceだよ。morningのrainy、素敵な時間だね。"
-    },
-    "afternoon": {
-      "sunny": "Aliceだよ。afternoonのsunny、素敵な時間だね。",
-      "cloudy": "Aliceだよ。afternoonのcloudy、素敵な時間だね。",
-      "rainy": "Aliceだよ。afternoonのrainy、素敵な時間だね。"
-    },
-    "evening": {
-      "sunny": "Aliceだよ。eveningのsunny、素敵な時間だね。",
-      "cloudy": "Aliceだよ。eveningのcloudy、素敵な時間だね。",
-      "rainy": "Aliceだよ。eveningのrainy、素敵な時間だね。"
-    },
-    "night": {
-      "sunny": "Aliceだよ。nightのsunny、素敵な時間だね。",
-      "cloudy": "Aliceだよ。nightのcloudy、素敵な時間だね。",
-      "rainy": "Aliceだよ。nightのrainy、素敵な時間だね。"
-    }
+  "messages": {
+    "morning_clear": "Aliceだよ。morningのclear、素敵な時間だね。",
+    "morning_cloudy": "Aliceだよ。morningのcloudy、素敵な時間だね。",
+    "morning_rain": "Aliceだよ。morningのrain、素敵な時間だね。",
+    "morning_snow": "Aliceだよ。morningのsnow、素敵な時間だね。",
+    "afternoon_clear": "Aliceだよ。afternoonのclear、素敵な時間だね。",
+    "afternoon_cloudy": "Aliceだよ。afternoonのcloudy、素敵な時間だね。",
+    "afternoon_rain": "Aliceだよ。afternoonのrain、素敵な時間だね。",
+    "afternoon_snow": "Aliceだよ。afternoonのsnow、素敵な時間だね。",
+    "night_clear": "Aliceだよ。nightのclear、素敵な時間だね。",
+    "night_cloudy": "Aliceだよ。nightのcloudy、素敵な時間だね。",
+    "night_rain": "Aliceだよ。nightのrain、素敵な時間だね。",
+    "night_snow": "Aliceだよ。nightのsnow、素敵な時間だね。"
   }
 }
