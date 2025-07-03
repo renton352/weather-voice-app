@@ -2,30 +2,39 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>天気ボイスキャラ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>天気連動キャラクター</title>
   <style>
-    body { background-color: black; color: white; font-family: sans-serif; text-align: center; }
-    select, button { font-size: 16px; margin: 10px; }
-    img { max-height: 300px; margin: 10px; }
-    #lineText { margin-top: 20px; font-size: 20px; color: white; }
+    body {
+      background-color: black;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+    }
+    #backgroundImage, #characterImage {
+      max-width: 100%;
+      height: auto;
+      margin: 10px;
+    }
+    #message {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
   </style>
 </head>
 <body>
-  <div>
-    キャラクター：
+  <label>キャラクター：
     <select id="characterSelect"></select>
-    背景：
-    <select id="backgroundSelect">
-      <option value="">デフォルト</option>
-    </select>
-  </div>
+  </label>
+  背景：
+  <select id="backgroundSelect">
+    <option value="default">デフォルト</option>
+  </select>
   <div>
-    <img id="backgroundImage" src="" alt="背景画像">
-    <img id="characterImage" src="" alt="キャラ画像">
+    <img id="backgroundImage" alt="背景画像">
+    <img id="characterImage" alt="キャラ画像">
   </div>
-  <div id="lineText">セリフを読み込み中…</div>
-
+  <div id="message">セリフを読み込み中…</div>
   <script src="main.js"></script>
 </body>
 </html>
