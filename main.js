@@ -1,47 +1,37 @@
-
-async function fetchJson(url) {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`Failed to load ${url}`);
-    return await response.json();
-}
-
-function getTimeOfDay() {
-    const hour = new Date().getHours();
-    if (hour < 6) return "night";
-    if (hour < 12) return "morning";
-    if (hour < 18) return "afternoon";
-    return "evening";
-}
-
-function getWeatherCondition() {
-    return "cloudy"; // ダミー天気、必要ならAPI連携
-}
-
 async function updateDisplay() {
-    const characterKey = document.getElementById("characterSelector").value;
-    const characterImage = document.getElementById("character");
-    const backgroundImage = document.getElementById("background");
-    const serifElement = document.getElementById("serif");
+  const characterName = document.getElementById("characterSelect").value;
+  const characterImg = document.getElementById("character");
+  const bgImg = document.getElementById("bg");
+  const text = document.getElementById("text");
 
-    const time = getTimeOfDay();
-    const weather = getWeatherCondition();
-    const expressionKey = `${time}_${weather}`;
+  try {
+    const weatherResponse = await fetch("https://wttr.in/Tokyo?format=j1");
+    const weatherJson = await weatherResponse.json();
+    const weatherDesc = weatherJson.current_condition[0].weatherDesc[0].value.toLowerCase();
+    const weather = weatherDesc.includes("cloud") ? "cloudy" :
+                    weatherDesc.includes("rain") ? "rainy" :
+                    "sunny";
 
-    try {
-        const characterData = await fetchJson(`data/${characterKey}.json`);
-        const imageName = characterData.expressions[expressionKey] || characterData.expressions["default"];
-        const line = characterData.lines[expressionKey] || "セリフが見つかりません。";
+    const hour = new Date().getHours();
+    const timeOfDay = hour < 10 ? "morning" : hour < 17 ? "afternoon" : "evening";
 
-        characterImage.src = `img/${imageName}`;
-        backgroundImage.src = `img/bg_${time}_${weather}.png`;
+    const characterRes = await fetch(`data/${characterName}.json`);
+    const characterData = await characterRes.json();
 
-        if (serifElement) {
-            serifElement.textContent = line;
-        }
-    } catch (err) {
-        console.error("データ読み込みエラー:", err);
-    }
+    const expression = "normal";
+    characterImg.src = `img/${characterName}_${expression}.png`;
+
+    const bgFileName = `bg_${timeOfDay}_${weather}.png`;
+    bgImg.src = `img/${bgFileName}`;
+
+    const timeData = characterData[timeOfDay] || {};
+    const message = timeData[weather] || "セリフが見つかりませんでした。";
+    text.textContent = `${characterName.charAt(0).toUpperCase() + characterName.slice(1)}だよ。 ${message}`;
+  } catch (e) {
+    console.error("データ読み込みエラー:", e);
+    text.textContent = "セリフの読み込みに失敗しました。";
+  }
 }
 
-document.getElementById("characterSelector").addEventListener("change", updateDisplay);
-document.addEventListener("DOMContentLoaded", updateDisplay);
+document.getElementById("characterSelect").addEventListener("change", updateDisplay);
+window.addEventListener("DOMContentLoaded", updateDisplay);

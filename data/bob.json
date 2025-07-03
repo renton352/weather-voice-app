@@ -1,33 +1,17 @@
 {
-  "name": "Bob",
-  "defaultExpression": "normal",
-  "defaultMessage": "Bobだよ。今日も頑張ろうね！",
-  "expressions": {
-    "morning_clear": "happy",
-    "morning_cloudy": "normal",
-    "morning_rain": "surprised",
-    "morning_snow": "sleepy",
-    "afternoon_clear": "happy",
-    "afternoon_cloudy": "normal",
-    "afternoon_rain": "surprised",
-    "afternoon_snow": "sleepy",
-    "night_clear": "happy",
-    "night_cloudy": "normal",
-    "night_rain": "surprised",
-    "night_snow": "sleepy"
+  "morning": {
+    "sunny": "おはよう、晴れてるね！",
+    "cloudy": "おはよう、ちょっと曇ってるね。",
+    "rainy": "おはよう、雨に気をつけてね。"
   },
-  "messages": {
-    "morning_clear": "Bobだよ。morningのclear、素敵な時間だね。",
-    "morning_cloudy": "Bobだよ。morningのcloudy、素敵な時間だね。",
-    "morning_rain": "Bobだよ。morningのrain、素敵な時間だね。",
-    "morning_snow": "Bobだよ。morningのsnow、素敵な時間だね。",
-    "afternoon_clear": "Bobだよ。afternoonのclear、素敵な時間だね。",
-    "afternoon_cloudy": "Bobだよ。afternoonのcloudy、素敵な時間だね。",
-    "afternoon_rain": "Bobだよ。afternoonのrain、素敵な時間だね。",
-    "afternoon_snow": "Bobだよ。afternoonのsnow、素敵な時間だね。",
-    "night_clear": "Bobだよ。nightのclear、素敵な時間だね。",
-    "night_cloudy": "Bobだよ。nightのcloudy、素敵な時間だね。",
-    "night_rain": "Bobだよ。nightのrain、素敵な時間だね。",
-    "night_snow": "Bobだよ。nightのsnow、素敵な時間だね。"
+  "afternoon": {
+    "sunny": "こんにちは、晴れてる午後だね！",
+    "cloudy": "こんにちは、午後は曇ってるね。",
+    "rainy": "こんにちは、午後は雨が降ってるね。"
+  },
+  "evening": {
+    "sunny": "こんばんは、晴れた夕方だね！",
+    "cloudy": "こんばんは、曇り空の夕方だね。",
+    "rainy": "こんばんは、雨が降ってるね。"
   }
 }
