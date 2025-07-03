@@ -1,94 +1,90 @@
-// キャラクター情報を格納
-let characters = {};
-let currentCharacter = null;
-let currentVoiceData = null;
 
-// HTML要素の取得
-const characterSelect = document.getElementById('character-select');
-const characterImage = document.getElementById('character-image');
-const speechBubble = document.getElementById('speech-bubble');
-const background = document.getElementById('background');
+// main.js
 
-// キャラクター選択変更時
-characterSelect.addEventListener('change', () => {
-    const selected = characterSelect.value;
-    if (selected) {
-        loadCharacterData(selected);
+let selectedCharacter = new URLSearchParams(window.location.search).get("character") || "alice";
+
+async function fetchJSON(path) {
+    const response = await fetch(path);
+    if (!response.ok) throw new Error(`Failed to load ${path}`);
+    return await response.json();
+}
+
+function getTimeSlot() {
+    const hour = new Date().getHours();
+    if (hour < 6) return "early_morning";
+    if (hour < 9) return "morning";
+    if (hour < 12) return "late_morning";
+    if (hour < 17) return "afternoon";
+    if (hour < 21) return "evening";
+    return "night";
+}
+
+async function getWeather() {
+    const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
+    try {
+        const position = await new Promise((resolve, reject) =>
+            navigator.geolocation.getCurrentPosition(resolve, reject)
+        );
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=ja`
+        );
+        const data = await response.json();
+
+        const weatherId = data.weather[0].id;
+        if (weatherId < 600) return "rainy";
+        else if (weatherId < 700) return "snowy";
+        else if (weatherId < 800) return "cloudy";
+        else return "sunny";
+    } catch (error) {
+        console.warn("天気情報の取得に失敗しました", error);
+        return "sunny";
     }
-});
+}
 
-// 初期化処理
-function init() {
-    const params = new URLSearchParams(window.location.search);
-    const charFromURL = params.get('character');
+async function loadCharacterAssets(characterName, weather, timeSlot) {
+    const charData = await fetchJSON(`data/${characterName}.json`);
+    const voiceKey = `${weather}_${timeSlot}`;
+    const message = charData.voices[voiceKey]?.text || "こんにちは。";
+    const expression = charData.voices[voiceKey]?.expression || "normal";
 
-    // キャラクター一覧を読み込む
-    fetch('data/characters.json')
-        .then(res => res.json())
-        .then(data => {
-            characters = data.characters;
-            // プルダウンにキャラクターを追加
-            data.characters.forEach(char => {
-                const option = document.createElement('option');
-                option.value = char.id;
-                option.textContent = char.name;
-                characterSelect.appendChild(option);
-            });
+    document.getElementById("character-img").src = `images/${characterName}_${expression}.png`;
+    document.getElementById("speech-bubble").textContent = message;
+}
 
-            // URLにキャラ指定があれば初期選択
-            if (charFromURL && characters.some(c => c.id === charFromURL)) {
-                characterSelect.value = charFromURL;
-                loadCharacterData(charFromURL);
-            }
-        })
-        .catch(err => {
-            console.error('キャラクター一覧の読み込みに失敗しました:', err);
+async function updateScene() {
+    const weather = await getWeather();
+    const timeSlot = getTimeSlot();
+    const backgroundImage = `images/background_${timeSlot}_${weather}.png`;
+    document.body.style.backgroundImage = `url('${backgroundImage}')`;
+
+    await loadCharacterAssets(selectedCharacter, weather, timeSlot);
+}
+
+async function init() {
+    try {
+        const characters = await fetchJSON("data/characters.json");
+        const selectEl = document.getElementById("character-select");
+
+        characters.forEach(char => {
+            const option = document.createElement("option");
+            option.value = char.id;
+            option.textContent = char.name;
+            if (char.id === selectedCharacter) option.selected = true;
+            selectEl.appendChild(option);
         });
-}
 
-// キャラクターのJSONデータを読み込み
-function loadCharacterData(characterId) {
-    fetch(`data/${characterId}.json`)
-        .then(res => res.json())
-        .then(data => {
-            currentCharacter = characterId;
-            currentVoiceData = data;
-            updateVisuals();
-        })
-        .catch(err => {
-            console.error(`${characterId}.json の読み込みに失敗しました:`, err);
+        selectEl.addEventListener("change", (e) => {
+            selectedCharacter = e.target.value;
+            updateScene();
         });
+
+        updateScene();
+    } catch (err) {
+        console.error("初期化エラー:", err);
+    }
 }
 
-// 現在の時刻と天気（仮）に応じたセリフと画像を設定
-function updateVisuals() {
-    const date = new Date();
-    const hour = date.getHours();
-    const day = date.getDay();
-    const timeZone = getTimeZone(hour);
-    const weather = "sunny"; // 天気APIが未実装のため仮設定
-
-    const key = `${timeZone}_${weather}_${day}`;
-    const voiceEntry = currentVoiceData.voiceLines[key] || currentVoiceData.voiceLines["default"];
-
-    // 表情・背景パスを構築
-    const imagePath = `images/${currentCharacter}_${voiceEntry.expression}.png`;
-    const bgPath = `images/${voiceEntry.background}.png`;
-
-    // 更新
-    characterImage.src = imagePath;
-    background.src = bgPath;
-    speechBubble.textContent = voiceEntry.text;
-}
-
-// 時間帯の区分を返す
-function getTimeZone(hour) {
-    if (hour >= 5 && hour < 7) return "early_morning";
-    if (hour >= 7 && hour < 10) return "morning";
-    if (hour >= 10 && hour < 15) return "afternoon";
-    if (hour >= 15 && hour < 18) return "evening";
-    if (hour >= 18 && hour < 23) return "night";
-    return "midnight";
-}
-
-init();
+window.addEventListener("DOMContentLoaded", init);
