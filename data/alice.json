@@ -1,108 +1,11 @@
 {
-  "messages": {
-    "sunny": {
-      "early_morning": {
-        "text": "Aliceです。early morningのsunnyですね。",
-        "expression": "troubled"
-      },
-      "morning": {
-        "text": "Aliceです。morningのsunnyですね。",
-        "expression": "happy"
-      },
-      "afternoon": {
-        "text": "Aliceです。afternoonのsunnyですね。",
-        "expression": "surprised"
-      },
-      "evening": {
-        "text": "Aliceです。eveningのsunnyですね。",
-        "expression": "troubled"
-      },
-      "night": {
-        "text": "Aliceです。nightのsunnyですね。",
-        "expression": "normal"
-      },
-      "midnight": {
-        "text": "Aliceです。midnightのsunnyですね。",
-        "expression": "troubled"
-      }
-    },
-    "cloudy": {
-      "early_morning": {
-        "text": "Aliceです。early morningのcloudyですね。",
-        "expression": "troubled"
-      },
-      "morning": {
-        "text": "Aliceです。morningのcloudyですね。",
-        "expression": "troubled"
-      },
-      "afternoon": {
-        "text": "Aliceです。afternoonのcloudyですね。",
-        "expression": "troubled"
-      },
-      "evening": {
-        "text": "Aliceです。eveningのcloudyですね。",
-        "expression": "happy"
-      },
-      "night": {
-        "text": "Aliceです。nightのcloudyですね。",
-        "expression": "happy"
-      },
-      "midnight": {
-        "text": "Aliceです。midnightのcloudyですね。",
-        "expression": "troubled"
-      }
-    },
-    "rainy": {
-      "early_morning": {
-        "text": "Aliceです。early morningのrainyですね。",
-        "expression": "surprised"
-      },
-      "morning": {
-        "text": "Aliceです。morningのrainyですね。",
-        "expression": "normal"
-      },
-      "afternoon": {
-        "text": "Aliceです。afternoonのrainyですね。",
-        "expression": "troubled"
-      },
-      "evening": {
-        "text": "Aliceです。eveningのrainyですね。",
-        "expression": "happy"
-      },
-      "night": {
-        "text": "Aliceです。nightのrainyですね。",
-        "expression": "normal"
-      },
-      "midnight": {
-        "text": "Aliceです。midnightのrainyですね。",
-        "expression": "normal"
-      }
-    },
-    "snowy": {
-      "early_morning": {
-        "text": "Aliceです。early morningのsnowyですね。",
-        "expression": "troubled"
-      },
-      "morning": {
-        "text": "Aliceです。morningのsnowyですね。",
-        "expression": "surprised"
-      },
-      "afternoon": {
-        "text": "Aliceです。afternoonのsnowyですね。",
-        "expression": "normal"
-      },
-      "evening": {
-        "text": "Aliceです。eveningのsnowyですね。",
-        "expression": "normal"
-      },
-      "night": {
-        "text": "Aliceです。nightのsnowyですね。",
-        "expression": "normal"
-      },
-      "midnight": {
-        "text": "Aliceです。midnightのsnowyですね。",
-        "expression": "troubled"
-      }
+  "name": "アリス",
+  "images": {
+    "normal": "alice_normal.png"
+  },
+  "serif": {
+    "morning": {
+      "sunny": "アリスだよ。朝も晴れてて気持ちいいね。"
     }
   }
 }

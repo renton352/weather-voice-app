@@ -2,62 +2,46 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>天気連動キャラボイス</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>天気ボイスアプリ</title>
   <style>
     body {
       margin: 0;
       background-color: black;
       color: white;
       font-family: sans-serif;
+      text-align: center;
     }
-    #backgroundImg {
-      width: 100%;
+    #backgroundImage, #characterImage {
+      max-width: 100%;
       height: auto;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
     }
-    #characterImg {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 70%;
-      z-index: 1;
-    }
-    #messageBox {
+    #textBox {
       position: absolute;
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background: white;
+      background-color: white;
       color: black;
-      padding: 10px 20px;
+      padding: 10px;
       border-radius: 10px;
-      z-index: 2;
-    }
-    #selectors {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      z-index: 3;
-    }
-    select {
-      font-size: 1em;
-      margin-right: 10px;
     }
   </style>
 </head>
 <body>
-  <div id="selectors">
-    キャラクター：<select id="characterSelect"></select><br/>
-    背景：<select id="backgroundSelect"></select>
+  <div>
+    <label for="characterSelect">キャラクター：</label>
+    <select id="characterSelect"></select>
   </div>
-  <img id="backgroundImg" alt="背景画像">
-  <img id="characterImg" alt="キャラ画像">
-  <div id="messageBox">セリフを読み込み中…</div>
+  <div>
+    <label for="backgroundSelect">背景：</label>
+    <select id="backgroundSelect"></select>
+  </div>
+  <div>
+    <img id="backgroundImage" alt="背景画像" />
+    <img id="characterImage" alt="キャラ画像" />
+    <div id="textBox">セリフを読み込み中…</div>
+  </div>
   <script src="main.js"></script>
 </body>
 </html>

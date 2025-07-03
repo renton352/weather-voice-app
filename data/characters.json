@@ -1,5 +1,7 @@
-[
-  { "id": "alice", "name": "アリス" },
-  { "id": "bob", "name": "ボブ" },
-  { "id": "clara", "name": "クララ" }
-]
+{
+  "characters": [
+    { "id": "alice", "name": "アリス" },
+    { "id": "bob", "name": "ボブ" },
+    { "id": "clara", "name": "クララ" }
+  ]
+}
