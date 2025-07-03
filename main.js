@@ -44,9 +44,9 @@ async function setCharacter(name) {
 
     const entry = characterData[key];
 
-    document.getElementById('background').src = `./img/${entry.background}`;
-    document.getElementById('character_image').src = `./img/${character.expressions[entry.expression]}`;
-    document.getElementById('text').innerText = entry.text;
+    document.getElementById('background-image').src = `./img/${entry.background}`;
+    document.getElementById('character-image').src = `./img/${character.expressions[entry.expression]}`;
+    document.getElementById('serif').innerText = entry.text;
 
   } catch (e) {
     console.error('Error setting character view:', e);
