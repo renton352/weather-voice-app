@@ -1,12 +1,47 @@
 {
-  "images": {
-    "normal": "bob_normal.png"
+  "name": "bob",
+  "label": "ボブ",
+  "birthday": "8/15",
+  "expressions": {
+    "early_morning": "troubled",
+    "morning": "happy",
+    "afternoon": "normal",
+    "evening": "normal",
+    "night": "troubled",
+    "midnight": "troubled"
   },
-  "messages": {
-    "sunny": {
-      "midnight": {
-        "wednesday": "ボブです。晴れた夜は星がきれいだね。"
-      }
+  "lines": {
+    "early_morning": "ふぁ〜あ…もう朝か…",
+    "morning": "おう、おはよう。今日もよろしくな！",
+    "afternoon": "昼メシ食った？俺はまだなんだよなぁ",
+    "evening": "そろそろ一息つこうぜ",
+    "night": "今日はもう終わりか。お疲れさん！",
+    "midnight": "夜は静かだな…眠れないのか？"
+  },
+  "weatherLines": {
+    "morning": {
+      "sunny": "いい天気だと気分もいいな！",
+      "cloudy": "なんだかスッキリしないな",
+      "rainy": "濡れて風邪ひくなよ"
+    },
+    "afternoon": {
+      "sunny": "午後の太陽ってちょっと眩しいよな",
+      "cloudy": "薄暗くて眠くなるぜ…",
+      "rainy": "濡れないように気をつけろよ"
+    },
+    "evening": {
+      "sunny": "夕焼けってロマンあるよな",
+      "cloudy": "今日も1日お疲れさん",
+      "rainy": "こんな日はゆっくりしようぜ"
     }
+  },
+  "weekdayLines": {
+    "monday": "また1週間始まっちまったな…",
+    "tuesday": "火曜って地味に疲れるんだよな",
+    "wednesday": "水曜か…折り返しだな",
+    "thursday": "あともうちょいで週末だぞ！",
+    "friday": "やっと金曜日だぜ！",
+    "saturday": "休日は全力で楽しもうな！",
+    "sunday": "休みの終わりってちょっと寂しいな"
   }
 }
