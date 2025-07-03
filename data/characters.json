@@ -1,11 +1,20 @@
-{
-  "alice": {
-    "name": "アリス"
+[
+  {
+    "name": "alice",
+    "label": "アリス",
+    "birthday": "7/3",
+    "description": "明るく元気な少女。天気の話をするのが大好き！"
   },
-  "bob": {
-    "name": "ボブ"
+  {
+    "name": "bob",
+    "label": "ボブ",
+    "birthday": "8/15",
+    "description": "のんびり屋で優しい性格。夕方が一番好き。"
   },
-  "clara": {
-    "name": "クララ"
+  {
+    "name": "clara",
+    "label": "クララ",
+    "birthday": "12/24",
+    "description": "知的でちょっぴりクール。朝の静けさが好き。"
   }
-}
+]
