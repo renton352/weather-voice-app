@@ -2,109 +2,109 @@
   "early_morning": {
     "sunny": {
       "expression": "happy",
-      "line": "ボブより：早朝だね、晴れてて気をつけてね！"
+      "line": "おはよう。静かな朝だね、いい一日の始まりになりそうだ。"
     },
     "cloudy": {
       "expression": "normal",
-      "line": "ボブより：早朝だね、曇ってて気をつけてね！"
+      "line": "おはよう。少し曇っているけれど、気持ちは晴れやかにいこう。"
     },
     "rainy": {
       "expression": "troubled",
-      "line": "ボブより：早朝だね、雨が降ってて気をつけてね！"
+      "line": "おはよう。外は雨だ、出かけるなら気をつけて。"
     },
     "snowy": {
       "expression": "surprised",
-      "line": "ボブより：早朝だね、雪が降ってて気をつけてね！"
+      "line": "雪の朝か…今日は少し余裕を持って行動しよう。"
     }
   },
   "morning": {
     "sunny": {
       "expression": "happy",
-      "line": "ボブより：朝だね、晴れてて気をつけてね！"
+      "line": "いい天気だ。今日も前向きに取り組めそうだね。"
     },
     "cloudy": {
       "expression": "normal",
-      "line": "ボブより：朝だね、曇ってて気をつけてね！"
+      "line": "穏やかな朝だね。こんな日も悪くない。"
     },
     "rainy": {
       "expression": "troubled",
-      "line": "ボブより：朝だね、雨が降ってて気をつけてね！"
+      "line": "冷たい雨だね。温かい飲み物でもどう？"
     },
     "snowy": {
       "expression": "surprised",
-      "line": "ボブより：朝だね、雪が降ってて気をつけてね！"
+      "line": "雪か…。転ばないように、足元には注意して。"
     }
   },
   "afternoon": {
     "sunny": {
       "expression": "happy",
-      "line": "ボブより：昼だね、晴れてて気をつけてね！"
+      "line": "昼下がりの光が心地いいね。無理せず、ひと息いれよう。"
     },
     "cloudy": {
       "expression": "normal",
-      "line": "ボブより：昼だね、曇ってて気をつけてね！"
+      "line": "午後も落ち着いて過ごそう。曇り空も悪くない。"
     },
     "rainy": {
       "expression": "troubled",
-      "line": "ボブより：昼だね、雨が降ってて気をつけてね！"
+      "line": "午後の雨は眠気を誘うね。集中したいときは少し歩くといいよ。"
     },
     "snowy": {
       "expression": "surprised",
-      "line": "ボブより：昼だね、雪が降ってて気をつけてね！"
+      "line": "雪が静かに降っている。こういう日は落ち着いて行動しよう。"
     }
   },
   "evening": {
     "sunny": {
       "expression": "happy",
-      "line": "ボブより：夕方だね、晴れてて気をつけてね！"
+      "line": "夕焼けがきれいだ。今日も一日、お疲れさま。"
     },
     "cloudy": {
       "expression": "normal",
-      "line": "ボブより：夕方だね、曇ってて気をつけてね！"
+      "line": "夕方になると冷えてくるね。温かくして過ごそう。"
     },
     "rainy": {
       "expression": "troubled",
-      "line": "ボブより：夕方だね、雨が降ってて気をつけてね！"
+      "line": "帰り道、濡れないように気をつけて帰ってね。"
     },
     "snowy": {
       "expression": "surprised",
-      "line": "ボブより：夕方だね、雪が降ってて気をつけてね！"
+      "line": "雪の夕暮れは特別だね。気をつけて帰ろう。"
     }
   },
   "night": {
     "sunny": {
       "expression": "happy",
-      "line": "ボブより：夜だね、晴れてて気をつけてね！"
+      "line": "空を見上げてごらん。星がきれいだよ。"
     },
     "cloudy": {
       "expression": "normal",
-      "line": "ボブより：夜だね、曇ってて気をつけてね！"
+      "line": "今夜は雲が多いけど、ゆっくり休もう。"
     },
     "rainy": {
       "expression": "troubled",
-      "line": "ボブより：夜だね、雨が降ってて気をつけてね！"
+      "line": "雨音が静かに響く夜だね。心も落ち着くよ。"
     },
     "snowy": {
       "expression": "surprised",
-      "line": "ボブより：夜だね、雪が降ってて気をつけてね！"
+      "line": "雪の夜はしんと静かだ。あたたかくして休んで。"
     }
   },
   "midnight": {
     "sunny": {
       "expression": "happy",
-      "line": "ボブより：深夜だね、晴れてて気をつけてね！"
+      "line": "もうこんな時間か。そろそろ休もう。"
     },
     "cloudy": {
       "expression": "normal",
-      "line": "ボブより：深夜だね、曇ってて気をつけてね！"
+      "line": "夜更かしはほどほどに。体も大事にね。"
     },
     "rainy": {
       "expression": "troubled",
-      "line": "ボブより：深夜だね、雨が降ってて気をつけてね！"
+      "line": "雨が続いているね。明日は晴れるといいな。"
     },
     "snowy": {
       "expression": "surprised",
-      "line": "ボブより：深夜だね、雪が降ってて気をつけてね！"
+      "line": "深夜の雪は美しい。でも、ちゃんと寝るんだよ。"
     }
   }
 }

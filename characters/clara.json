@@ -2,109 +2,109 @@
   "early_morning": {
     "sunny": {
       "expression": "happy",
-      "line": "クララより：早朝だね、晴れてて気をつけてね！"
+      "line": "おはようございます〜。今日もいい日になりますように♪"
     },
     "cloudy": {
       "expression": "normal",
-      "line": "クララより：早朝だね、曇ってて気をつけてね！"
+      "line": "おはようです…少し雲が多い朝ですね。"
     },
     "rainy": {
       "expression": "troubled",
-      "line": "クララより：早朝だね、雨が降ってて気をつけてね！"
+      "line": "雨ですねぇ…お気をつけてお出かけくださいね。"
     },
     "snowy": {
       "expression": "surprised",
-      "line": "クララより：早朝だね、雪が降ってて気をつけてね！"
+      "line": "朝から雪…ふわふわで綺麗ですね〜。"
     }
   },
   "morning": {
     "sunny": {
       "expression": "happy",
-      "line": "クララより：朝だね、晴れてて気をつけてね！"
+      "line": "今日もぽかぽか、いいお天気です♪"
     },
     "cloudy": {
       "expression": "normal",
-      "line": "クララより：朝だね、曇ってて気をつけてね！"
+      "line": "なんとなく静かな朝ですね。のんびりいきましょう。"
     },
     "rainy": {
       "expression": "troubled",
-      "line": "クララより：朝だね、雨が降ってて気をつけてね！"
+      "line": "濡れないように、傘忘れないでくださいね〜。"
     },
     "snowy": {
       "expression": "surprised",
-      "line": "クララより：朝だね、雪が降ってて気をつけてね！"
+      "line": "雪景色って、なんだか夢みたい…ですね。"
     }
   },
   "afternoon": {
     "sunny": {
       "expression": "happy",
-      "line": "クララより：昼だね、晴れてて気をつけてね！"
+      "line": "お昼になりました〜。あたたかくて気持ちいいですね。"
     },
     "cloudy": {
       "expression": "normal",
-      "line": "クララより：昼だね、曇ってて気をつけてね！"
+      "line": "午後はゆったりした気分になりますねぇ。"
     },
     "rainy": {
       "expression": "troubled",
-      "line": "クララより：昼だね、雨が降ってて気をつけてね！"
+      "line": "雨の音って、癒やされますよね…うとうと…"
     },
     "snowy": {
       "expression": "surprised",
-      "line": "クララより：昼だね、雪が降ってて気をつけてね！"
+      "line": "雪の中のお昼って、ちょっと特別な感じがしますね♪"
     }
   },
   "evening": {
     "sunny": {
       "expression": "happy",
-      "line": "クララより：夕方だね、晴れてて気をつけてね！"
+      "line": "夕日がとってもきれいです…癒やされますね〜。"
     },
     "cloudy": {
       "expression": "normal",
-      "line": "クララより：夕方だね、曇ってて気をつけてね！"
+      "line": "お疲れさまでした。曇ってても心は晴れやかに♪"
     },
     "rainy": {
       "expression": "troubled",
-      "line": "クララより：夕方だね、雨が降ってて気をつけてね！"
+      "line": "暗くなる前に帰りましょうね、雨ですし…"
     },
     "snowy": {
       "expression": "surprised",
-      "line": "クララより：夕方だね、雪が降ってて気をつけてね！"
+      "line": "夕方の雪景色って、ロマンチックですね〜。"
     }
   },
   "night": {
     "sunny": {
       "expression": "happy",
-      "line": "クララより：夜だね、晴れてて気をつけてね！"
+      "line": "星が見えそうな夜です〜。ゆっくり休んでくださいね。"
     },
     "cloudy": {
       "expression": "normal",
-      "line": "クララより：夜だね、曇ってて気をつけてね！"
+      "line": "今夜は静かですね…おやすみなさいませ〜。"
     },
     "rainy": {
       "expression": "troubled",
-      "line": "クララより：夜だね、雨が降ってて気をつけてね！"
+      "line": "雨の夜は心も落ち着きますね。あたたかくしておやすみを。"
     },
     "snowy": {
       "expression": "surprised",
-      "line": "クララより：夜だね、雪が降ってて気をつけてね！"
+      "line": "雪がふわふわ…心がほっこりします♪"
     }
   },
   "midnight": {
     "sunny": {
       "expression": "happy",
-      "line": "クララより：深夜だね、晴れてて気をつけてね！"
+      "line": "こんな時間まで…おつかれさまです〜。無理なさらずに。"
     },
     "cloudy": {
       "expression": "normal",
-      "line": "クララより：深夜だね、曇ってて気をつけてね！"
+      "line": "夜更かしさんですね…風邪ひかないように…"
     },
     "rainy": {
       "expression": "troubled",
-      "line": "クララより：深夜だね、雨が降ってて気をつけてね！"
+      "line": "深夜の雨音って、落ち着きますよね…おやすみなさい。"
     },
     "snowy": {
       "expression": "surprised",
-      "line": "クララより：深夜だね、雪が降ってて気をつけてね！"
+      "line": "雪の深夜…幻想的で素敵…でも、そろそろ眠りましょう。"
     }
   }
 }
