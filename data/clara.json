@@ -1,47 +1,6 @@
 {
-  "name": "clara",
-  "label": "クララ",
-  "birthday": "10/10",
-  "expressions": {
-    "early_morning": "normal",
-    "morning": "happy",
-    "afternoon": "happy",
-    "evening": "normal",
-    "night": "surprised",
-    "midnight": "troubled"
-  },
-  "lines": {
-    "early_morning": "うふふ、朝の光が気持ちいいですね",
-    "morning": "おはようございます。いい一日になりそう！",
-    "afternoon": "午後もがんばりましょうね！",
-    "evening": "一緒に夕焼け見ませんか？",
-    "night": "今日はもうゆっくりしましょう",
-    "midnight": "もうこんな時間…ちゃんと寝ないとダメですよ？"
-  },
-  "weatherLines": {
-    "morning": {
-      "sunny": "とってもいいお天気ですね！",
-      "cloudy": "曇りの日も落ち着いて好きです",
-      "rainy": "雨の日はおうちでゆっくりしたいですね"
-    },
-    "afternoon": {
-      "sunny": "光がたくさん差し込んで気持ちいいです！",
-      "cloudy": "午後はのんびりしたくなりますね",
-      "rainy": "足元には気をつけてくださいね"
-    },
-    "evening": {
-      "sunny": "夕陽がとてもきれい…",
-      "cloudy": "穏やかな夕暮れも素敵です",
-      "rainy": "雨音を聞きながらゆっくりしましょう"
-    }
-  },
-  "weekdayLines": {
-    "monday": "今週も頑張りましょうね！",
-    "tuesday": "火曜日はまだまだこれからですよ",
-    "wednesday": "半分終わりましたね、あと少し！",
-    "thursday": "週末まであと少し、ファイトです！",
-    "friday": "金曜日！楽しみにしてたんです♪",
-    "saturday": "土曜日はのんびりできるから好きです",
-    "sunday": "日曜はゆっくり充電する日ですね"
-  }
+  "imagePrefix": "clara",
+  "lines": [
+    { "text": "クララだよ。朝も晴れてて気持ちいいね。", "background": "background_morning_sunny.png" }
+  ]
 }

@@ -1,47 +1,6 @@
 {
-  "name": "alice",
-  "label": "アリス",
-  "birthday": "7/3",
-  "expressions": {
-    "early_morning": "normal",
-    "morning": "happy",
-    "afternoon": "happy",
-    "evening": "normal",
-    "night": "troubled",
-    "midnight": "troubled"
-  },
-  "lines": {
-    "early_morning": "おはよう〜まだ眠いよね…",
-    "morning": "朝の光って気持ちいいね！",
-    "afternoon": "お昼だね！一緒にご飯食べたいな〜",
-    "evening": "夕焼けがきれいだね！",
-    "night": "今日はどんな一日だった？",
-    "midnight": "夜更かししすぎないでね？"
-  },
-  "weatherLines": {
-    "morning": {
-      "sunny": "今日もいい天気！頑張ろう！",
-      "cloudy": "ちょっと曇ってるね…でも大丈夫！",
-      "rainy": "雨かぁ〜気をつけて行こうね！"
-    },
-    "afternoon": {
-      "sunny": "ぽかぽかで気持ちいい〜♪",
-      "cloudy": "ちょっと静かな午後だね",
-      "rainy": "お昼に雨って珍しいかも？"
-    },
-    "evening": {
-      "sunny": "夕日がきれいでうっとりしちゃう",
-      "cloudy": "灰色の空も悪くないかも…",
-      "rainy": "傘忘れてない？"
-    }
-  },
-  "weekdayLines": {
-    "monday": "今週も始まったね！",
-    "tuesday": "火曜日もがんばろう〜！",
-    "wednesday": "週の真ん中、水曜日っ！",
-    "thursday": "あともう少しで週末！",
-    "friday": "金曜日だー！わくわく♪",
-    "saturday": "土曜日って特別な感じしない？",
-    "sunday": "日曜日はのんびりしたいな〜"
-  }
+  "imagePrefix": "alice",
+  "lines": [
+    { "text": "アリスだよ。朝も晴れてて気持ちいいね。", "background": "background_morning_sunny.png" }
+  ]
 }

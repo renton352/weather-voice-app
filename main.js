@@ -1,46 +1,27 @@
-window.addEventListener("DOMContentLoaded", () => {
+async function loadCharacters() {
+  const res = await fetch("data/characters.json");
+  const characters = await res.json();
   const selector = document.getElementById("characterSelector");
-  const image = document.getElementById("characterImage");
-  const background = document.getElementById("background");
-  const dialogue = document.getElementById("dialogue");
 
-  fetch("characters.json")
-    .then(res => res.json())
-    .then(characters => {
-      characters.forEach(c => {
-        const option = document.createElement("option");
-        option.value = c.name;
-        option.textContent = c.label;
-        selector.appendChild(option);
-      });
-
-      const urlParams = new URLSearchParams(window.location.search);
-      let characterName = urlParams.get("character") || characters[0].name;
-      selector.value = characterName;
-      loadCharacter(characterName);
-    });
-
-  selector.addEventListener("change", () => {
-    const name = selector.value;
-    const url = new URL(window.location.href);
-    url.searchParams.set("character", name);
-    window.location.href = url.toString();
+  characters.forEach((char, index) => {
+    const option = document.createElement("option");
+    option.value = char.id;
+    option.textContent = char.name;
+    selector.appendChild(option);
   });
 
-  function loadCharacter(name) {
-    fetch(`data/${name}.json`)
-      .then(res => {
-        if (!res.ok) throw new Error("キャラクターデータが見つかりません");
-        return res.json();
-      })
-      .then(data => {
-        image.src = `images/${name}_normal.png`;
-        background.src = `images/background_night_clear.png`; // 仮の背景
-        dialogue.textContent = data.message || "セリフがありません";
-      })
-      .catch(err => {
-        console.error(err);
-        dialogue.textContent = "エラーが発生しました";
-      });
-  }
-});
+  selector.addEventListener("change", () => loadCharacter(selector.value));
+  loadCharacter(selector.value);
+}
+
+async function loadCharacter(id) {
+  const res = await fetch(`data/${id}.json`);
+  const data = await res.json();
+  const expression = "normal"; // default
+  const imagePath = `images/${data.imagePrefix}_${expression}.png`;
+  document.getElementById("characterImage").src = imagePath;
+  document.getElementById("message").textContent = data.lines[0]?.text || "";
+  document.getElementById("background").src = "images/" + data.lines[0]?.background || "";
+}
+
+window.onload = loadCharacters;
