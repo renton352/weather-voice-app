@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>推し天気ボイス</title>
+  <style>
+    body {{ margin: 0; background: black; color: white; font-family: sans-serif; }}
+    #controls {{ padding: 10px; }}
+    #characterImg, #backgroundImg {{ max-width: 100%; height: auto; display: block; margin: 0 auto; }}
+    #message {{ position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: white; color: black; padding: 10px; border-radius: 5px; }}
+  </style>
+</head>
+<body>
+  <div id="controls">
+    キャラクター：
+    <select id="characterSelect"></select>
+    背景：
+    <select id="backgroundSelect">
+      <option value="bg_default.jpg">デフォルト</option>
+    </select>
+  </div>
+  <img id="backgroundImg" src="" alt="背景画像">
+  <img id="characterImg" src="" alt="キャラ画像">
+  <div id="message">セリフを読み込み中...</div>
+  <script src="main.js"></script>
+</body>
+</html>

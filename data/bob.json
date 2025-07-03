@@ -1,0 +1,11 @@
+{
+  "morning_sunny": { "expression": "normal", "serif": "おはよう（ボブ）！晴れてて気持ちいいね。" },
+  "afternoon_sunny": { "expression": "happy", "serif": "午後も（ボブ）いい天気だね！" },
+  "night_sunny": { "expression": "sleepy", "serif": "今日も一日お疲れ様。" },
+  "morning_cloudy": { "expression": "normal", "serif": "曇ってるけど元気出していこう！" },
+  "afternoon_cloudy": { "expression": "normal", "serif": "午後も（ボブ）曇り空だね。" },
+  "night_cloudy": { "expression": "sleepy", "serif": "雲が多い夜だね。おやすみ〜" },
+  "morning_snowy": { "expression": "surprised", "serif": "わっ、雪だよ！" },
+  "afternoon_snowy": { "expression": "happy", "serif": "午後も（ボブ）雪が降ってるね！" },
+  "night_snowy": { "expression": "sleepy", "serif": "雪の夜って静かで好き。" }
+}
