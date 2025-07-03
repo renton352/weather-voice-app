@@ -3,44 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>天気ボイスアプリ</title>
+  <title>推し天気セリフ</title>
   <style>
-    body {
-      margin: 0;
-      background-color: black;
-      color: white;
-      font-family: sans-serif;
-      text-align: center;
-    }
-    #backgroundImage, #characterImage {
-      max-width: 100%;
-      height: auto;
-    }
-    #textBox {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: white;
-      color: black;
-      padding: 10px;
-      border-radius: 10px;
-    }
+    body { margin: 0; background: #000; color: #fff; font-family: sans-serif; }
+    #container { text-align: center; padding: 1rem; }
+    #character-img, #background-img { max-width: 100%; height: auto; }
+    #serif { background: white; color: black; padding: 0.5em 1em; border-radius: 0.5em; display: inline-block; margin-top: 1em; }
   </style>
 </head>
 <body>
-  <div>
-    <label for="characterSelect">キャラクター：</label>
-    <select id="characterSelect"></select>
-  </div>
-  <div>
-    <label for="backgroundSelect">背景：</label>
-    <select id="backgroundSelect"></select>
-  </div>
-  <div>
-    <img id="backgroundImage" alt="背景画像" />
-    <img id="characterImage" alt="キャラ画像" />
-    <div id="textBox">セリフを読み込み中…</div>
+  <div id="container">
+    <label for="character-select">キャラクター：</label>
+    <select id="character-select"></select>
+    <br />
+    <label for="background-select">背景：</label>
+    <select id="background-select"></select>
+    <br />
+    <img id="background-img" src="" alt="背景画像" />
+    <img id="character-img" src="" alt="キャラ画像" />
+    <div id="serif">セリフを読み込み中…</div>
   </div>
   <script src="main.js"></script>
 </body>
