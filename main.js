@@ -25,6 +25,8 @@ function getWeatherLabel(weatherId) {
 }
 
 async function main() {
+  document.getElementById("dialogue").innerText = "セリフを読み込み中...";
+
   const character = await loadCharacter();
 
   navigator.geolocation.getCurrentPosition(async (pos) => {
@@ -43,20 +45,24 @@ async function main() {
     const timeZone = getTimeZoneLabel(hour);
     const weather = getWeatherLabel(weatherId);
 
+    // 背景画像の設定（現段階では従来のtime+weather構成）
     const bg = `img/bg_${timeZone}_${weather}.png`;
     document.getElementById("background").src = bg;
 
+    // キャラ画像
     const expression = "normal";
     document.getElementById("character").src = `img/${character.expressions[expression]}`;
 
-    const tempLines = character.lines.temp;
-    let tempComment = "";
-    if (temp <= 5) tempComment = tempLines.cold;
-    else if (temp >= 30) tempComment = tempLines.hot;
-    else if (temp >= 20) tempComment = tempLines.warm;
-    else tempComment = tempLines.cool;
+    // セリフ設定
+    let dialogue = "";
+    try {
+      dialogue = character.lines[timeZone][weather];
+    } catch (e) {
+      dialogue = "セリフが見つかりませんでした。";
+    }
 
-    document.getElementById("dialogue").innerText = tempComment;
+    // セリフと気温表示
+    document.getElementById("dialogue").innerText = dialogue;
     document.getElementById("tempDisplay").innerText = `現在の気温：${temp.toFixed(1)}℃`;
   });
 }
