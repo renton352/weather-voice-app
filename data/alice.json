@@ -1,17 +1,122 @@
 {
-  "morning": {
-    "sunny": "おはよう、晴れてるね！",
-    "cloudy": "おはよう、ちょっと曇ってるね。",
-    "rainy": "おはよう、雨に気をつけてね。"
+  "early_morning_sunny": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "early_morning_sunny.png"
   },
-  "afternoon": {
-    "sunny": "こんにちは、晴れてる午後だね！",
-    "cloudy": "こんにちは、午後は曇ってるね。",
-    "rainy": "こんにちは、午後は雨が降ってるね。"
+  "early_morning_cloudy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "early_morning_cloudy.png"
   },
-  "evening": {
-    "sunny": "こんばんは、晴れた夕方だね！",
-    "cloudy": "こんばんは、曇り空の夕方だね。",
-    "rainy": "こんばんは、雨が降ってるね。"
+  "early_morning_rainy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "early_morning_rainy.png"
+  },
+  "early_morning_snowy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "early_morning_snowy.png"
+  },
+  "morning_sunny": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "morning_sunny.png"
+  },
+  "morning_cloudy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "morning_cloudy.png"
+  },
+  "morning_rainy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "morning_rainy.png"
+  },
+  "morning_snowy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "morning_snowy.png"
+  },
+  "noon_sunny": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "noon_sunny.png"
+  },
+  "noon_cloudy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "noon_cloudy.png"
+  },
+  "noon_rainy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "noon_rainy.png"
+  },
+  "noon_snowy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "noon_snowy.png"
+  },
+  "afternoon_sunny": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "afternoon_sunny.png"
+  },
+  "afternoon_cloudy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "afternoon_cloudy.png"
+  },
+  "afternoon_rainy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "afternoon_rainy.png"
+  },
+  "afternoon_snowy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "afternoon_snowy.png"
+  },
+  "evening_sunny": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "evening_sunny.png"
+  },
+  "evening_cloudy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "evening_cloudy.png"
+  },
+  "evening_rainy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "evening_rainy.png"
+  },
+  "evening_snowy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "evening_snowy.png"
+  },
+  "night_sunny": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "night_sunny.png"
+  },
+  "night_cloudy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "night_cloudy.png"
+  },
+  "night_rainy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "night_rainy.png"
+  },
+  "night_snowy": {
+    "text": "これは early_morning の sunny のセリフです。",
+    "expression": "early_morning_sunny",
+    "background": "night_snowy.png"
   }
 }
