@@ -1,14 +1,14 @@
 [
   {
-    "id": "alice",
-    "name": "アリス"
+    "name": "alice",
+    "file": "data/alice.json"
   },
   {
-    "id": "bob",
-    "name": "ボブ"
+    "name": "bob",
+    "file": "data/bob.json"
   },
   {
-    "id": "clara",
-    "name": "クララ"
+    "name": "clara",
+    "file": "data/clara.json"
   }
 ]

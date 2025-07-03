@@ -1,14 +1,31 @@
 {
-  "morning_clear": {
-    "image": "alice_normal.png",
-    "text": "アリスだよ。朝も晴れてて気持ちいいね。"
+  "name": "Bob",
+  "image": {
+    "happy": "bob_happy.png",
+    "normal": "bob_normal.png",
+    "surprised": "bob_surprised.png",
+    "troubled": "bob_troubled.png"
   },
-  "afternoon_clouds": {
-    "image": "alice_normal.png",
-    "text": "アリスだよ。午後は曇り空、素敵な時間だね。"
-  },
-  "night_rain": {
-    "image": "alice_normal.png",
-    "text": "アリスだよ。夜の雨、静かな時間だね。"
+  "lines": {
+    "morning": {
+      "sunny": "Bobだよ。morningのsunny、素敵な時間だね。",
+      "cloudy": "Bobだよ。morningのcloudy、素敵な時間だね。",
+      "rainy": "Bobだよ。morningのrainy、素敵な時間だね。"
+    },
+    "afternoon": {
+      "sunny": "Bobだよ。afternoonのsunny、素敵な時間だね。",
+      "cloudy": "Bobだよ。afternoonのcloudy、素敵な時間だね。",
+      "rainy": "Bobだよ。afternoonのrainy、素敵な時間だね。"
+    },
+    "evening": {
+      "sunny": "Bobだよ。eveningのsunny、素敵な時間だね。",
+      "cloudy": "Bobだよ。eveningのcloudy、素敵な時間だね。",
+      "rainy": "Bobだよ。eveningのrainy、素敵な時間だね。"
+    },
+    "night": {
+      "sunny": "Bobだよ。nightのsunny、素敵な時間だね。",
+      "cloudy": "Bobだよ。nightのcloudy、素敵な時間だね。",
+      "rainy": "Bobだよ。nightのrainy、素敵な時間だね。"
+    }
   }
 }
