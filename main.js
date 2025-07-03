@@ -1,3 +1,4 @@
+
 async function fetchJson(url) {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`Failed to load ${url}`);
@@ -13,8 +14,7 @@ function getTimeOfDay() {
 }
 
 function getWeatherCondition() {
-    // 今は固定、将来的にAPI連携可能
-    return "cloudy";
+    return "cloudy"; // ダミー天気、必要ならAPI連携
 }
 
 async function updateDisplay() {
@@ -32,11 +32,9 @@ async function updateDisplay() {
         const imageName = characterData.expressions[expressionKey] || characterData.expressions["default"];
         const line = characterData.lines[expressionKey] || "セリフが見つかりません。";
 
-        // 画像を切り替え
         characterImage.src = `img/${imageName}`;
         backgroundImage.src = `img/bg_${time}_${weather}.png`;
 
-        // セリフ表示
         if (serifElement) {
             serifElement.textContent = line;
         }
