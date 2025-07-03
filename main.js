@@ -2,7 +2,7 @@ async function fetchWeather() {
   const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
   const response = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=35.6895&lon=139.6917&units=metric&lang=ja&appid=" + apiKey);
   const data = await response.json();
-  return data.weather[0].main.toLowerCase(); // e.g., "clear", "clouds", "rain", "snow"
+  return data.weather[0].main.toLowerCase();
 }
 
 function getTimePeriod() {
@@ -37,9 +37,9 @@ async function main() {
   const background = document.getElementById("background");
   background.src = `./img/bg_${time}_${weather}.png`;
 
-  const res = await fetch("characters.json");
-  const characters = await res.json();
-  const info = characters[character]?.[time]?.[weather] || {
+  const res = await fetch(`./characters/${character}.json`);
+  const characterData = await res.json();
+  const info = characterData[time]?.[weather] || {
     expression: "normal",
     line: "データが見つかりません"
   };
