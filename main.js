@@ -35,7 +35,7 @@ async function main() {
   const weather = normalizeWeather(weatherRaw);
 
   const background = document.getElementById("background");
-  background.src = `img/bg_${time}_${weather}.png`;
+  background.src = `./img/bg_${time}_${weather}.png`;
 
   const res = await fetch("characters.json");
   const characters = await res.json();
@@ -45,7 +45,7 @@ async function main() {
   };
 
   const characterImg = document.getElementById("character");
-  characterImg.src = `img/${character}_${info.expression}.png`;
+  characterImg.src = `./img/${character}_${info.expression}.png`;
 
   const dialogue = document.getElementById("dialogue");
   dialogue.textContent = info.line;
