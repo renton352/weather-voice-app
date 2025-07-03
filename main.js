@@ -1,92 +1,94 @@
-// DOM読み込み後に実行
-window.addEventListener("DOMContentLoaded", () => {
-    fetch("data/characters.json")
-        .then((res) => res.json())
-        .then((characters) => {
-            setupCharacterSelect(characters);
-            const defaultCharacter = Object.keys(characters)[0];
-            loadCharacterData(defaultCharacter, characters[defaultCharacter]);
-        });
-});
+document.addEventListener("DOMContentLoaded", () => {
+  const characterSelect = document.getElementById("characterSelect");
+  const characterImage = document.getElementById("characterImage");
+  const dialogueBox = document.getElementById("dialogue");
 
-// キャラクター選択肢の作成
-function setupCharacterSelect(characters) {
-    const select = document.getElementById("characterSelect");
-    select.innerHTML = ""; // 初期化
+  let charactersData = {};
+  let currentCharacter = null;
 
-    for (const name in characters) {
-        const option = document.createElement("option");
-        option.value = name;
-        option.textContent = name;
-        select.appendChild(option);
-    }
+  async function fetchJSON(path) {
+    const response = await fetch(path);
+    if (!response.ok) throw new Error(`${path} 読み込み失敗`);
+    return response.json();
+  }
 
-    select.addEventListener("change", () => {
-        const selectedName = select.value;
-        loadCharacterData(selectedName, characters[selectedName]);
-    });
-}
-
-function loadCharacterData(name, data) {
-    const characterJsonPath = `data/${name}.json`;
-
-    fetch(characterJsonPath)
-        .then((res) => res.json())
-        .then((characterData) => {
-            updateScene(characterData);
-        })
-        .catch((err) => {
-            console.error(`Failed to load ${characterJsonPath}`, err);
-        });
-}
-
-function updateScene(characterData) {
-    const time = getTimeSegment();
-    const weather = getWeather();
-    const day = getDayOfWeek();
-
-    const expression = (
-        characterData.expressionMap?.[time]?.[weather]?.[day] ||
-        characterData.expressionMap?.[time]?.[weather]?.default ||
-        characterData.expressionMap?.[time]?.default?.default ||
-        "normal"
-    );
-
-    const message = (
-        characterData.messages?.[time]?.[weather]?.[day] ||
-        characterData.messages?.[time]?.[weather]?.default ||
-        characterData.messages?.[time]?.default?.default ||
-        "こんにちは！"
-    );
-
-    const characterImagePath = `data/${characterData.name}_${expression}.png`;
-    const backgroundImagePath = `data/background_${time}_${weather}.png`;
-
-    document.getElementById("character").src = characterImagePath;
-    document.body.style.backgroundImage = `url('${backgroundImagePath}')`;
-
-    document.getElementById("message").innerText = message;
-}
-
-// 時間帯取得
-function getTimeSegment() {
-    const hour = new Date().getHours();
-    if (hour < 4) return "midnight";
-    if (hour < 8) return "morning";
-    if (hour < 12) return "noon";
-    if (hour < 16) return "afternoon";
+  function getTimeSlot(hour) {
+    if (hour < 5) return "midnight";
+    if (hour < 9) return "morning";
+    if (hour < 13) return "noon";
+    if (hour < 17) return "afternoon";
     if (hour < 20) return "evening";
     return "night";
-}
+  }
 
-// 曜日取得
-function getDayOfWeek() {
-    const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-    return days[new Date().getDay()];
-}
+  function getTodayInfo() {
+    const now = new Date();
+    const hour = now.getHours();
+    const day = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"][now.getDay()];
+    const slot = getTimeSlot(hour);
+    return { hour, slot, day };
+  }
 
-// 天気（仮ランダム）
-function getWeather() {
-    const weathers = ["sunny", "cloudy", "rainy"];
-    return weathers[Math.floor(Math.random() * weathers.length)];
-}
+  function updateView(characterName, data) {
+    const { hour, slot, day } = getTodayInfo();
+    const weather = "sunny"; // 仮設定。将来的には天気APIなどに置換可能
+
+    // セリフ取得
+    const line = data.lines?.[weather]?.[slot]?.[day]?.[0] || "セリフが見つかりません";
+    dialogueBox.textContent = line;
+
+    // 表情切り替え（セリフの種類に応じた分岐があるなら）
+    let expression = "normal";
+    if (line.includes("うれ")) expression = "happy";
+    else if (line.includes("びっくり")) expression = "surprised";
+    else if (line.includes("困")) expression = "troubled";
+
+    const charImgPath = `images/${characterName}_${expression}.png`;
+    characterImage.src = charImgPath;
+
+    // 背景画像更新
+    const bg = `images/background_${slot}_${weather}.png`;
+    document.body.style.backgroundImage = `url('${bg}')`;
+  }
+
+  async function loadCharacterData(characterName) {
+    try {
+      const data = await fetchJSON(`data/${characterName}.json`);
+      currentCharacter = characterName;
+      updateView(characterName, data);
+    } catch (err) {
+      console.error("キャラデータ読み込み失敗:", err);
+      dialogueBox.textContent = "セリフ読み込みに失敗しました。";
+    }
+  }
+
+  async function init() {
+    try {
+      const charList = await fetchJSON("data/characters.json");
+      charactersData = charList;
+
+      // ドロップダウンを生成
+      for (const name of charList.characters) {
+        const option = document.createElement("option");
+        option.value = name;
+        option.textContent = name.charAt(0).toUpperCase() + name.slice(1);
+        characterSelect.appendChild(option);
+      }
+
+      characterSelect.addEventListener("change", () => {
+        loadCharacterData(characterSelect.value);
+      });
+
+      // 初期表示キャラ
+      if (charList.characters.length > 0) {
+        characterSelect.value = charList.characters[0];
+        loadCharacterData(charList.characters[0]);
+      }
+    } catch (e) {
+      console.error("初期化エラー:", e);
+      dialogueBox.textContent = "初期化に失敗しました。";
+    }
+  }
+
+  init();
+});
