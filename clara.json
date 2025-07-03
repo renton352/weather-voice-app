@@ -1,18 +1,11 @@
 {
-  "morning_clear": "クララです。morningのclear、元気にいこう！",
-  "morning_cloudy": "クララです。morningのcloudy、元気にいこう！",
-  "morning_rain": "クララです。morningのrain、元気にいこう！",
-  "morning_snow": "クララです。morningのsnow、元気にいこう！",
-  "afternoon_clear": "クララです。afternoonのclear、元気にいこう！",
-  "afternoon_cloudy": "クララです。afternoonのcloudy、元気にいこう！",
-  "afternoon_rain": "クララです。afternoonのrain、元気にいこう！",
-  "afternoon_snow": "クララです。afternoonのsnow、元気にいこう！",
-  "evening_clear": "クララです。eveningのclear、元気にいこう！",
-  "evening_cloudy": "クララです。eveningのcloudy、元気にいこう！",
-  "evening_rain": "クララです。eveningのrain、元気にいこう！",
-  "evening_snow": "クララです。eveningのsnow、元気にいこう！",
-  "night_clear": "クララです。nightのclear、元気にいこう！",
-  "night_cloudy": "クララです。nightのcloudy、元気にいこう！",
-  "night_rain": "クララです。nightのrain、元気にいこう！",
-  "night_snow": "クララです。nightのsnow、元気にいこう！"
+  "morning_clear": "おはようございます。今日も晴れてますね！",
+  "morning_cloudy": "おはようございます。ちょっと曇り空です。",
+  "morning_rain": "おはようございます。雨ですから足元に気をつけて。",
+  "afternoon_clear": "こんにちは。午後も晴れて嬉しいですね！",
+  "afternoon_cloudy": "こんにちは。雲が多くなってきましたね。",
+  "afternoon_rain": "こんにちは。午後から雨ですね。",
+  "evening_clear": "こんばんは。夜空がきれいです。",
+  "evening_cloudy": "こんばんは。今夜は曇り模様です。",
+  "evening_rain": "こんばんは。雨が降ってきましたね。"
 }

@@ -1,18 +1,11 @@
 {
-  "morning_clear": "ボブです。morningのclear、頑張ろう！",
-  "morning_cloudy": "ボブです。morningのcloudy、頑張ろう！",
-  "morning_rain": "ボブです。morningのrain、頑張ろう！",
-  "morning_snow": "ボブです。morningのsnow、頑張ろう！",
-  "afternoon_clear": "ボブです。afternoonのclear、頑張ろう！",
-  "afternoon_cloudy": "ボブです。afternoonのcloudy、頑張ろう！",
-  "afternoon_rain": "ボブです。afternoonのrain、頑張ろう！",
-  "afternoon_snow": "ボブです。afternoonのsnow、頑張ろう！",
-  "evening_clear": "ボブです。eveningのclear、頑張ろう！",
-  "evening_cloudy": "ボブです。eveningのcloudy、頑張ろう！",
-  "evening_rain": "ボブです。eveningのrain、頑張ろう！",
-  "evening_snow": "ボブです。eveningのsnow、頑張ろう！",
-  "night_clear": "ボブです。nightのclear、頑張ろう！",
-  "night_cloudy": "ボブです。nightのcloudy、頑張ろう！",
-  "night_rain": "ボブです。nightのrain、頑張ろう！",
-  "night_snow": "ボブです。nightのsnow、頑張ろう！"
+  "morning_clear": "ボブです。晴れて最高の朝だね！",
+  "morning_cloudy": "ボブです。ちょっと曇ってるなあ。",
+  "morning_rain": "ボブです。雨でも元気出していこう！",
+  "afternoon_clear": "ボブです。午後も快晴、気分上々！",
+  "afternoon_cloudy": "ボブです。午後もどんよりだなあ。",
+  "afternoon_rain": "ボブです。午後の雨には気をつけてね。",
+  "evening_clear": "ボブです。いい夜になりそうだ！",
+  "evening_cloudy": "ボブです。雲が多い夜だなあ。",
+  "evening_rain": "ボブです。夜の雨はちょっと寂しいね。"
 }
