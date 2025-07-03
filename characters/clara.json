@@ -1,0 +1,110 @@
+{
+  "early_morning": {
+    "sunny": {
+      "expression": "happy",
+      "line": "クララより：早朝だね、晴れてて気をつけてね！"
+    },
+    "cloudy": {
+      "expression": "normal",
+      "line": "クララより：早朝だね、曇ってて気をつけてね！"
+    },
+    "rainy": {
+      "expression": "troubled",
+      "line": "クララより：早朝だね、雨が降ってて気をつけてね！"
+    },
+    "snowy": {
+      "expression": "surprised",
+      "line": "クララより：早朝だね、雪が降ってて気をつけてね！"
+    }
+  },
+  "morning": {
+    "sunny": {
+      "expression": "happy",
+      "line": "クララより：朝だね、晴れてて気をつけてね！"
+    },
+    "cloudy": {
+      "expression": "normal",
+      "line": "クララより：朝だね、曇ってて気をつけてね！"
+    },
+    "rainy": {
+      "expression": "troubled",
+      "line": "クララより：朝だね、雨が降ってて気をつけてね！"
+    },
+    "snowy": {
+      "expression": "surprised",
+      "line": "クララより：朝だね、雪が降ってて気をつけてね！"
+    }
+  },
+  "afternoon": {
+    "sunny": {
+      "expression": "happy",
+      "line": "クララより：昼だね、晴れてて気をつけてね！"
+    },
+    "cloudy": {
+      "expression": "normal",
+      "line": "クララより：昼だね、曇ってて気をつけてね！"
+    },
+    "rainy": {
+      "expression": "troubled",
+      "line": "クララより：昼だね、雨が降ってて気をつけてね！"
+    },
+    "snowy": {
+      "expression": "surprised",
+      "line": "クララより：昼だね、雪が降ってて気をつけてね！"
+    }
+  },
+  "evening": {
+    "sunny": {
+      "expression": "happy",
+      "line": "クララより：夕方だね、晴れてて気をつけてね！"
+    },
+    "cloudy": {
+      "expression": "normal",
+      "line": "クララより：夕方だね、曇ってて気をつけてね！"
+    },
+    "rainy": {
+      "expression": "troubled",
+      "line": "クララより：夕方だね、雨が降ってて気をつけてね！"
+    },
+    "snowy": {
+      "expression": "surprised",
+      "line": "クララより：夕方だね、雪が降ってて気をつけてね！"
+    }
+  },
+  "night": {
+    "sunny": {
+      "expression": "happy",
+      "line": "クララより：夜だね、晴れてて気をつけてね！"
+    },
+    "cloudy": {
+      "expression": "normal",
+      "line": "クララより：夜だね、曇ってて気をつけてね！"
+    },
+    "rainy": {
+      "expression": "troubled",
+      "line": "クララより：夜だね、雨が降ってて気をつけてね！"
+    },
+    "snowy": {
+      "expression": "surprised",
+      "line": "クララより：夜だね、雪が降ってて気をつけてね！"
+    }
+  },
+  "midnight": {
+    "sunny": {
+      "expression": "happy",
+      "line": "クララより：深夜だね、晴れてて気をつけてね！"
+    },
+    "cloudy": {
+      "expression": "normal",
+      "line": "クララより：深夜だね、曇ってて気をつけてね！"
+    },
+    "rainy": {
+      "expression": "troubled",
+      "line": "クララより：深夜だね、雨が降ってて気をつけてね！"
+    },
+    "snowy": {
+      "expression": "surprised",
+      "line": "クララより：深夜だね、雪が降ってて気をつけてね！"
+    }
+  }
+}
