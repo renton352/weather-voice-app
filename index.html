@@ -1,55 +1,56 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>キャラクター天気アプリ</title>
+  <meta charset="UTF-8">
+  <title>天気ボイスアプリ</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: sans-serif;
       background-color: black;
-      background-size: cover;
-      background-position: center;
-    }
-    #app {
-      text-align: center;
+      font-family: sans-serif;
       color: white;
-      position: relative;
-      z-index: 1;
     }
     #characterImage {
-      max-width: 100%;
-      height: auto;
-      position: relative;
-      z-index: 2;
+      position: absolute;
+      left: 50%;
+      top: 60%;
+      transform: translate(-50%, -50%);
+      max-height: 80%;
+    }
+    #background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
     }
     #dialogue {
       position: absolute;
-      bottom: 50px;
+      bottom: 40px;
       left: 50%;
       transform: translateX(-50%);
       background: rgba(255,255,255,0.9);
       color: #000;
-      padding: 10px 20px;
+      padding: 12px 20px;
       border-radius: 10px;
-      z-index: 3;
+      font-size: 1rem;
+      max-width: 80%;
     }
-    #characterSelect {
+    #characterSelector {
       position: absolute;
       top: 10px;
-      right: 10px;
-      z-index: 4;
+      left: 10px;
     }
   </style>
 </head>
 <body>
-  <select id="characterSelect"></select>
-  <div id="app">
-    <img id="characterImage" src="" alt="キャラ画像" />
-    <div id="dialogue">セリフを読み込み中...</div>
-  </div>
+  <select id="characterSelector"></select>
+  <img id="background" src="" alt="背景">
+  <img id="characterImage" src="" alt="キャラ画像">
+  <div id="dialogue">セリフを読み込み中...</div>
+
   <script src="main.js"></script>
 </body>
 </html>
