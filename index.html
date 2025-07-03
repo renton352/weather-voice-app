@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>天気ボイスアプリ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+      background-color: black;
+    }
+    #background {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 0;
+    }
+    #character {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      max-height: 80vh;
+      height: auto;
+      z-index: 1;
+    }
+    #dialogue {
+      position: absolute;
+      bottom: 5vh;
+      width: 100%;
+      text-align: center;
+      font-size: 1.4em;
+      color: white;
+      text-shadow: 0 0 5px black;
+      z-index: 2;
+    }
+    #tempDisplay {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+      font-size: 1em;
+      background: rgba(0,0,0,0.4);
+      padding: 0.4em 0.8em;
+      border-radius: 0.5em;
+      z-index: 2;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <img id="background" src="" alt="背景画像">
+  <img id="character" src="" alt="キャラ画像">
+  <div id="dialogue">セリフを読み込み中...</div>
+  <div id="tempDisplay"></div>
+  <script src="main.js"></script>
+</body>
+</html>
