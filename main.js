@@ -55,12 +55,12 @@ async function setCharacter(name) {
 
 async function init() {
   const data = await loadJSON('./data/characters.json');
-  for (const char of data.characters) {
-    charactersData[char.name] = char;
+  for (const name in data) {
+    charactersData[name] = data[name];
   }
 
   const params = new URLSearchParams(window.location.search);
-  const selected = params.get("ch") || "alice";
+  const selected = params.get("ch") || params.get("character") || "alice";
   await setCharacter(selected);
 }
 
