@@ -1,0 +1,38 @@
+{
+  "alice": {
+    "morning": {
+      "sunny": {
+        "expression": "happy",
+        "line": "おはよう！今日も晴れてるね！"
+      },
+      "rainy": {
+        "expression": "troubled",
+        "line": "雨…足元に気をつけてね。"
+      }
+    }
+  },
+  "bob": {
+    "afternoon": {
+      "cloudy": {
+        "expression": "normal",
+        "line": "ちょっと曇ってるけど、元気にいこう！"
+      },
+      "sunny": {
+        "expression": "happy",
+        "line": "いい天気だ！外に出よう！"
+      }
+    }
+  },
+  "clara": {
+    "evening": {
+      "snowy": {
+        "expression": "surprised",
+        "line": "雪だ！手袋持ってる？"
+      },
+      "cloudy": {
+        "expression": "sleepy",
+        "line": "なんだか眠くなる空…"
+      }
+    }
+  }
+}
