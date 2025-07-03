@@ -1,20 +1,10 @@
-
 const params = new URLSearchParams(window.location.search);
 const characterKey = params.get("ch") || "alice";
 
 async function loadCharacter() {
-  const res = await fetch(`characters/${characterKey}.json`);
+  const res = await fetch(`./characters/${characterKey}.json`);
   const data = await res.json();
   return data;
-}
-
-function getTimeZoneLabel(hour) {
-  if (hour < 6) return "midnight";
-  if (hour < 9) return "early_morning";
-  if (hour < 12) return "morning";
-  if (hour < 15) return "noon";
-  if (hour < 18) return "afternoon";
-  return "evening";
 }
 
 function getWeatherLabel(weatherId) {
@@ -24,9 +14,21 @@ function getWeatherLabel(weatherId) {
   return "cloudy";
 }
 
-async function main() {
-  document.getElementById("dialogue").innerText = "セリフを読み込み中...";
+function getTimeSegment(now, sunrise, sunset) {
+  const noon = new Date(now);
+  noon.setHours(12, 0, 0);
 
+  const lateEvening = new Date(now);
+  lateEvening.setHours(20, 0, 0);
+
+  if (now < sunrise) return "before_sunrise";
+  if (now < noon) return "morning";
+  if (now < sunset) return "afternoon";
+  if (now < lateEvening) return "sunset";
+  return "night";
+}
+
+async function main() {
   const character = await loadCharacter();
 
   navigator.geolocation.getCurrentPosition(async (pos) => {
@@ -37,32 +39,30 @@ async function main() {
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=ja`
     );
     const weatherData = await weatherRes.json();
+
     const temp = weatherData.main.temp;
     const weatherId = weatherData.weather[0].id;
-
-    const now = new Date();
-    const hour = now.getHours();
-    const timeZone = getTimeZoneLabel(hour);
     const weather = getWeatherLabel(weatherId);
 
-    // 背景画像の設定（現段階では従来のtime+weather構成）
-    const bg = `img/bg_${timeZone}_${weather}.png`;
+    const now = new Date();
+    const sunrise = new Date(weatherData.sys.sunrise * 1000);
+    const sunset = new Date(weatherData.sys.sunset * 1000);
+    const timeSegment = getTimeSegment(now, sunrise, sunset);
+
+    const bg = `img/bg_${timeSegment}_${weather}.png`;
     document.getElementById("background").src = bg;
 
-    // キャラ画像
     const expression = "normal";
     document.getElementById("character").src = `img/${character.expressions[expression]}`;
 
-    // セリフ設定
-    let dialogue = "";
-    try {
-      dialogue = character.lines[timeZone][weather];
-    } catch (e) {
-      dialogue = "セリフが見つかりませんでした。";
-    }
+    const tempLines = character.lines.temp;
+    let tempComment = "";
+    if (temp <= 5) tempComment = tempLines.cold;
+    else if (temp >= 30) tempComment = tempLines.hot;
+    else if (temp >= 20) tempComment = tempLines.warm;
+    else tempComment = tempLines.cool;
 
-    // セリフと気温表示
-    document.getElementById("dialogue").innerText = dialogue;
+    document.getElementById("dialogue").innerText = tempComment;
     document.getElementById("tempDisplay").innerText = `現在の気温：${temp.toFixed(1)}℃`;
   });
 }
