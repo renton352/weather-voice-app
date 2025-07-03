@@ -1,3 +1,4 @@
+
 const params = new URLSearchParams(window.location.search);
 const characterKey = params.get("ch") || "alice";
 
@@ -14,18 +15,26 @@ function getWeatherLabel(weatherId) {
   return "cloudy";
 }
 
-function getTimeSegment(now, sunrise, sunset) {
-  const noon = new Date(now);
-  noon.setHours(12, 0, 0);
+function getTimeSegment(date, sunrise, sunset) {
+  const hour = date.getHours();
+  const time = date.getTime();
+  const sunriseTime = new Date(sunrise * 1000).getTime();
+  const sunsetTime = new Date(sunset * 1000).getTime();
 
-  const lateEvening = new Date(now);
-  lateEvening.setHours(20, 0, 0);
-
-  if (now < sunrise) return "before_sunrise";
-  if (now < noon) return "morning";
-  if (now < sunset) return "afternoon";
-  if (now < lateEvening) return "sunset";
+  if (time < sunriseTime) return "night";
+  if (time < sunriseTime + 2 * 3600 * 1000) return "sunrise";
+  if (time < sunsetTime - 2 * 3600 * 1000) return "day";
+  if (time < sunsetTime + 2 * 3600 * 1000) return "sunset";
   return "night";
+}
+
+function getDialogueTimeLabel(hour) {
+  if (hour < 6) return "midnight";
+  if (hour < 9) return "early_morning";
+  if (hour < 12) return "morning";
+  if (hour < 15) return "noon";
+  if (hour < 18) return "afternoon";
+  return "evening";
 }
 
 async function main() {
@@ -43,11 +52,10 @@ async function main() {
     const temp = weatherData.main.temp;
     const weatherId = weatherData.weather[0].id;
     const weather = getWeatherLabel(weatherId);
-
     const now = new Date();
-    const sunrise = new Date(weatherData.sys.sunrise * 1000);
-    const sunset = new Date(weatherData.sys.sunset * 1000);
-    const timeSegment = getTimeSegment(now, sunrise, sunset);
+    const hour = now.getHours();
+    const timeLabel = getDialogueTimeLabel(hour);
+    const timeSegment = getTimeSegment(now, weatherData.sys.sunrise, weatherData.sys.sunset);
 
     const bg = `img/bg_${timeSegment}_${weather}.png`;
     document.getElementById("background").src = bg;
@@ -55,14 +63,19 @@ async function main() {
     const expression = "normal";
     document.getElementById("character").src = `img/${character.expressions[expression]}`;
 
-    const tempLines = character.lines.temp;
-    let tempComment = "";
-    if (temp <= 5) tempComment = tempLines.cold;
-    else if (temp >= 30) tempComment = tempLines.hot;
-    else if (temp >= 20) tempComment = tempLines.warm;
-    else tempComment = tempLines.cool;
+    // セリフ分岐
+    const line = character.lines[timeLabel]?.[weather] || "セリフが見つかりません";
 
-    document.getElementById("dialogue").innerText = tempComment;
+    // 気温コメント
+    let tempComment = "";
+    if (temp <= 5) tempComment = character.lines.temp.cold;
+    else if (temp >= 30) tempComment = character.lines.temp.hot;
+    else if (temp >= 20) tempComment = character.lines.temp.warm;
+    else tempComment = character.lines.temp.cool;
+
+    // セリフ表示
+    document.getElementById("dialogue").innerText = `${line}
+${tempComment}`;
     document.getElementById("tempDisplay").innerText = `現在の気温：${temp.toFixed(1)}℃`;
   });
 }
