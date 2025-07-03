@@ -1,73 +1,65 @@
-async function getUserLocation() {
-  return new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(
-      (pos) => resolve({ lat: pos.coords.latitude, lon: pos.coords.longitude }),
-      (err) => reject(err)
-    );
-  });
+
+const params = new URLSearchParams(window.location.search);
+const characterKey = params.get("ch") || "alice";
+
+async function loadCharacter() {
+  const res = await fetch(`${characterKey}.json`);
+  const data = await res.json();
+  return data;
 }
 
-async function fetchWeather() {
-  const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
-  let lat = 35.6895, lon = 139.6917; // デフォルト：東京
-
-  try {
-    const loc = await getUserLocation();
-    lat = loc.lat;
-    lon = loc.lon;
-  } catch (e) {
-    console.warn("位置情報が取得できなかったため、東京の天気を使用します。");
-  }
-
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=ja&appid=${apiKey}`);
-  const data = await response.json();
-  return data.weather[0].main.toLowerCase();
-}
-
-function getTimePeriod() {
-  const hour = new Date().getHours();
+function getTimeZoneLabel(hour) {
   if (hour < 6) return "midnight";
   if (hour < 9) return "early_morning";
   if (hour < 12) return "morning";
-  if (hour < 16) return "afternoon";
-  if (hour < 19) return "evening";
-  return "night";
+  if (hour < 15) return "noon";
+  if (hour < 18) return "afternoon";
+  return "evening";
 }
 
-function normalizeWeather(weather) {
-  if (weather.includes("clear")) return "sunny";
-  if (weather.includes("cloud")) return "cloudy";
-  if (weather.includes("rain")) return "rainy";
-  if (weather.includes("snow")) return "snowy";
-  return "sunny";
-}
-
-function getCharacterFromURL() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get("ch") || "alice";
+function getWeatherLabel(weatherId) {
+  if (weatherId === 800) return "sunny";
+  if (weatherId >= 200 && weatherId < 600) return "rainy";
+  if (weatherId >= 600 && weatherId < 700) return "snowy";
+  return "cloudy";
 }
 
 async function main() {
-  const character = getCharacterFromURL();
-  const time = getTimePeriod();
-  const weatherRaw = await fetchWeather();
-  const weather = normalizeWeather(weatherRaw);
+  const character = await loadCharacter();
 
-  const background = document.getElementById("background");
-  background.src = `./img/bg_${time}_${weather}.png`;
+  navigator.geolocation.getCurrentPosition(async (pos) => {
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
+    const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
+    const weatherRes = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=ja`
+    );
+    const weatherData = await weatherRes.json();
+    const temp = weatherData.main.temp;
+    const weatherId = weatherData.weather[0].id;
 
-  const res = await fetch(`./characters/${character}.json`);
-  const characterData = await res.json();
-  const info = characterData[time]?.[weather] || {
-    expression: "normal",
-    line: "データが見つかりません"
-  };
+    const now = new Date();
+    const hour = now.getHours();
+    const timeZone = getTimeZoneLabel(hour);
+    const weather = getWeatherLabel(weatherId);
 
-  const characterImg = document.getElementById("character");
-  characterImg.src = `./img/${character}_${info.expression}.png`;
+    const bg = `img/bg_${timeZone}_${weather}.png`;
+    document.getElementById("background").src = bg;
 
-  const dialogue = document.getElementById("dialogue");
-  dialogue.textContent = info.line;
+    const expression = "normal";
+    document.getElementById("character").src = `img/${character.expressions[expression]}`;
+
+    // 基本セリフ + 気温セリフ
+    const tempLines = character.lines.temp;
+    let tempComment = "";
+    if (temp <= 5) tempComment = tempLines.cold;
+    else if (temp >= 30) tempComment = tempLines.hot;
+    else if (temp >= 20) tempComment = tempLines.warm;
+    else tempComment = tempLines.cool;
+
+    document.getElementById("dialogue").innerText = tempComment;
+    document.getElementById("tempDisplay").innerText = `現在の気温：${temp.toFixed(1)}℃`;
+  });
 }
 
 main();

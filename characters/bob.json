@@ -1,110 +1,17 @@
 {
-  "early_morning": {
-    "sunny": {
-      "expression": "happy",
-      "line": "おはよう。静かな朝だね、いい一日の始まりになりそうだ。"
-    },
-    "cloudy": {
-      "expression": "normal",
-      "line": "おはよう。少し曇っているけれど、気持ちは晴れやかにいこう。"
-    },
-    "rainy": {
-      "expression": "troubled",
-      "line": "おはよう。外は雨だ、出かけるなら気をつけて。"
-    },
-    "snowy": {
-      "expression": "surprised",
-      "line": "雪の朝か…今日は少し余裕を持って行動しよう。"
-    }
+  "name": "Bob",
+  "expressions": {
+    "normal": "bob_normal.png",
+    "happy": "bob_happy.png",
+    "troubled": "bob_troubled.png",
+    "surprised": "bob_surprised.png"
   },
-  "morning": {
-    "sunny": {
-      "expression": "happy",
-      "line": "いい天気だ。今日も前向きに取り組めそうだね。"
-    },
-    "cloudy": {
-      "expression": "normal",
-      "line": "穏やかな朝だね。こんな日も悪くない。"
-    },
-    "rainy": {
-      "expression": "troubled",
-      "line": "冷たい雨だね。温かい飲み物でもどう？"
-    },
-    "snowy": {
-      "expression": "surprised",
-      "line": "雪か…。転ばないように、足元には注意して。"
-    }
-  },
-  "afternoon": {
-    "sunny": {
-      "expression": "happy",
-      "line": "昼下がりの光が心地いいね。無理せず、ひと息いれよう。"
-    },
-    "cloudy": {
-      "expression": "normal",
-      "line": "午後も落ち着いて過ごそう。曇り空も悪くない。"
-    },
-    "rainy": {
-      "expression": "troubled",
-      "line": "午後の雨は眠気を誘うね。集中したいときは少し歩くといいよ。"
-    },
-    "snowy": {
-      "expression": "surprised",
-      "line": "雪が静かに降っている。こういう日は落ち着いて行動しよう。"
-    }
-  },
-  "evening": {
-    "sunny": {
-      "expression": "happy",
-      "line": "夕焼けがきれいだ。今日も一日、お疲れさま。"
-    },
-    "cloudy": {
-      "expression": "normal",
-      "line": "夕方になると冷えてくるね。温かくして過ごそう。"
-    },
-    "rainy": {
-      "expression": "troubled",
-      "line": "帰り道、濡れないように気をつけて帰ってね。"
-    },
-    "snowy": {
-      "expression": "surprised",
-      "line": "雪の夕暮れは特別だね。気をつけて帰ろう。"
-    }
-  },
-  "night": {
-    "sunny": {
-      "expression": "happy",
-      "line": "空を見上げてごらん。星がきれいだよ。"
-    },
-    "cloudy": {
-      "expression": "normal",
-      "line": "今夜は雲が多いけど、ゆっくり休もう。"
-    },
-    "rainy": {
-      "expression": "troubled",
-      "line": "雨音が静かに響く夜だね。心も落ち着くよ。"
-    },
-    "snowy": {
-      "expression": "surprised",
-      "line": "雪の夜はしんと静かだ。あたたかくして休んで。"
-    }
-  },
-  "midnight": {
-    "sunny": {
-      "expression": "happy",
-      "line": "もうこんな時間か。そろそろ休もう。"
-    },
-    "cloudy": {
-      "expression": "normal",
-      "line": "夜更かしはほどほどに。体も大事にね。"
-    },
-    "rainy": {
-      "expression": "troubled",
-      "line": "雨が続いているね。明日は晴れるといいな。"
-    },
-    "snowy": {
-      "expression": "surprised",
-      "line": "深夜の雪は美しい。でも、ちゃんと寝るんだよ。"
+  "lines": {
+    "temp": {
+      "cold": "今日はすごく寒いね…ちゃんとあったかくしてね！",
+      "cool": "少し肌寒いかも。羽織るものがあると安心だよ。",
+      "warm": "過ごしやすい気温だね〜♪",
+      "hot": "かなり暑いから、水分補給を忘れずにね！"
     }
   }
 }
