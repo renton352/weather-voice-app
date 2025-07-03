@@ -1,11 +1,6 @@
 {
-  "morning_clear": "おはよう、晴れていて気持ちいいね！",
-  "morning_cloudy": "おはよう、ちょっと曇ってるね。",
-  "morning_rain": "おはよう、雨だけどがんばろう。",
-  "afternoon_clear": "こんにちは、いい天気だね。",
-  "afternoon_cloudy": "こんにちは、空がどんよりしてるね。",
-  "afternoon_rain": "こんにちは、濡れないように気をつけて。",
-  "evening_clear": "こんばんは、星がきれいに見えそうだね。",
-  "evening_cloudy": "こんばんは、雲が出てきたね。",
-  "evening_rain": "こんばんは、傘を忘れずにね。"
+    "afternoon_clouds": {
+        "text": "アリスだよ。afternoonのcloudy、素敵な時間だね。",
+        "image": "alice_normal.png"
+    }
 }
