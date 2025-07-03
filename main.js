@@ -1,6 +1,25 @@
+async function getUserLocation() {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => resolve({ lat: pos.coords.latitude, lon: pos.coords.longitude }),
+      (err) => reject(err)
+    );
+  });
+}
+
 async function fetchWeather() {
   const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
-  const response = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=35.6895&lon=139.6917&units=metric&lang=ja&appid=" + apiKey);
+  let lat = 35.6895, lon = 139.6917; // デフォルト：東京
+
+  try {
+    const loc = await getUserLocation();
+    lat = loc.lat;
+    lon = loc.lon;
+  } catch (e) {
+    console.warn("位置情報が取得できなかったため、東京の天気を使用します。");
+  }
+
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=ja&appid=${apiKey}`);
   const data = await response.json();
   return data.weather[0].main.toLowerCase();
 }
