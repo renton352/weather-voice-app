@@ -13,7 +13,8 @@ function getTimeOfDay() {
 }
 
 function getWeatherCondition() {
-    return "cloudy";  // 固定（API連携していればここを変える）
+    // 今は固定、将来的にAPI連携可能
+    return "cloudy";
 }
 
 async function updateDisplay() {
@@ -26,14 +27,21 @@ async function updateDisplay() {
     const weather = getWeatherCondition();
     const expressionKey = `${time}_${weather}`;
 
-    const characterData = await fetchJson(`data/${characterKey}.json`);
-    const imageName = characterData.expressions[expressionKey] || characterData.expressions["default"];
-    const line = characterData.lines[expressionKey] || "セリフが見つかりません。";
+    try {
+        const characterData = await fetchJson(`data/${characterKey}.json`);
+        const imageName = characterData.expressions[expressionKey] || characterData.expressions["default"];
+        const line = characterData.lines[expressionKey] || "セリフが見つかりません。";
 
-    characterImage.src = `img/${imageName}`;
-    backgroundImage.src = `img/bg_${time}.png`;
-    if (serifElement) {
-        serifElement.textContent = line;
+        // 画像を切り替え
+        characterImage.src = `img/${imageName}`;
+        backgroundImage.src = `img/bg_${time}_${weather}.png`;
+
+        // セリフ表示
+        if (serifElement) {
+            serifElement.textContent = line;
+        }
+    } catch (err) {
+        console.error("データ読み込みエラー:", err);
     }
 }
 
