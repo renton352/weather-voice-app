@@ -1,90 +1,92 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const characterSelect = document.getElementById("characterSelect");
+  const backgroundSelect = document.getElementById("backgroundSelect");
+  const characterImg = document.getElementById("characterImg");
+  const backgroundImg = document.getElementById("backgroundImg");
+  const messageBox = document.getElementById("messageBox");
 
-// main.js
+  const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
 
-let selectedCharacter = new URLSearchParams(window.location.search).get("character") || "alice";
+  async function loadCharacters() {
+    const response = await fetch("data/characters.json");
+    const characters = await response.json();
+    characterSelect.innerHTML = "";
+    characters.forEach((char) => {
+      const option = document.createElement("option");
+      option.value = char.id;
+      option.textContent = char.name;
+      characterSelect.appendChild(option);
+    });
 
-async function fetchJSON(path) {
-    const response = await fetch(path);
-    if (!response.ok) throw new Error(`Failed to load ${path}`);
-    return await response.json();
-}
+    // URLパラメータでキャラクターが指定されていたら選択
+    const params = new URLSearchParams(window.location.search);
+    const characterId = params.get("character") || characters[0].id;
+    characterSelect.value = characterId;
+    loadCharacterData(characterId);
+  }
 
-function getTimeSlot() {
-    const hour = new Date().getHours();
-    if (hour < 6) return "early_morning";
-    if (hour < 9) return "morning";
-    if (hour < 12) return "late_morning";
-    if (hour < 17) return "afternoon";
-    if (hour < 21) return "evening";
-    return "night";
-}
+  async function loadCharacterData(characterId) {
+    const response = await fetch(`data/${characterId}.json`);
+    const data = await response.json();
 
-async function getWeather() {
-    const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
+    const { expressions, messages } = data;
+    const now = new Date();
+    const hour = now.getHours();
+    const date = now.getDate();
+
+    let timeOfDay = "morning";
+    if (hour < 6) timeOfDay = "early_morning";
+    else if (hour < 9) timeOfDay = "morning";
+    else if (hour < 12) timeOfDay = "afternoon";
+    else if (hour < 17) timeOfDay = "evening";
+    else if (hour < 21) timeOfDay = "night";
+    else timeOfDay = "midnight";
+
+    // 位置情報取得＆天気取得
+    let weather = "sunny"; // デフォルト
     try {
-        const position = await new Promise((resolve, reject) =>
-            navigator.geolocation.getCurrentPosition(resolve, reject)
-        );
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-
-        const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=ja`
-        );
-        const data = await response.json();
-
-        const weatherId = data.weather[0].id;
-        if (weatherId < 600) return "rainy";
-        else if (weatherId < 700) return "snowy";
-        else if (weatherId < 800) return "cloudy";
-        else return "sunny";
-    } catch (error) {
-        console.warn("天気情報の取得に失敗しました", error);
-        return "sunny";
-    }
-}
-
-async function loadCharacterAssets(characterName, weather, timeSlot) {
-    const charData = await fetchJSON(`data/${characterName}.json`);
-    const voiceKey = `${weather}_${timeSlot}`;
-    const message = charData.voices[voiceKey]?.text || "こんにちは。";
-    const expression = charData.voices[voiceKey]?.expression || "normal";
-
-    document.getElementById("character-img").src = `images/${characterName}_${expression}.png`;
-    document.getElementById("speech-bubble").textContent = message;
-}
-
-async function updateScene() {
-    const weather = await getWeather();
-    const timeSlot = getTimeSlot();
-    const backgroundImage = `images/background_${timeSlot}_${weather}.png`;
-    document.body.style.backgroundImage = `url('${backgroundImage}')`;
-
-    await loadCharacterAssets(selectedCharacter, weather, timeSlot);
-}
-
-async function init() {
-    try {
-        const characters = await fetchJSON("data/characters.json");
-        const selectEl = document.getElementById("character-select");
-
-        characters.forEach(char => {
-            const option = document.createElement("option");
-            option.value = char.id;
-            option.textContent = char.name;
-            if (char.id === selectedCharacter) option.selected = true;
-            selectEl.appendChild(option);
-        });
-
-        selectEl.addEventListener("change", (e) => {
-            selectedCharacter = e.target.value;
-            updateScene();
-        });
-
-        updateScene();
+      const pos = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+      });
+      const lat = pos.coords.latitude;
+      const lon = pos.coords.longitude;
+      const weatherRes = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+      );
+      const weatherData = await weatherRes.json();
+      const mainWeather = weatherData.weather[0].main.toLowerCase();
+      if (mainWeather.includes("rain")) weather = "rainy";
+      else if (mainWeather.includes("cloud")) weather = "cloudy";
+      else if (mainWeather.includes("snow")) weather = "snowy";
+      else weather = "sunny";
     } catch (err) {
-        console.error("初期化エラー:", err);
+      console.warn("天気取得失敗、デフォルト値を使用します:", err);
     }
-}
 
-window.addEventListener("DOMContentLoaded", init);
+    // 表情と背景画像の選択
+    const expressionKey = `${timeOfDay}_${weather}`;
+    const expression = expressions[expressionKey] || expressions["default"];
+    characterImg.src = `images/${expression}`;
+    characterImg.alt = "キャラ画像";
+
+    const backgroundKey = `background_${timeOfDay}_${weather}.png`;
+    backgroundImg.src = `images/${backgroundKey}`;
+    backgroundImg.alt = "背景画像";
+
+    // メッセージの選択
+    const key = `${timeOfDay}_${weather}_${date}`;
+    const message =
+      messages[key] || messages[`${timeOfDay}_${weather}`] || messages["default"];
+
+    messageBox.textContent = message;
+  }
+
+  characterSelect.addEventListener("change", () => {
+    const selectedCharacter = characterSelect.value;
+    const params = new URLSearchParams(window.location.search);
+    params.set("character", selectedCharacter);
+    window.location.search = params.toString(); // ページリロード
+  });
+
+  loadCharacters();
+});
