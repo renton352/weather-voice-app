@@ -1,37 +1,78 @@
-async function updateDisplay() {
-  const characterName = document.getElementById("characterSelect").value;
-  const characterImg = document.getElementById("character");
-  const bgImg = document.getElementById("bg");
-  const text = document.getElementById("text");
+document.addEventListener("DOMContentLoaded", async () => {
+  const characterSelect = document.getElementById("character-select");
+  const bgSelect = document.getElementById("bg-select");
+  const backgroundImage = document.getElementById("background-image");
+  const characterImage = document.getElementById("character-image");
+  const serifElement = document.getElementById("serif");
+
+  let characters = {};
+  let currentCharacterData = null;
+
+  async function fetchJSON(url) {
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  function getTimeSlot() {
+    const hour = new Date().getHours();
+    if (hour < 6) return "midnight";
+    if (hour < 9) return "early_morning";
+    if (hour < 17) return "afternoon";
+    if (hour < 20) return "evening";
+    return "night";
+  }
+
+  async function getWeather() {
+    const response = await fetch("https://weather.tsukumijima.net/api/forecast?city=130010");
+    const data = await response.json();
+    const forecast = data.forecasts[0].telop.toLowerCase();
+    if (forecast.includes("晴")) return "sunny";
+    if (forecast.includes("雪")) return "snowy";
+    if (forecast.includes("雨")) return "rainy";
+    if (forecast.includes("曇")) return "cloudy";
+    return "cloudy";
+  }
+
+  function updateDisplay() {
+    const time = getTimeSlot();
+    const weather = currentWeather;
+    const key = `${time}_${weather}`;
+
+    const bgPath = `img/bg_${key}.png`;
+    const expression = currentCharacterData[key]?.expression || "normal";
+    const imagePath = `img/${currentCharacter}-${expression}.png`;
+    const serif = currentCharacterData[key]?.serif || "セリフが見つかりません";
+
+    backgroundImage.src = bgPath;
+    characterImage.src = imagePath;
+    serifElement.textContent = serif;
+  }
+
+  let currentCharacter = "alice";
+  let currentWeather = "cloudy";
 
   try {
-    const weatherResponse = await fetch("https://wttr.in/Tokyo?format=j1");
-    const weatherJson = await weatherResponse.json();
-    const weatherDesc = weatherJson.current_condition[0].weatherDesc[0].value.toLowerCase();
-    const weather = weatherDesc.includes("cloud") ? "cloudy" :
-                    weatherDesc.includes("rain") ? "rainy" :
-                    "sunny";
+    characters = await fetchJSON("data/characters.json");
 
-    const hour = new Date().getHours();
-    const timeOfDay = hour < 10 ? "morning" : hour < 17 ? "afternoon" : "evening";
+    Object.keys(characters).forEach(name => {
+      const option = document.createElement("option");
+      option.value = name;
+      option.textContent = characters[name].display;
+      characterSelect.appendChild(option);
+    });
 
-    const characterRes = await fetch(`data/${characterName}.json`);
-    const characterData = await characterRes.json();
-
-    const expression = "normal";
-    characterImg.src = `img/${characterName}_${expression}.png`;
-
-    const bgFileName = `bg_${timeOfDay}_${weather}.png`;
-    bgImg.src = `img/${bgFileName}`;
-
-    const timeData = characterData[timeOfDay] || {};
-    const message = timeData[weather] || "セリフが見つかりませんでした。";
-    text.textContent = `${characterName.charAt(0).toUpperCase() + characterName.slice(1)}だよ。 ${message}`;
+    characterSelect.value = currentCharacter;
+    currentWeather = await getWeather();
+    currentCharacterData = await fetchJSON(`data/${currentCharacter}.json`);
+    updateDisplay();
   } catch (e) {
-    console.error("データ読み込みエラー:", e);
-    text.textContent = "セリフの読み込みに失敗しました。";
+    console.error("初期化エラー:", e);
+    serifElement.textContent = "データ読み込みエラー";
   }
-}
 
-document.getElementById("characterSelect").addEventListener("change", updateDisplay);
-window.addEventListener("DOMContentLoaded", updateDisplay);
+  characterSelect.addEventListener("change", async () => {
+    currentCharacter = characterSelect.value;
+    currentCharacterData = await fetchJSON(`data/${currentCharacter}.json`);
+    updateDisplay();
+  });
+});
