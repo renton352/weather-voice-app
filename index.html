@@ -1,33 +1,27 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>天気連動キャラボイス</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            background-color: black;
-            color: white;
-            text-align: center;
-        }
-        #characterImage, #backgroundImage {
-            max-width: 80%;
-            height: auto;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>天気連動キャラクター</title>
+  <style>
+    body { background-color: black; color: white; font-family: sans-serif; }
+    #characterImg, #backgroundImg { max-width: 100%; height: auto; display: block; margin: 10px auto; }
+  </style>
 </head>
 <body>
-    <div>
-        キャラクター：
-        <select id="characterSelect"></select>
-        背景：
-        <select id="backgroundSelect"></select>
-    </div>
-    <div>
-        <img id="backgroundImage" alt="背景画像">
-        <img id="characterImage" alt="キャラ画像">
-    </div>
-    <p id="serifText">セリフを読み込み中...</p>
-    <script src="main.js"></script>
+  <label>キャラクター：</label>
+  <select id="characterSelect"></select>
+  <label>背景：</label>
+  <select id="backgroundSelect">
+    <option value="default">デフォルト</option>
+  </select>
+  <br>
+  <img id="backgroundImg" src="" alt="背景画像">
+  <img id="characterImg" src="" alt="キャラ画像">
+  <p id="serif">セリフを読み込み中...</p>
+
+  <script src="main.js"></script>
 </body>
 </html>

@@ -1,6 +1,18 @@
 {
-    "afternoon_clouds": {
-        "text": "アリスだよ。afternoonのcloudy、素敵な時間だね。",
-        "image": "alice_normal.png"
-    }
+  "morning_clear": "アリスだよ。morningのclear、素敵な時間だね。",
+  "morning_cloudy": "アリスだよ。morningのcloudy、素敵な時間だね。",
+  "morning_rain": "アリスだよ。morningのrain、素敵な時間だね。",
+  "morning_snow": "アリスだよ。morningのsnow、素敵な時間だね。",
+  "afternoon_clear": "アリスだよ。afternoonのclear、素敵な時間だね。",
+  "afternoon_cloudy": "アリスだよ。afternoonのcloudy、素敵な時間だね。",
+  "afternoon_rain": "アリスだよ。afternoonのrain、素敵な時間だね。",
+  "afternoon_snow": "アリスだよ。afternoonのsnow、素敵な時間だね。",
+  "evening_clear": "アリスだよ。eveningのclear、素敵な時間だね。",
+  "evening_cloudy": "アリスだよ。eveningのcloudy、素敵な時間だね。",
+  "evening_rain": "アリスだよ。eveningのrain、素敵な時間だね。",
+  "evening_snow": "アリスだよ。eveningのsnow、素敵な時間だね。",
+  "night_clear": "アリスだよ。nightのclear、素敵な時間だね。",
+  "night_cloudy": "アリスだよ。nightのcloudy、素敵な時間だね。",
+  "night_rain": "アリスだよ。nightのrain、素敵な時間だね。",
+  "night_snow": "アリスだよ。nightのsnow、素敵な時間だね。"
 }

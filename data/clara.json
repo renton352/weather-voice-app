@@ -1,11 +1,14 @@
 {
-  "morning_sunny": { "expression": "normal", "serif": "おはよう（クララ）！晴れてて気持ちいいね。" },
-  "afternoon_sunny": { "expression": "happy", "serif": "午後も（クララ）いい天気だね！" },
-  "night_sunny": { "expression": "sleepy", "serif": "今日も一日お疲れ様。" },
-  "morning_cloudy": { "expression": "normal", "serif": "曇ってるけど元気出していこう！" },
-  "afternoon_cloudy": { "expression": "normal", "serif": "午後も（クララ）曇り空だね。" },
-  "night_cloudy": { "expression": "sleepy", "serif": "雲が多い夜だね。おやすみ〜" },
-  "morning_snowy": { "expression": "surprised", "serif": "わっ、雪だよ！" },
-  "afternoon_snowy": { "expression": "happy", "serif": "午後も（クララ）雪が降ってるね！" },
-  "night_snowy": { "expression": "sleepy", "serif": "雪の夜って静かで好き。" }
+  "morning_clear": {
+    "image": "alice_normal.png",
+    "text": "アリスだよ。朝も晴れてて気持ちいいね。"
+  },
+  "afternoon_clouds": {
+    "image": "alice_normal.png",
+    "text": "アリスだよ。午後は曇り空、素敵な時間だね。"
+  },
+  "night_rain": {
+    "image": "alice_normal.png",
+    "text": "アリスだよ。夜の雨、静かな時間だね。"
+  }
 }

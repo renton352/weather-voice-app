@@ -1,57 +1,52 @@
-const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
-const characterSelect = document.getElementById("characterSelect");
-const backgroundSelect = document.getElementById("backgroundSelect");
-const characterImage = document.getElementById("characterImage");
-const backgroundImage = document.getElementById("backgroundImage");
-const serifText = document.getElementById("serifText");
 
-async function fetchWeather() {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid=${apiKey}&lang=ja`);
-    const data = await response.json();
-    return data.weather[0].main.toLowerCase(); // e.g., "clear", "clouds", etc.
+async function init() {
+  const character = getQueryParam("character") || "alice";
+  try {
+    const characterList = await fetch("data/characters.json").then(res => res.json());
+    const select = document.getElementById("characterSelect");
+    characterList.forEach(c => {
+      const option = document.createElement("option");
+      option.value = c.id;
+      option.textContent = c.name;
+      if (c.id === character) option.selected = true;
+      select.appendChild(option);
+    });
+
+    const weather = await getWeather();
+    const time = getTimePeriod();
+    const charData = await fetch(`data/${character}.json`).then(res => res.json());
+
+    const key = `${time}_${weather}`;
+    const data = charData[key] || {};
+    document.getElementById("characterImg").src = `images/${data.image || 'default.png'}`;
+    document.getElementById("serif").textContent = data.text || "セリフがありません";
+    document.getElementById("backgroundImg").src = `images/bg_${time}.png`;
+  } catch (err) {
+    console.error("初期化エラー:", err);
+    document.getElementById("serif").textContent = "セリフの読み込みに失敗しました";
+  }
 }
 
-async function loadCharacters() {
-    try {
-        const res = await fetch("characters.json");
-        const characters = await res.json();
-        characterSelect.innerHTML = "";
-        characters.forEach(c => {
-            const opt = document.createElement("option");
-            opt.value = c.id;
-            opt.textContent = c.name;
-            characterSelect.appendChild(opt);
-        });
-        loadCharacterData(); // 初回読込
-    } catch (err) {
-        serifText.textContent = "キャラクター読み込み失敗";
-    }
+function getQueryParam(key) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(key);
 }
 
-async function loadCharacterData() {
-    const id = characterSelect.value;
-    try {
-        const [charRes, weather] = await Promise.all([
-            fetch(`${id}.json`).then(r => r.json()),
-            fetchWeather()
-        ]);
-        const hour = new Date().getHours();
-        let timeOfDay = "day";
-        if (hour < 5) timeOfDay = "night";
-        else if (hour < 10) timeOfDay = "morning";
-        else if (hour < 17) timeOfDay = "afternoon";
-        else timeOfDay = "evening";
-
-        const key = `${timeOfDay}_${weather}`;
-        const data = charRes[key] || { text: "セリフが未設定です", image: "default.png" };
-        serifText.textContent = data.text;
-        characterImage.src = `images/${data.image}`;
-    } catch (err) {
-        console.error("データ読み込みエラー:", err);
-        serifText.textContent = "セリフの読み込みに失敗しました";
-    }
+function getTimePeriod() {
+  const hour = new Date().getHours();
+  if (hour < 6) return "night";
+  if (hour < 12) return "morning";
+  if (hour < 18) return "afternoon";
+  return "night";
 }
 
-characterSelect.addEventListener("change", loadCharacterData);
+async function getWeather() {
+  const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
+  const city = "Tokyo";
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=ja`;
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.weather[0].main.toLowerCase(); // e.g., "clear", "clouds", "rain"
+}
 
-loadCharacters();
+window.addEventListener("DOMContentLoaded", init);

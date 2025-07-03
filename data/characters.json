@@ -1,1 +1,14 @@
-["alice","bob","clara"]
+[
+  {
+    "id": "alice",
+    "name": "アリス"
+  },
+  {
+    "id": "bob",
+    "name": "ボブ"
+  },
+  {
+    "id": "clara",
+    "name": "クララ"
+  }
+]

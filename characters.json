@@ -1,5 +1,14 @@
-[
-    {"id": "alice", "name": "アリス"},
-    {"id": "bob", "name": "ボブ"},
-    {"id": "clara", "name": "クララ"}
-]
+{
+  "alice": {
+    "name": "アリス",
+    "image": "alice_normal.png"
+  },
+  "bob": {
+    "name": "ボブ",
+    "image": "bob_normal.png"
+  },
+  "clara": {
+    "name": "クララ",
+    "image": "clara_normal.png"
+  }
+}
