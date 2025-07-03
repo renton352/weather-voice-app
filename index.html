@@ -1,40 +1,49 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>天気連動キャラクター</title>
-  <style>
-    body {
-      background-color: black;
-      color: white;
-      font-family: sans-serif;
-      text-align: center;
-    }
-    #backgroundImage, #characterImage {
-      max-width: 100%;
-      height: auto;
-      margin: 10px;
-    }
-    #message {
-      margin-top: 20px;
-      font-size: 1.2em;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>天気ボイスアプリ</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: sans-serif;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        #background {
+            width: 100%;
+            height: auto;
+        }
+        #character {
+            max-height: 60vh;
+        }
+        .serif-text {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+    </style>
 </head>
 <body>
-  <label>キャラクター：
-    <select id="characterSelect"></select>
-  </label>
-  背景：
-  <select id="backgroundSelect">
-    <option value="default">デフォルト</option>
-  </select>
-  <div>
-    <img id="backgroundImage" alt="背景画像">
-    <img id="characterImage" alt="キャラ画像">
-  </div>
-  <div id="message">セリフを読み込み中…</div>
-  <script src="main.js"></script>
+    <div>
+        キャラクター：
+        <select id="characterSelector">
+            <option value="alice">alice</option>
+            <option value="bob">bob</option>
+            <option value="clara">clara</option>
+        </select>
+        背景：
+        <select id="bgSelector">
+            <option value="default">デフォルト</option>
+        </select>
+    </div>
+    <img id="background" alt="背景画像">
+    <img id="character" alt="キャラ画像">
+    <div id="serif" class="serif-text">セリフを読み込み中…</div>
+
+    <script src="main.js"></script>
 </body>
 </html>
