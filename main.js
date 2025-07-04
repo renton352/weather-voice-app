@@ -2,7 +2,7 @@ const params = new URLSearchParams(window.location.search);
 const characterKey = params.get("ch") || "alice";
 
 async function loadCharacter() {
-  const res = await fetch(`./${characterKey}.json`);
+  const res = await fetch(`characters/${characterKey}.json`);
   const data = await res.json();
   return data;
 }
