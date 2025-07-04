@@ -1,7 +1,7 @@
 
 // main.js
 
-const weatherApiKey = 'YOUR_API_KEY_HERE'; // ← ご自身のAPIキーに差し替えてください
+const weatherApiKey = 'a8bc86e4c135f3c44f72bb4b957aa213'; // ← ご自身のAPIキーに差し替えてください
 const weatherApiBase = 'https://api.openweathermap.org/data/2.5/weather';
 const weatherLang = 'ja';
 const weatherUnits = 'metric';
