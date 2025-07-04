@@ -16,16 +16,21 @@ function getWeatherLabel(weatherId) {
 }
 
 function getTimeSegment(date, sunrise, sunset) {
-  const hour = date.getHours();
   const time = date.getTime();
   const sunriseTime = new Date(sunrise * 1000).getTime();
   const sunsetTime = new Date(sunset * 1000).getTime();
 
-  if (time < sunriseTime) return "night";
-  if (time < sunriseTime + 2 * 3600 * 1000) return "sunrise";
-  if (time < sunsetTime - 2 * 3600 * 1000) return "day";
-  if (time < sunsetTime + 2 * 3600 * 1000) return "sunset";
-  return "night";
+  const oneHour = 3600 * 1000;
+
+  if (time >= sunriseTime - oneHour && time <= sunriseTime + oneHour) {
+    return "before_sunrise";
+  } else if (time >= sunriseTime + oneHour && time <= sunsetTime - oneHour) {
+    return "daytime";
+  } else if (time >= sunsetTime - oneHour && time <= sunsetTime + oneHour) {
+    return "sunset";
+  } else {
+    return "night";
+  }
 }
 
 function getDialogueTimeLabel(hour) {
