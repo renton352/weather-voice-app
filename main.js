@@ -2,9 +2,18 @@ const params = new URLSearchParams(window.location.search);
 const characterKey = params.get("ch") || "alice";
 
 async function loadCharacter() {
-  const res = await fetch(`${characterKey}.json`);
+  const res = await fetch(`./${characterKey}.json`);
   const data = await res.json();
   return data;
+}
+
+function getTimeZoneForDialogue(hour) {
+  if (hour < 4) return "midnight";
+  if (hour < 7) return "early_morning";
+  if (hour < 10) return "morning";
+  if (hour < 13) return "noon";
+  if (hour < 17) return "afternoon";
+  return "evening";
 }
 
 function getWeatherLabel(weatherId) {
@@ -14,29 +23,18 @@ function getWeatherLabel(weatherId) {
   return "cloudy";
 }
 
-function getTimeZoneForDialogue(hour) {
-  if (hour < 6) return "midnight";
-  if (hour < 9) return "early_morning";
-  if (hour < 12) return "morning";
-  if (hour < 15) return "noon";
-  if (hour < 18) return "afternoon";
-  return "evening";
-}
+function getTimeZoneForBackground(hour, sunrise, sunset) {
+  const sunriseHour = new Date(sunrise * 1000).getHours();
+  const sunsetHour = new Date(sunset * 1000).getHours();
 
-function getTimeZoneForBackground(now, sunrise, sunset) {
-  const hour = now.getHours();
-  const bufferMs = 60 * 60 * 1000; // 1時間
-  const sunriseTime = new Date(sunrise * 1000);
-  const sunsetTime = new Date(sunset * 1000);
-
-  if (now < new Date(sunriseTime.getTime() + bufferMs)) {
+  if (hour < sunriseHour - 1 || hour >= sunsetHour + 1) {
+    return "night";
+  } else if (hour >= sunriseHour - 1 && hour < sunriseHour + 1) {
     return "before_sunrise";
-  } else if (now < new Date(sunsetTime.getTime() - bufferMs)) {
-    return "daytime";
-  } else if (now < new Date(sunsetTime.getTime() + bufferMs)) {
+  } else if (hour >= sunsetHour - 1 && hour < sunsetHour + 1) {
     return "sunset";
   } else {
-    return "night";
+    return "daytime";
   }
 }
 
@@ -51,32 +49,29 @@ async function main() {
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=ja`
     );
     const weatherData = await weatherRes.json();
-
-    const temp = Math.round(weatherData.main.temp);
+    const temp = weatherData.main.temp;
     const weatherId = weatherData.weather[0].id;
-    const sunrise = weatherData.sys.sunrise;
-    const sunset = weatherData.sys.sunset;
-
+    const weather = getWeatherLabel(weatherId);
     const now = new Date();
     const hour = now.getHours();
-    const dialogueZone = getTimeZoneForDialogue(hour);
-    const backgroundZone = getTimeZoneForBackground(now, sunrise, sunset);
-    const weather = getWeatherLabel(weatherId);
+    const timeZoneDialogue = getTimeZoneForDialogue(hour);
+    const timeZoneBackground = getTimeZoneForBackground(
+      hour,
+      weatherData.sys.sunrise,
+      weatherData.sys.sunset
+    );
 
-    // 背景画像設定
-    const bgPath = `img/bg_${backgroundZone}_${weather}.png`;
-    document.getElementById("background").src = bgPath;
+    const bg = `img/bg_${timeZoneBackground}_${weather}.png`;
+    document.getElementById("background").src = bg;
 
-    // キャラクター画像
     const expression = "normal";
     document.getElementById("character").src = `img/${character.expressions[expression]}`;
 
-    // セリフ表示
-    const lines = character.lines?.[dialogueZone]?.[weather];
-    document.getElementById("dialogue").innerText = lines || "セリフが設定されていません。";
+    const lines = character.lines?.[timeZoneDialogue]?.[weather];
+    const line = lines || "セリフが設定されていません。";
+    document.getElementById("dialogue").innerText = line;
 
-    // 気温表示
-    document.getElementById("tempDisplay").innerText = `現在の気温：${temp}℃`;
+    document.getElementById("tempDisplay").innerText = `現在の気温：${temp.toFixed(1)}℃`;
   });
 }
 
