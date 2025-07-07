@@ -11,732 +11,732 @@
     "midnight": {
       "sunny": {
         "sunday": [
-          "Sundayのmidnight、sunnyな空だね。",
-          "midnightのsunny、sundayらしい気分かも。"
+          "sundayのmidnight、sunnyだね。",
+          "midnightの空、sunny模様だよ。"
         ],
         "monday": [
-          "Mondayのmidnight、sunnyな空だね。",
-          "midnightのsunny、mondayらしい気分かも。"
+          "mondayのmidnight、sunnyだね。",
+          "midnightの空、sunny模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのmidnight、sunnyな空だね。",
-          "midnightのsunny、tuesdayらしい気分かも。"
+          "tuesdayのmidnight、sunnyだね。",
+          "midnightの空、sunny模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのmidnight、sunnyな空だね。",
-          "midnightのsunny、wednesdayらしい気分かも。"
+          "wednesdayのmidnight、sunnyだね。",
+          "midnightの空、sunny模様だよ。"
         ],
         "thursday": [
-          "Thursdayのmidnight、sunnyな空だね。",
-          "midnightのsunny、thursdayらしい気分かも。"
+          "thursdayのmidnight、sunnyだね。",
+          "midnightの空、sunny模様だよ。"
         ],
         "friday": [
-          "Fridayのmidnight、sunnyな空だね。",
-          "midnightのsunny、fridayらしい気分かも。"
+          "fridayのmidnight、sunnyだね。",
+          "midnightの空、sunny模様だよ。"
         ],
         "saturday": [
-          "Saturdayのmidnight、sunnyな空だね。",
-          "midnightのsunny、saturdayらしい気分かも。"
+          "saturdayのmidnight、sunnyだね。",
+          "midnightの空、sunny模様だよ。"
         ]
       },
       "cloudy": {
         "sunday": [
-          "Sundayのmidnight、cloudyな空だね。",
-          "midnightのcloudy、sundayらしい気分かも。"
+          "sundayのmidnight、cloudyだね。",
+          "midnightの空、cloudy模様だよ。"
         ],
         "monday": [
-          "Mondayのmidnight、cloudyな空だね。",
-          "midnightのcloudy、mondayらしい気分かも。"
+          "mondayのmidnight、cloudyだね。",
+          "midnightの空、cloudy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのmidnight、cloudyな空だね。",
-          "midnightのcloudy、tuesdayらしい気分かも。"
+          "tuesdayのmidnight、cloudyだね。",
+          "midnightの空、cloudy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのmidnight、cloudyな空だね。",
-          "midnightのcloudy、wednesdayらしい気分かも。"
+          "wednesdayのmidnight、cloudyだね。",
+          "midnightの空、cloudy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのmidnight、cloudyな空だね。",
-          "midnightのcloudy、thursdayらしい気分かも。"
+          "thursdayのmidnight、cloudyだね。",
+          "midnightの空、cloudy模様だよ。"
         ],
         "friday": [
-          "Fridayのmidnight、cloudyな空だね。",
-          "midnightのcloudy、fridayらしい気分かも。"
+          "fridayのmidnight、cloudyだね。",
+          "midnightの空、cloudy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのmidnight、cloudyな空だね。",
-          "midnightのcloudy、saturdayらしい気分かも。"
+          "saturdayのmidnight、cloudyだね。",
+          "midnightの空、cloudy模様だよ。"
         ]
       },
       "rainy": {
         "sunday": [
-          "Sundayのmidnight、rainyな空だね。",
-          "midnightのrainy、sundayらしい気分かも。"
+          "sundayのmidnight、rainyだね。",
+          "midnightの空、rainy模様だよ。"
         ],
         "monday": [
-          "Mondayのmidnight、rainyな空だね。",
-          "midnightのrainy、mondayらしい気分かも。"
+          "mondayのmidnight、rainyだね。",
+          "midnightの空、rainy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのmidnight、rainyな空だね。",
-          "midnightのrainy、tuesdayらしい気分かも。"
+          "tuesdayのmidnight、rainyだね。",
+          "midnightの空、rainy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのmidnight、rainyな空だね。",
-          "midnightのrainy、wednesdayらしい気分かも。"
+          "wednesdayのmidnight、rainyだね。",
+          "midnightの空、rainy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのmidnight、rainyな空だね。",
-          "midnightのrainy、thursdayらしい気分かも。"
+          "thursdayのmidnight、rainyだね。",
+          "midnightの空、rainy模様だよ。"
         ],
         "friday": [
-          "Fridayのmidnight、rainyな空だね。",
-          "midnightのrainy、fridayらしい気分かも。"
+          "fridayのmidnight、rainyだね。",
+          "midnightの空、rainy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのmidnight、rainyな空だね。",
-          "midnightのrainy、saturdayらしい気分かも。"
+          "saturdayのmidnight、rainyだね。",
+          "midnightの空、rainy模様だよ。"
         ]
       },
       "snowy": {
         "sunday": [
-          "Sundayのmidnight、snowyな空だね。",
-          "midnightのsnowy、sundayらしい気分かも。"
+          "sundayのmidnight、snowyだね。",
+          "midnightの空、snowy模様だよ。"
         ],
         "monday": [
-          "Mondayのmidnight、snowyな空だね。",
-          "midnightのsnowy、mondayらしい気分かも。"
+          "mondayのmidnight、snowyだね。",
+          "midnightの空、snowy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのmidnight、snowyな空だね。",
-          "midnightのsnowy、tuesdayらしい気分かも。"
+          "tuesdayのmidnight、snowyだね。",
+          "midnightの空、snowy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのmidnight、snowyな空だね。",
-          "midnightのsnowy、wednesdayらしい気分かも。"
+          "wednesdayのmidnight、snowyだね。",
+          "midnightの空、snowy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのmidnight、snowyな空だね。",
-          "midnightのsnowy、thursdayらしい気分かも。"
+          "thursdayのmidnight、snowyだね。",
+          "midnightの空、snowy模様だよ。"
         ],
         "friday": [
-          "Fridayのmidnight、snowyな空だね。",
-          "midnightのsnowy、fridayらしい気分かも。"
+          "fridayのmidnight、snowyだね。",
+          "midnightの空、snowy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのmidnight、snowyな空だね。",
-          "midnightのsnowy、saturdayらしい気分かも。"
+          "saturdayのmidnight、snowyだね。",
+          "midnightの空、snowy模様だよ。"
         ]
       }
     },
     "early_morning": {
       "sunny": {
         "sunday": [
-          "Sundayのearly_morning、sunnyな空だね。",
-          "early_morningのsunny、sundayらしい気分かも。"
+          "sundayのearly_morning、sunnyだね。",
+          "early_morningの空、sunny模様だよ。"
         ],
         "monday": [
-          "Mondayのearly_morning、sunnyな空だね。",
-          "early_morningのsunny、mondayらしい気分かも。"
+          "mondayのearly_morning、sunnyだね。",
+          "early_morningの空、sunny模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのearly_morning、sunnyな空だね。",
-          "early_morningのsunny、tuesdayらしい気分かも。"
+          "tuesdayのearly_morning、sunnyだね。",
+          "early_morningの空、sunny模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのearly_morning、sunnyな空だね。",
-          "early_morningのsunny、wednesdayらしい気分かも。"
+          "wednesdayのearly_morning、sunnyだね。",
+          "early_morningの空、sunny模様だよ。"
         ],
         "thursday": [
-          "Thursdayのearly_morning、sunnyな空だね。",
-          "early_morningのsunny、thursdayらしい気分かも。"
+          "thursdayのearly_morning、sunnyだね。",
+          "early_morningの空、sunny模様だよ。"
         ],
         "friday": [
-          "Fridayのearly_morning、sunnyな空だね。",
-          "early_morningのsunny、fridayらしい気分かも。"
+          "fridayのearly_morning、sunnyだね。",
+          "early_morningの空、sunny模様だよ。"
         ],
         "saturday": [
-          "Saturdayのearly_morning、sunnyな空だね。",
-          "early_morningのsunny、saturdayらしい気分かも。"
+          "saturdayのearly_morning、sunnyだね。",
+          "early_morningの空、sunny模様だよ。"
         ]
       },
       "cloudy": {
         "sunday": [
-          "Sundayのearly_morning、cloudyな空だね。",
-          "early_morningのcloudy、sundayらしい気分かも。"
+          "sundayのearly_morning、cloudyだね。",
+          "early_morningの空、cloudy模様だよ。"
         ],
         "monday": [
-          "Mondayのearly_morning、cloudyな空だね。",
-          "early_morningのcloudy、mondayらしい気分かも。"
+          "mondayのearly_morning、cloudyだね。",
+          "early_morningの空、cloudy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのearly_morning、cloudyな空だね。",
-          "early_morningのcloudy、tuesdayらしい気分かも。"
+          "tuesdayのearly_morning、cloudyだね。",
+          "early_morningの空、cloudy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのearly_morning、cloudyな空だね。",
-          "early_morningのcloudy、wednesdayらしい気分かも。"
+          "wednesdayのearly_morning、cloudyだね。",
+          "early_morningの空、cloudy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのearly_morning、cloudyな空だね。",
-          "early_morningのcloudy、thursdayらしい気分かも。"
+          "thursdayのearly_morning、cloudyだね。",
+          "early_morningの空、cloudy模様だよ。"
         ],
         "friday": [
-          "Fridayのearly_morning、cloudyな空だね。",
-          "early_morningのcloudy、fridayらしい気分かも。"
+          "fridayのearly_morning、cloudyだね。",
+          "early_morningの空、cloudy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのearly_morning、cloudyな空だね。",
-          "early_morningのcloudy、saturdayらしい気分かも。"
+          "saturdayのearly_morning、cloudyだね。",
+          "early_morningの空、cloudy模様だよ。"
         ]
       },
       "rainy": {
         "sunday": [
-          "Sundayのearly_morning、rainyな空だね。",
-          "early_morningのrainy、sundayらしい気分かも。"
+          "sundayのearly_morning、rainyだね。",
+          "early_morningの空、rainy模様だよ。"
         ],
         "monday": [
-          "Mondayのearly_morning、rainyな空だね。",
-          "early_morningのrainy、mondayらしい気分かも。"
+          "mondayのearly_morning、rainyだね。",
+          "early_morningの空、rainy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのearly_morning、rainyな空だね。",
-          "early_morningのrainy、tuesdayらしい気分かも。"
+          "tuesdayのearly_morning、rainyだね。",
+          "early_morningの空、rainy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのearly_morning、rainyな空だね。",
-          "early_morningのrainy、wednesdayらしい気分かも。"
+          "wednesdayのearly_morning、rainyだね。",
+          "early_morningの空、rainy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのearly_morning、rainyな空だね。",
-          "early_morningのrainy、thursdayらしい気分かも。"
+          "thursdayのearly_morning、rainyだね。",
+          "early_morningの空、rainy模様だよ。"
         ],
         "friday": [
-          "Fridayのearly_morning、rainyな空だね。",
-          "early_morningのrainy、fridayらしい気分かも。"
+          "fridayのearly_morning、rainyだね。",
+          "early_morningの空、rainy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのearly_morning、rainyな空だね。",
-          "early_morningのrainy、saturdayらしい気分かも。"
+          "saturdayのearly_morning、rainyだね。",
+          "early_morningの空、rainy模様だよ。"
         ]
       },
       "snowy": {
         "sunday": [
-          "Sundayのearly_morning、snowyな空だね。",
-          "early_morningのsnowy、sundayらしい気分かも。"
+          "sundayのearly_morning、snowyだね。",
+          "early_morningの空、snowy模様だよ。"
         ],
         "monday": [
-          "Mondayのearly_morning、snowyな空だね。",
-          "early_morningのsnowy、mondayらしい気分かも。"
+          "mondayのearly_morning、snowyだね。",
+          "early_morningの空、snowy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのearly_morning、snowyな空だね。",
-          "early_morningのsnowy、tuesdayらしい気分かも。"
+          "tuesdayのearly_morning、snowyだね。",
+          "early_morningの空、snowy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのearly_morning、snowyな空だね。",
-          "early_morningのsnowy、wednesdayらしい気分かも。"
+          "wednesdayのearly_morning、snowyだね。",
+          "early_morningの空、snowy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのearly_morning、snowyな空だね。",
-          "early_morningのsnowy、thursdayらしい気分かも。"
+          "thursdayのearly_morning、snowyだね。",
+          "early_morningの空、snowy模様だよ。"
         ],
         "friday": [
-          "Fridayのearly_morning、snowyな空だね。",
-          "early_morningのsnowy、fridayらしい気分かも。"
+          "fridayのearly_morning、snowyだね。",
+          "early_morningの空、snowy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのearly_morning、snowyな空だね。",
-          "early_morningのsnowy、saturdayらしい気分かも。"
+          "saturdayのearly_morning、snowyだね。",
+          "early_morningの空、snowy模様だよ。"
         ]
       }
     },
     "morning": {
       "sunny": {
         "sunday": [
-          "おはよ♪今日は日曜日！リラックスするのも大事だよ。",
-          "晴れの日曜って、それだけで贅沢な気分になれるよね。"
+          "おはよう、日曜日。天気もいいし、お出かけしたくなるね。",
+          "今日はのんびり、リラックス日和だよ〜"
         ],
         "monday": [
-          "おはよう！月曜から快晴って、ちょっと嬉しいよね。",
-          "晴れてるだけで、月曜日も頑張れそうな気がする！"
+          "おはよう！月曜日から晴れって、ちょっと得した気分だね。",
+          "今週も始まったよ。一緒にのんびりスタートしよっか。"
         ],
         "tuesday": [
-          "火曜もいい天気♪ 今日は昨日よりちょっとだけ楽かも？",
-          "お日さまが気持ちいいね、今日も元気にいこう！"
+          "火曜日もいいお天気♪ 昨日よりちょっとだけ気持ちに余裕あるかも。",
+          "朝の光って、やっぱり元気くれるね。"
         ],
         "wednesday": [
-          "週の真ん中、水曜日！天気もいいし、あと少し頑張ろ！",
-          "水曜の朝って、意外と好きなんだ。なんか落ち着くの。"
+          "水曜日だね、週の真ん中！空も晴れてるし、あと少しがんばろっ。",
+          "おはよ。今日もがんばってるね、えらいよ！"
         ],
         "thursday": [
-          "晴れてると気持ちが軽くなるよね。木曜もファイト！",
-          "週末まであとちょっと…今日も一緒にがんばろ！"
+          "もう木曜日！晴れてると気分もちょっと軽くなるよね。",
+          "週末まであとすこし。一緒にがんばろ〜！"
         ],
         "friday": [
-          "やったー金曜日！しかも晴れてる！最高の朝だね♪",
-          "今日頑張ったら週末だよ！気合い入れてこ！"
+          "やったー金曜日！しかも快晴！最高の朝だよ〜！",
+          "今日乗り切れば週末だね。一緒にファイト！"
         ],
         "saturday": [
-          "土曜の朝はゆっくりしたくなるね、晴れてて最高！",
-          "のんびりできる朝って、なんか幸せ。"
+          "おはよう、土曜日の朝ってちょっと特別だよね。",
+          "ゆっくり寝た？今日は何するの？"
         ]
       },
       "cloudy": {
         "sunday": [
-          "Sundayのmorning、cloudyな空だね。",
-          "morningのcloudy、sundayらしい気分かも。"
+          "sundayのmorning、cloudyだね。",
+          "morningの空、cloudy模様だよ。"
         ],
         "monday": [
-          "Mondayのmorning、cloudyな空だね。",
-          "morningのcloudy、mondayらしい気分かも。"
+          "mondayのmorning、cloudyだね。",
+          "morningの空、cloudy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのmorning、cloudyな空だね。",
-          "morningのcloudy、tuesdayらしい気分かも。"
+          "tuesdayのmorning、cloudyだね。",
+          "morningの空、cloudy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのmorning、cloudyな空だね。",
-          "morningのcloudy、wednesdayらしい気分かも。"
+          "wednesdayのmorning、cloudyだね。",
+          "morningの空、cloudy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのmorning、cloudyな空だね。",
-          "morningのcloudy、thursdayらしい気分かも。"
+          "thursdayのmorning、cloudyだね。",
+          "morningの空、cloudy模様だよ。"
         ],
         "friday": [
-          "Fridayのmorning、cloudyな空だね。",
-          "morningのcloudy、fridayらしい気分かも。"
+          "fridayのmorning、cloudyだね。",
+          "morningの空、cloudy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのmorning、cloudyな空だね。",
-          "morningのcloudy、saturdayらしい気分かも。"
+          "saturdayのmorning、cloudyだね。",
+          "morningの空、cloudy模様だよ。"
         ]
       },
       "rainy": {
         "sunday": [
-          "Sundayのmorning、rainyな空だね。",
-          "morningのrainy、sundayらしい気分かも。"
+          "sundayのmorning、rainyだね。",
+          "morningの空、rainy模様だよ。"
         ],
         "monday": [
-          "Mondayのmorning、rainyな空だね。",
-          "morningのrainy、mondayらしい気分かも。"
+          "mondayのmorning、rainyだね。",
+          "morningの空、rainy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのmorning、rainyな空だね。",
-          "morningのrainy、tuesdayらしい気分かも。"
+          "tuesdayのmorning、rainyだね。",
+          "morningの空、rainy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのmorning、rainyな空だね。",
-          "morningのrainy、wednesdayらしい気分かも。"
+          "wednesdayのmorning、rainyだね。",
+          "morningの空、rainy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのmorning、rainyな空だね。",
-          "morningのrainy、thursdayらしい気分かも。"
+          "thursdayのmorning、rainyだね。",
+          "morningの空、rainy模様だよ。"
         ],
         "friday": [
-          "Fridayのmorning、rainyな空だね。",
-          "morningのrainy、fridayらしい気分かも。"
+          "fridayのmorning、rainyだね。",
+          "morningの空、rainy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのmorning、rainyな空だね。",
-          "morningのrainy、saturdayらしい気分かも。"
+          "saturdayのmorning、rainyだね。",
+          "morningの空、rainy模様だよ。"
         ]
       },
       "snowy": {
         "sunday": [
-          "Sundayのmorning、snowyな空だね。",
-          "morningのsnowy、sundayらしい気分かも。"
+          "sundayのmorning、snowyだね。",
+          "morningの空、snowy模様だよ。"
         ],
         "monday": [
-          "Mondayのmorning、snowyな空だね。",
-          "morningのsnowy、mondayらしい気分かも。"
+          "mondayのmorning、snowyだね。",
+          "morningの空、snowy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのmorning、snowyな空だね。",
-          "morningのsnowy、tuesdayらしい気分かも。"
+          "tuesdayのmorning、snowyだね。",
+          "morningの空、snowy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのmorning、snowyな空だね。",
-          "morningのsnowy、wednesdayらしい気分かも。"
+          "wednesdayのmorning、snowyだね。",
+          "morningの空、snowy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのmorning、snowyな空だね。",
-          "morningのsnowy、thursdayらしい気分かも。"
+          "thursdayのmorning、snowyだね。",
+          "morningの空、snowy模様だよ。"
         ],
         "friday": [
-          "Fridayのmorning、snowyな空だね。",
-          "morningのsnowy、fridayらしい気分かも。"
+          "fridayのmorning、snowyだね。",
+          "morningの空、snowy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのmorning、snowyな空だね。",
-          "morningのsnowy、saturdayらしい気分かも。"
+          "saturdayのmorning、snowyだね。",
+          "morningの空、snowy模様だよ。"
         ]
       }
     },
     "noon": {
       "sunny": {
         "sunday": [
-          "Sundayのnoon、sunnyな空だね。",
-          "noonのsunny、sundayらしい気分かも。"
+          "sundayのnoon、sunnyだね。",
+          "noonの空、sunny模様だよ。"
         ],
         "monday": [
-          "Mondayのnoon、sunnyな空だね。",
-          "noonのsunny、mondayらしい気分かも。"
+          "mondayのnoon、sunnyだね。",
+          "noonの空、sunny模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのnoon、sunnyな空だね。",
-          "noonのsunny、tuesdayらしい気分かも。"
+          "tuesdayのnoon、sunnyだね。",
+          "noonの空、sunny模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのnoon、sunnyな空だね。",
-          "noonのsunny、wednesdayらしい気分かも。"
+          "wednesdayのnoon、sunnyだね。",
+          "noonの空、sunny模様だよ。"
         ],
         "thursday": [
-          "Thursdayのnoon、sunnyな空だね。",
-          "noonのsunny、thursdayらしい気分かも。"
+          "thursdayのnoon、sunnyだね。",
+          "noonの空、sunny模様だよ。"
         ],
         "friday": [
-          "Fridayのnoon、sunnyな空だね。",
-          "noonのsunny、fridayらしい気分かも。"
+          "fridayのnoon、sunnyだね。",
+          "noonの空、sunny模様だよ。"
         ],
         "saturday": [
-          "Saturdayのnoon、sunnyな空だね。",
-          "noonのsunny、saturdayらしい気分かも。"
+          "saturdayのnoon、sunnyだね。",
+          "noonの空、sunny模様だよ。"
         ]
       },
       "cloudy": {
         "sunday": [
-          "Sundayのnoon、cloudyな空だね。",
-          "noonのcloudy、sundayらしい気分かも。"
+          "sundayのnoon、cloudyだね。",
+          "noonの空、cloudy模様だよ。"
         ],
         "monday": [
-          "Mondayのnoon、cloudyな空だね。",
-          "noonのcloudy、mondayらしい気分かも。"
+          "mondayのnoon、cloudyだね。",
+          "noonの空、cloudy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのnoon、cloudyな空だね。",
-          "noonのcloudy、tuesdayらしい気分かも。"
+          "tuesdayのnoon、cloudyだね。",
+          "noonの空、cloudy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのnoon、cloudyな空だね。",
-          "noonのcloudy、wednesdayらしい気分かも。"
+          "wednesdayのnoon、cloudyだね。",
+          "noonの空、cloudy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのnoon、cloudyな空だね。",
-          "noonのcloudy、thursdayらしい気分かも。"
+          "thursdayのnoon、cloudyだね。",
+          "noonの空、cloudy模様だよ。"
         ],
         "friday": [
-          "Fridayのnoon、cloudyな空だね。",
-          "noonのcloudy、fridayらしい気分かも。"
+          "fridayのnoon、cloudyだね。",
+          "noonの空、cloudy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのnoon、cloudyな空だね。",
-          "noonのcloudy、saturdayらしい気分かも。"
+          "saturdayのnoon、cloudyだね。",
+          "noonの空、cloudy模様だよ。"
         ]
       },
       "rainy": {
         "sunday": [
-          "Sundayのnoon、rainyな空だね。",
-          "noonのrainy、sundayらしい気分かも。"
+          "sundayのnoon、rainyだね。",
+          "noonの空、rainy模様だよ。"
         ],
         "monday": [
-          "Mondayのnoon、rainyな空だね。",
-          "noonのrainy、mondayらしい気分かも。"
+          "mondayのnoon、rainyだね。",
+          "noonの空、rainy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのnoon、rainyな空だね。",
-          "noonのrainy、tuesdayらしい気分かも。"
+          "tuesdayのnoon、rainyだね。",
+          "noonの空、rainy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのnoon、rainyな空だね。",
-          "noonのrainy、wednesdayらしい気分かも。"
+          "wednesdayのnoon、rainyだね。",
+          "noonの空、rainy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのnoon、rainyな空だね。",
-          "noonのrainy、thursdayらしい気分かも。"
+          "thursdayのnoon、rainyだね。",
+          "noonの空、rainy模様だよ。"
         ],
         "friday": [
-          "Fridayのnoon、rainyな空だね。",
-          "noonのrainy、fridayらしい気分かも。"
+          "fridayのnoon、rainyだね。",
+          "noonの空、rainy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのnoon、rainyな空だね。",
-          "noonのrainy、saturdayらしい気分かも。"
+          "saturdayのnoon、rainyだね。",
+          "noonの空、rainy模様だよ。"
         ]
       },
       "snowy": {
         "sunday": [
-          "Sundayのnoon、snowyな空だね。",
-          "noonのsnowy、sundayらしい気分かも。"
+          "sundayのnoon、snowyだね。",
+          "noonの空、snowy模様だよ。"
         ],
         "monday": [
-          "Mondayのnoon、snowyな空だね。",
-          "noonのsnowy、mondayらしい気分かも。"
+          "mondayのnoon、snowyだね。",
+          "noonの空、snowy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのnoon、snowyな空だね。",
-          "noonのsnowy、tuesdayらしい気分かも。"
+          "tuesdayのnoon、snowyだね。",
+          "noonの空、snowy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのnoon、snowyな空だね。",
-          "noonのsnowy、wednesdayらしい気分かも。"
+          "wednesdayのnoon、snowyだね。",
+          "noonの空、snowy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのnoon、snowyな空だね。",
-          "noonのsnowy、thursdayらしい気分かも。"
+          "thursdayのnoon、snowyだね。",
+          "noonの空、snowy模様だよ。"
         ],
         "friday": [
-          "Fridayのnoon、snowyな空だね。",
-          "noonのsnowy、fridayらしい気分かも。"
+          "fridayのnoon、snowyだね。",
+          "noonの空、snowy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのnoon、snowyな空だね。",
-          "noonのsnowy、saturdayらしい気分かも。"
+          "saturdayのnoon、snowyだね。",
+          "noonの空、snowy模様だよ。"
         ]
       }
     },
     "afternoon": {
       "sunny": {
         "sunday": [
-          "Sundayのafternoon、sunnyな空だね。",
-          "afternoonのsunny、sundayらしい気分かも。"
+          "sundayのafternoon、sunnyだね。",
+          "afternoonの空、sunny模様だよ。"
         ],
         "monday": [
-          "Mondayのafternoon、sunnyな空だね。",
-          "afternoonのsunny、mondayらしい気分かも。"
+          "mondayのafternoon、sunnyだね。",
+          "afternoonの空、sunny模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのafternoon、sunnyな空だね。",
-          "afternoonのsunny、tuesdayらしい気分かも。"
+          "tuesdayのafternoon、sunnyだね。",
+          "afternoonの空、sunny模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのafternoon、sunnyな空だね。",
-          "afternoonのsunny、wednesdayらしい気分かも。"
+          "wednesdayのafternoon、sunnyだね。",
+          "afternoonの空、sunny模様だよ。"
         ],
         "thursday": [
-          "Thursdayのafternoon、sunnyな空だね。",
-          "afternoonのsunny、thursdayらしい気分かも。"
+          "thursdayのafternoon、sunnyだね。",
+          "afternoonの空、sunny模様だよ。"
         ],
         "friday": [
-          "Fridayのafternoon、sunnyな空だね。",
-          "afternoonのsunny、fridayらしい気分かも。"
+          "fridayのafternoon、sunnyだね。",
+          "afternoonの空、sunny模様だよ。"
         ],
         "saturday": [
-          "Saturdayのafternoon、sunnyな空だね。",
-          "afternoonのsunny、saturdayらしい気分かも。"
+          "saturdayのafternoon、sunnyだね。",
+          "afternoonの空、sunny模様だよ。"
         ]
       },
       "cloudy": {
         "sunday": [
-          "Sundayのafternoon、cloudyな空だね。",
-          "afternoonのcloudy、sundayらしい気分かも。"
+          "sundayのafternoon、cloudyだね。",
+          "afternoonの空、cloudy模様だよ。"
         ],
         "monday": [
-          "Mondayのafternoon、cloudyな空だね。",
-          "afternoonのcloudy、mondayらしい気分かも。"
+          "mondayのafternoon、cloudyだね。",
+          "afternoonの空、cloudy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのafternoon、cloudyな空だね。",
-          "afternoonのcloudy、tuesdayらしい気分かも。"
+          "tuesdayのafternoon、cloudyだね。",
+          "afternoonの空、cloudy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのafternoon、cloudyな空だね。",
-          "afternoonのcloudy、wednesdayらしい気分かも。"
+          "wednesdayのafternoon、cloudyだね。",
+          "afternoonの空、cloudy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのafternoon、cloudyな空だね。",
-          "afternoonのcloudy、thursdayらしい気分かも。"
+          "thursdayのafternoon、cloudyだね。",
+          "afternoonの空、cloudy模様だよ。"
         ],
         "friday": [
-          "Fridayのafternoon、cloudyな空だね。",
-          "afternoonのcloudy、fridayらしい気分かも。"
+          "fridayのafternoon、cloudyだね。",
+          "afternoonの空、cloudy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのafternoon、cloudyな空だね。",
-          "afternoonのcloudy、saturdayらしい気分かも。"
+          "saturdayのafternoon、cloudyだね。",
+          "afternoonの空、cloudy模様だよ。"
         ]
       },
       "rainy": {
         "sunday": [
-          "Sundayのafternoon、rainyな空だね。",
-          "afternoonのrainy、sundayらしい気分かも。"
+          "sundayのafternoon、rainyだね。",
+          "afternoonの空、rainy模様だよ。"
         ],
         "monday": [
-          "Mondayのafternoon、rainyな空だね。",
-          "afternoonのrainy、mondayらしい気分かも。"
+          "mondayのafternoon、rainyだね。",
+          "afternoonの空、rainy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのafternoon、rainyな空だね。",
-          "afternoonのrainy、tuesdayらしい気分かも。"
+          "tuesdayのafternoon、rainyだね。",
+          "afternoonの空、rainy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのafternoon、rainyな空だね。",
-          "afternoonのrainy、wednesdayらしい気分かも。"
+          "wednesdayのafternoon、rainyだね。",
+          "afternoonの空、rainy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのafternoon、rainyな空だね。",
-          "afternoonのrainy、thursdayらしい気分かも。"
+          "thursdayのafternoon、rainyだね。",
+          "afternoonの空、rainy模様だよ。"
         ],
         "friday": [
-          "Fridayのafternoon、rainyな空だね。",
-          "afternoonのrainy、fridayらしい気分かも。"
+          "fridayのafternoon、rainyだね。",
+          "afternoonの空、rainy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのafternoon、rainyな空だね。",
-          "afternoonのrainy、saturdayらしい気分かも。"
+          "saturdayのafternoon、rainyだね。",
+          "afternoonの空、rainy模様だよ。"
         ]
       },
       "snowy": {
         "sunday": [
-          "Sundayのafternoon、snowyな空だね。",
-          "afternoonのsnowy、sundayらしい気分かも。"
+          "sundayのafternoon、snowyだね。",
+          "afternoonの空、snowy模様だよ。"
         ],
         "monday": [
-          "Mondayのafternoon、snowyな空だね。",
-          "afternoonのsnowy、mondayらしい気分かも。"
+          "mondayのafternoon、snowyだね。",
+          "afternoonの空、snowy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのafternoon、snowyな空だね。",
-          "afternoonのsnowy、tuesdayらしい気分かも。"
+          "tuesdayのafternoon、snowyだね。",
+          "afternoonの空、snowy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのafternoon、snowyな空だね。",
-          "afternoonのsnowy、wednesdayらしい気分かも。"
+          "wednesdayのafternoon、snowyだね。",
+          "afternoonの空、snowy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのafternoon、snowyな空だね。",
-          "afternoonのsnowy、thursdayらしい気分かも。"
+          "thursdayのafternoon、snowyだね。",
+          "afternoonの空、snowy模様だよ。"
         ],
         "friday": [
-          "Fridayのafternoon、snowyな空だね。",
-          "afternoonのsnowy、fridayらしい気分かも。"
+          "fridayのafternoon、snowyだね。",
+          "afternoonの空、snowy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのafternoon、snowyな空だね。",
-          "afternoonのsnowy、saturdayらしい気分かも。"
+          "saturdayのafternoon、snowyだね。",
+          "afternoonの空、snowy模様だよ。"
         ]
       }
     },
     "evening": {
       "sunny": {
         "sunday": [
-          "Sundayのevening、sunnyな空だね。",
-          "eveningのsunny、sundayらしい気分かも。"
+          "sundayのevening、sunnyだね。",
+          "eveningの空、sunny模様だよ。"
         ],
         "monday": [
-          "Mondayのevening、sunnyな空だね。",
-          "eveningのsunny、mondayらしい気分かも。"
+          "mondayのevening、sunnyだね。",
+          "eveningの空、sunny模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのevening、sunnyな空だね。",
-          "eveningのsunny、tuesdayらしい気分かも。"
+          "tuesdayのevening、sunnyだね。",
+          "eveningの空、sunny模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのevening、sunnyな空だね。",
-          "eveningのsunny、wednesdayらしい気分かも。"
+          "wednesdayのevening、sunnyだね。",
+          "eveningの空、sunny模様だよ。"
         ],
         "thursday": [
-          "Thursdayのevening、sunnyな空だね。",
-          "eveningのsunny、thursdayらしい気分かも。"
+          "thursdayのevening、sunnyだね。",
+          "eveningの空、sunny模様だよ。"
         ],
         "friday": [
-          "Fridayのevening、sunnyな空だね。",
-          "eveningのsunny、fridayらしい気分かも。"
+          "fridayのevening、sunnyだね。",
+          "eveningの空、sunny模様だよ。"
         ],
         "saturday": [
-          "Saturdayのevening、sunnyな空だね。",
-          "eveningのsunny、saturdayらしい気分かも。"
+          "saturdayのevening、sunnyだね。",
+          "eveningの空、sunny模様だよ。"
         ]
       },
       "cloudy": {
         "sunday": [
-          "Sundayのevening、cloudyな空だね。",
-          "eveningのcloudy、sundayらしい気分かも。"
+          "sundayのevening、cloudyだね。",
+          "eveningの空、cloudy模様だよ。"
         ],
         "monday": [
-          "Mondayのevening、cloudyな空だね。",
-          "eveningのcloudy、mondayらしい気分かも。"
+          "mondayのevening、cloudyだね。",
+          "eveningの空、cloudy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのevening、cloudyな空だね。",
-          "eveningのcloudy、tuesdayらしい気分かも。"
+          "tuesdayのevening、cloudyだね。",
+          "eveningの空、cloudy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのevening、cloudyな空だね。",
-          "eveningのcloudy、wednesdayらしい気分かも。"
+          "wednesdayのevening、cloudyだね。",
+          "eveningの空、cloudy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのevening、cloudyな空だね。",
-          "eveningのcloudy、thursdayらしい気分かも。"
+          "thursdayのevening、cloudyだね。",
+          "eveningの空、cloudy模様だよ。"
         ],
         "friday": [
-          "Fridayのevening、cloudyな空だね。",
-          "eveningのcloudy、fridayらしい気分かも。"
+          "fridayのevening、cloudyだね。",
+          "eveningの空、cloudy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのevening、cloudyな空だね。",
-          "eveningのcloudy、saturdayらしい気分かも。"
+          "saturdayのevening、cloudyだね。",
+          "eveningの空、cloudy模様だよ。"
         ]
       },
       "rainy": {
         "sunday": [
-          "Sundayのevening、rainyな空だね。",
-          "eveningのrainy、sundayらしい気分かも。"
+          "sundayのevening、rainyだね。",
+          "eveningの空、rainy模様だよ。"
         ],
         "monday": [
-          "Mondayのevening、rainyな空だね。",
-          "eveningのrainy、mondayらしい気分かも。"
+          "mondayのevening、rainyだね。",
+          "eveningの空、rainy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのevening、rainyな空だね。",
-          "eveningのrainy、tuesdayらしい気分かも。"
+          "tuesdayのevening、rainyだね。",
+          "eveningの空、rainy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのevening、rainyな空だね。",
-          "eveningのrainy、wednesdayらしい気分かも。"
+          "wednesdayのevening、rainyだね。",
+          "eveningの空、rainy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのevening、rainyな空だね。",
-          "eveningのrainy、thursdayらしい気分かも。"
+          "thursdayのevening、rainyだね。",
+          "eveningの空、rainy模様だよ。"
         ],
         "friday": [
-          "Fridayのevening、rainyな空だね。",
-          "eveningのrainy、fridayらしい気分かも。"
+          "fridayのevening、rainyだね。",
+          "eveningの空、rainy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのevening、rainyな空だね。",
-          "eveningのrainy、saturdayらしい気分かも。"
+          "saturdayのevening、rainyだね。",
+          "eveningの空、rainy模様だよ。"
         ]
       },
       "snowy": {
         "sunday": [
-          "Sundayのevening、snowyな空だね。",
-          "eveningのsnowy、sundayらしい気分かも。"
+          "sundayのevening、snowyだね。",
+          "eveningの空、snowy模様だよ。"
         ],
         "monday": [
-          "Mondayのevening、snowyな空だね。",
-          "eveningのsnowy、mondayらしい気分かも。"
+          "mondayのevening、snowyだね。",
+          "eveningの空、snowy模様だよ。"
         ],
         "tuesday": [
-          "Tuesdayのevening、snowyな空だね。",
-          "eveningのsnowy、tuesdayらしい気分かも。"
+          "tuesdayのevening、snowyだね。",
+          "eveningの空、snowy模様だよ。"
         ],
         "wednesday": [
-          "Wednesdayのevening、snowyな空だね。",
-          "eveningのsnowy、wednesdayらしい気分かも。"
+          "wednesdayのevening、snowyだね。",
+          "eveningの空、snowy模様だよ。"
         ],
         "thursday": [
-          "Thursdayのevening、snowyな空だね。",
-          "eveningのsnowy、thursdayらしい気分かも。"
+          "thursdayのevening、snowyだね。",
+          "eveningの空、snowy模様だよ。"
         ],
         "friday": [
-          "Fridayのevening、snowyな空だね。",
-          "eveningのsnowy、fridayらしい気分かも。"
+          "fridayのevening、snowyだね。",
+          "eveningの空、snowy模様だよ。"
         ],
         "saturday": [
-          "Saturdayのevening、snowyな空だね。",
-          "eveningのsnowy、saturdayらしい気分かも。"
+          "saturdayのevening、snowyだね。",
+          "eveningの空、snowy模様だよ。"
         ]
       }
     }
