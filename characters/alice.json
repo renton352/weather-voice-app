@@ -1,150 +1,307 @@
 {
-  "name": "Alice",
-  "expressions": {
-    "midnight": "alice_sleepy.png",
-    "early_morning": "alice_smile.png",
-    "morning": "alice_normal.png",
-    "noon": "alice_happy.png",
-    "afternoon": "alice_think.png",
-    "evening": "alice_relax.png"
+  "morning": {
+    "Monday": {
+      "expression": "happy.png",
+      "lines": [
+        "おはよう！今日もいい一日になりますように。",
+        "朝だよ〜。がんばっていこうね！"
+      ]
+    },
+    "Tuesday": {
+      "expression": "happy.png",
+      "lines": [
+        "おはよう！今日もいい一日になりますように。",
+        "朝だよ〜。がんばっていこうね！"
+      ]
+    },
+    "Wednesday": {
+      "expression": "happy.png",
+      "lines": [
+        "おはよう！今日もいい一日になりますように。",
+        "朝だよ〜。がんばっていこうね！"
+      ]
+    },
+    "Thursday": {
+      "expression": "happy.png",
+      "lines": [
+        "おはよう！今日もいい一日になりますように。",
+        "朝だよ〜。がんばっていこうね！"
+      ]
+    },
+    "Friday": {
+      "expression": "happy.png",
+      "lines": [
+        "おはよう！今日もいい一日になりますように。",
+        "朝だよ〜。がんばっていこうね！"
+      ]
+    },
+    "Saturday": {
+      "expression": "happy.png",
+      "lines": [
+        "おはよう！今日もいい一日になりますように。",
+        "朝だよ〜。がんばっていこうね！"
+      ]
+    },
+    "Sunday": {
+      "expression": "happy.png",
+      "lines": [
+        "おはよう！今日もいい一日になりますように。",
+        "朝だよ〜。がんばっていこうね！"
+      ]
+    }
   },
-  "lines": {
-    "midnight": {
-      "monday": [
-        "もうこんな時間…今日はよく休んでね。（Monday）"
-      ],
-      "tuesday": [
-        "もうこんな時間…今日はよく休んでね。（Tuesday）"
-      ],
-      "wednesday": [
-        "もうこんな時間…今日はよく休んでね。（Wednesday）"
-      ],
-      "thursday": [
-        "もうこんな時間…今日はよく休んでね。（Thursday）"
-      ],
-      "friday": [
-        "もうこんな時間…今日はよく休んでね。（Friday）"
-      ],
-      "saturday": [
-        "もうこんな時間…今日はよく休んでね。（Saturday）"
-      ],
-      "sunday": [
-        "もうこんな時間…今日はよく休んでね。（Sunday）"
+  "noon": {
+    "Monday": {
+      "expression": "normal.png",
+      "lines": [
+        "お昼の時間だね、休憩は大事だよ！",
+        "お腹すいてない？ちゃんと食べてね。"
       ]
     },
-    "early_morning": {
-      "monday": [
-        "おはよう、今日もいい一日になりますように。（Monday）"
-      ],
-      "tuesday": [
-        "おはよう、今日もいい一日になりますように。（Tuesday）"
-      ],
-      "wednesday": [
-        "おはよう、今日もいい一日になりますように。（Wednesday）"
-      ],
-      "thursday": [
-        "おはよう、今日もいい一日になりますように。（Thursday）"
-      ],
-      "friday": [
-        "おはよう、今日もいい一日になりますように。（Friday）"
-      ],
-      "saturday": [
-        "おはよう、今日もいい一日になりますように。（Saturday）"
-      ],
-      "sunday": [
-        "おはよう、今日もいい一日になりますように。（Sunday）"
+    "Tuesday": {
+      "expression": "normal.png",
+      "lines": [
+        "お昼の時間だね、休憩は大事だよ！",
+        "お腹すいてない？ちゃんと食べてね。"
       ]
     },
-    "morning": {
-      "monday": [
-        "朝だよ。準備はできた？（Monday）"
-      ],
-      "tuesday": [
-        "朝だよ。準備はできた？（Tuesday）"
-      ],
-      "wednesday": [
-        "朝だよ。準備はできた？（Wednesday）"
-      ],
-      "thursday": [
-        "朝だよ。準備はできた？（Thursday）"
-      ],
-      "friday": [
-        "朝だよ。準備はできた？（Friday）"
-      ],
-      "saturday": [
-        "朝だよ。準備はできた？（Saturday）"
-      ],
-      "sunday": [
-        "朝だよ。準備はできた？（Sunday）"
+    "Wednesday": {
+      "expression": "normal.png",
+      "lines": [
+        "お昼の時間だね、休憩は大事だよ！",
+        "お腹すいてない？ちゃんと食べてね。"
       ]
     },
-    "noon": {
-      "monday": [
-        "お昼だね。しっかり休憩しよう。（Monday）"
-      ],
-      "tuesday": [
-        "お昼だね。しっかり休憩しよう。（Tuesday）"
-      ],
-      "wednesday": [
-        "お昼だね。しっかり休憩しよう。（Wednesday）"
-      ],
-      "thursday": [
-        "お昼だね。しっかり休憩しよう。（Thursday）"
-      ],
-      "friday": [
-        "お昼だね。しっかり休憩しよう。（Friday）"
-      ],
-      "saturday": [
-        "お昼だね。しっかり休憩しよう。（Saturday）"
-      ],
-      "sunday": [
-        "お昼だね。しっかり休憩しよう。（Sunday）"
+    "Thursday": {
+      "expression": "normal.png",
+      "lines": [
+        "お昼の時間だね、休憩は大事だよ！",
+        "お腹すいてない？ちゃんと食べてね。"
       ]
     },
-    "afternoon": {
-      "monday": [
-        "午後もがんばろう、あと少しだよ！（Monday）"
-      ],
-      "tuesday": [
-        "午後もがんばろう、あと少しだよ！（Tuesday）"
-      ],
-      "wednesday": [
-        "午後もがんばろう、あと少しだよ！（Wednesday）"
-      ],
-      "thursday": [
-        "午後もがんばろう、あと少しだよ！（Thursday）"
-      ],
-      "friday": [
-        "午後もがんばろう、あと少しだよ！（Friday）"
-      ],
-      "saturday": [
-        "午後もがんばろう、あと少しだよ！（Saturday）"
-      ],
-      "sunday": [
-        "午後もがんばろう、あと少しだよ！（Sunday）"
+    "Friday": {
+      "expression": "normal.png",
+      "lines": [
+        "お昼の時間だね、休憩は大事だよ！",
+        "お腹すいてない？ちゃんと食べてね。"
       ]
     },
-    "evening": {
-      "monday": [
-        "今日もおつかれさま。ゆっくり休んでね。（Monday）"
-      ],
-      "tuesday": [
-        "今日もおつかれさま。ゆっくり休んでね。（Tuesday）"
-      ],
-      "wednesday": [
-        "今日もおつかれさま。ゆっくり休んでね。（Wednesday）"
-      ],
-      "thursday": [
-        "今日もおつかれさま。ゆっくり休んでね。（Thursday）"
-      ],
-      "friday": [
-        "今日もおつかれさま。ゆっくり休んでね。（Friday）"
-      ],
-      "saturday": [
-        "今日もおつかれさま。ゆっくり休んでね。（Saturday）"
-      ],
-      "sunday": [
-        "今日もおつかれさま。ゆっくり休んでね。（Sunday）"
+    "Saturday": {
+      "expression": "normal.png",
+      "lines": [
+        "お昼の時間だね、休憩は大事だよ！",
+        "お腹すいてない？ちゃんと食べてね。"
+      ]
+    },
+    "Sunday": {
+      "expression": "normal.png",
+      "lines": [
+        "お昼の時間だね、休憩は大事だよ！",
+        "お腹すいてない？ちゃんと食べてね。"
+      ]
+    }
+  },
+  "afternoon": {
+    "Monday": {
+      "expression": "normal.png",
+      "lines": [
+        "午後もあと少し、もうひとふんばり！",
+        "集中力が切れてきた？深呼吸しよっか。"
+      ]
+    },
+    "Tuesday": {
+      "expression": "normal.png",
+      "lines": [
+        "午後もあと少し、もうひとふんばり！",
+        "集中力が切れてきた？深呼吸しよっか。"
+      ]
+    },
+    "Wednesday": {
+      "expression": "normal.png",
+      "lines": [
+        "午後もあと少し、もうひとふんばり！",
+        "集中力が切れてきた？深呼吸しよっか。"
+      ]
+    },
+    "Thursday": {
+      "expression": "normal.png",
+      "lines": [
+        "午後もあと少し、もうひとふんばり！",
+        "集中力が切れてきた？深呼吸しよっか。"
+      ]
+    },
+    "Friday": {
+      "expression": "normal.png",
+      "lines": [
+        "午後もあと少し、もうひとふんばり！",
+        "集中力が切れてきた？深呼吸しよっか。"
+      ]
+    },
+    "Saturday": {
+      "expression": "normal.png",
+      "lines": [
+        "午後もあと少し、もうひとふんばり！",
+        "集中力が切れてきた？深呼吸しよっか。"
+      ]
+    },
+    "Sunday": {
+      "expression": "normal.png",
+      "lines": [
+        "午後もあと少し、もうひとふんばり！",
+        "集中力が切れてきた？深呼吸しよっか。"
+      ]
+    }
+  },
+  "evening": {
+    "Monday": {
+      "expression": "happy.png",
+      "lines": [
+        "おかえりなさい！今日もお疲れさま。",
+        "ゆっくり過ごしてね。"
+      ]
+    },
+    "Tuesday": {
+      "expression": "happy.png",
+      "lines": [
+        "おかえりなさい！今日もお疲れさま。",
+        "ゆっくり過ごしてね。"
+      ]
+    },
+    "Wednesday": {
+      "expression": "happy.png",
+      "lines": [
+        "おかえりなさい！今日もお疲れさま。",
+        "ゆっくり過ごしてね。"
+      ]
+    },
+    "Thursday": {
+      "expression": "happy.png",
+      "lines": [
+        "おかえりなさい！今日もお疲れさま。",
+        "ゆっくり過ごしてね。"
+      ]
+    },
+    "Friday": {
+      "expression": "happy.png",
+      "lines": [
+        "おかえりなさい！今日もお疲れさま。",
+        "ゆっくり過ごしてね。"
+      ]
+    },
+    "Saturday": {
+      "expression": "happy.png",
+      "lines": [
+        "おかえりなさい！今日もお疲れさま。",
+        "ゆっくり過ごしてね。"
+      ]
+    },
+    "Sunday": {
+      "expression": "happy.png",
+      "lines": [
+        "おかえりなさい！今日もお疲れさま。",
+        "ゆっくり過ごしてね。"
+      ]
+    }
+  },
+  "night": {
+    "Monday": {
+      "expression": "sleepy.png",
+      "lines": [
+        "夜はリラックスの時間だね。",
+        "一日お疲れさま、もう休んでいいよ。"
+      ]
+    },
+    "Tuesday": {
+      "expression": "sleepy.png",
+      "lines": [
+        "夜はリラックスの時間だね。",
+        "一日お疲れさま、もう休んでいいよ。"
+      ]
+    },
+    "Wednesday": {
+      "expression": "sleepy.png",
+      "lines": [
+        "夜はリラックスの時間だね。",
+        "一日お疲れさま、もう休んでいいよ。"
+      ]
+    },
+    "Thursday": {
+      "expression": "sleepy.png",
+      "lines": [
+        "夜はリラックスの時間だね。",
+        "一日お疲れさま、もう休んでいいよ。"
+      ]
+    },
+    "Friday": {
+      "expression": "sleepy.png",
+      "lines": [
+        "夜はリラックスの時間だね。",
+        "一日お疲れさま、もう休んでいいよ。"
+      ]
+    },
+    "Saturday": {
+      "expression": "sleepy.png",
+      "lines": [
+        "夜はリラックスの時間だね。",
+        "一日お疲れさま、もう休んでいいよ。"
+      ]
+    },
+    "Sunday": {
+      "expression": "sleepy.png",
+      "lines": [
+        "夜はリラックスの時間だね。",
+        "一日お疲れさま、もう休んでいいよ。"
+      ]
+    }
+  },
+  "late_night": {
+    "Monday": {
+      "expression": "sad.png",
+      "lines": [
+        "まだ起きてるの？無理しないでね。",
+        "夜更かしはお肌に悪いよ〜。"
+      ]
+    },
+    "Tuesday": {
+      "expression": "sad.png",
+      "lines": [
+        "まだ起きてるの？無理しないでね。",
+        "夜更かしはお肌に悪いよ〜。"
+      ]
+    },
+    "Wednesday": {
+      "expression": "sad.png",
+      "lines": [
+        "まだ起きてるの？無理しないでね。",
+        "夜更かしはお肌に悪いよ〜。"
+      ]
+    },
+    "Thursday": {
+      "expression": "sad.png",
+      "lines": [
+        "まだ起きてるの？無理しないでね。",
+        "夜更かしはお肌に悪いよ〜。"
+      ]
+    },
+    "Friday": {
+      "expression": "sad.png",
+      "lines": [
+        "まだ起きてるの？無理しないでね。",
+        "夜更かしはお肌に悪いよ〜。"
+      ]
+    },
+    "Saturday": {
+      "expression": "sad.png",
+      "lines": [
+        "まだ起きてるの？無理しないでね。",
+        "夜更かしはお肌に悪いよ〜。"
+      ]
+    },
+    "Sunday": {
+      "expression": "sad.png",
+      "lines": [
+        "まだ起きてるの？無理しないでね。",
+        "夜更かしはお肌に悪いよ〜。"
       ]
     }
   }
