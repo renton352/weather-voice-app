@@ -1,18 +1,17 @@
 {
+  "name": "Alice",
   "expressions": {
-    "midnight": "alice_troubled.png",
-    "early_morning": "alice_normal.png",
-    "morning": "alice_happy.png",
-    "noon": "alice_happy.png",
-    "afternoon": "alice_normal.png",
-    "evening": "alice_troubled.png"
+    "normal": "img/alice_normal.png",
+    "happy": "img/alice_happy.png",
+    "surprised": "img/alice_surprised.png",
+    "troubled": "img/alice_troubled.png"
   },
   "lines": {
-    "midnight": "こんな時間まで起きてるの？",
-    "early_morning": "おはよう！今日も頑張ろう！",
-    "morning": "朝の準備はできた？",
-    "noon": "お昼だよ、一息つこう♪",
-    "afternoon": "午後も集中していこうね",
-    "evening": "お疲れさま。ゆっくり休んでね"
+    "midnight": ["おやすみなさい。いい夢を見てね。"],
+    "early_morning": ["おはよう！今日も一日がんばろう！"],
+    "morning": ["いい天気だね、一緒に出かけたいな。"],
+    "noon": ["お昼ごはんはもう食べた？"],
+    "afternoon": ["午後もがんばっていこうね！"],
+    "evening": ["今日もおつかれさま。ゆっくり休んでね。"]
   }
 }
