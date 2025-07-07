@@ -1,3 +1,4 @@
+
 const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
 const characterName = new URLSearchParams(window.location.search).get("ch") || "alice";
 
@@ -36,6 +37,10 @@ function normalizeWeather(w) {
   return "sunny";
 }
 
+function getWeekdayName(date) {
+  return ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"][date.getDay()];
+}
+
 async function main() {
   const res = await fetch(`characters/${characterName}.json`);
   const character = await res.json();
@@ -46,22 +51,25 @@ async function main() {
   const now = new Date();
   const hour = now.getHours();
   const timeSlotA = getTimeSlotA(hour);
+  const weekday = getWeekdayName(now);
 
   const currentTime = Math.floor(Date.now() / 1000);
-  const sunrise = weatherData.sunrise;
-  const sunset = weatherData.sunset;
-  const timeSlotB = getTimeSlotB(currentTime, sunrise, sunset);
-
+  const timeSlotB = getTimeSlotB(currentTime, weatherData.sunrise, weatherData.sunset);
   const weather = normalizeWeather(weatherData.weather);
+
+  // 背景設定
   const bgPath = `img/bg_${timeSlotB}_${weather}.png`;
   document.getElementById("background").src = bgPath;
 
-  const expression = "normal";
-  document.getElementById("character").src = character.expressions[expression];
+  // キャラ表情設定
+  const expression = character.expressions[timeSlotA] || "alice_normal.png";
+  document.getElementById("character").src = `img/${expression}`;
 
-  const lines = character.lines[timeSlotA];
+  // セリフ選択
+  const lines = character.lines?.[timeSlotA]?.[weather]?.[weekday];
   if (lines && lines.length > 0) {
-    document.getElementById("line").textContent = lines[Math.floor(Math.random() * lines.length)];
+    const randomLine = lines[Math.floor(Math.random() * lines.length)];
+    document.getElementById("line").textContent = randomLine;
   } else {
     document.getElementById("line").textContent = "セリフが見つかりません";
   }
