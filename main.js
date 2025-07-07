@@ -1,4 +1,3 @@
-
 console.log("✅ main.js 読み込み完了");
 
 const characterKey = new URLSearchParams(window.location.search).get("ch") || "alice";
@@ -49,9 +48,10 @@ const displayContent = async () => {
     const timeSlotB = getTimeSlotB(hour, sunrise, sunset);
 
     const bgFileName = `bg_${timeSlotB}_sunny.png`; // 天気要素は背景だけに使用
-    document.getElementById("background").src = `./img/${bgFileName}`;
+    document.body.style.backgroundImage = `url('./img/${bgFileName}')`;
+
     document.getElementById("character").src = `./img/${character.expressions.default}`;
-    document.getElementById("temp").textContent = `体感温度: ${feelsLike.toFixed(1)}℃`;
+    document.getElementById("temp").textContent = `${feelsLike.toFixed(1)}℃`;
 
     const tempCategory = getTempCategory(feelsLike);
     const lineOptions = character.lines[tempCategory]?.[timeSlotA]?.[day];
