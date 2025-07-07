@@ -1,504 +1,182 @@
-{
-  "midnight": [
-    {
-      "line": "夜中なのに…寒すぎるよ…ブルブル…",
-      "expression": "normal"
-    },
-    {
-      "line": "今日の寒さは本当に厳しいね。風邪ひかないでね",
-      "expression": "happy"
-    },
-    {
-      "line": "夜中は空気が冷たくてキリッとするね",
-      "expression": "normal"
-    },
-    {
-      "line": "ちょっと寒いけど、あなたは元気そうだね",
-      "expression": "happy"
-    },
-    {
-      "line": "夜中のこの涼しさ、なんだか落ち着くね",
-      "expression": "normal"
-    },
-    {
-      "line": "今日は薄手の上着がぴったりかも",
-      "expression": "happy"
-    },
-    {
-      "line": "夜中は過ごしやすくて最高だね！",
-      "expression": "normal"
-    },
-    {
-      "line": "このくらいの気温がずっと続けばいいのに〜",
-      "expression": "happy"
-    },
-    {
-      "line": "夜中からもう暑いね〜！水分補給忘れずに",
-      "expression": "normal"
-    },
-    {
-      "line": "この暑さ…アイス食べたい気分だな",
-      "expression": "happy"
-    }
-  ],
-  "early_morning": [
-    {
-      "line": "早朝なのに…寒すぎるよ…ブルブル…",
-      "expression": "normal"
-    },
-    {
-      "line": "今日の寒さは本当に厳しいね。風邪ひかないでね",
-      "expression": "happy"
-    },
-    {
-      "line": "早朝は空気が冷たくてキリッとするね",
-      "expression": "normal"
-    },
-    {
-      "line": "ちょっと寒いけど、あなたは元気そうだね",
-      "expression": "happy"
-    },
-    {
-      "line": "早朝のこの涼しさ、なんだか落ち着くね",
-      "expression": "normal"
-    },
-    {
-      "line": "今日は薄手の上着がぴったりかも",
-      "expression": "happy"
-    },
-    {
-      "line": "早朝は過ごしやすくて最高だね！",
-      "expression": "normal"
-    },
-    {
-      "line": "このくらいの気温がずっと続けばいいのに〜",
-      "expression": "happy"
-    },
-    {
-      "line": "早朝からもう暑いね〜！水分補給忘れずに",
-      "expression": "normal"
-    },
-    {
-      "line": "この暑さ…アイス食べたい気分だな",
-      "expression": "happy"
-    }
-  ],
-  "morning": [
-    {
-      "line": "朝なのに…寒すぎるよ…ブルブル…",
-      "expression": "normal"
-    },
-    {
-      "line": "今日の寒さは本当に厳しいね。風邪ひかないでね",
-      "expression": "happy"
-    },
-    {
-      "line": "朝は空気が冷たくてキリッとするね",
-      "expression": "normal"
-    },
-    {
-      "line": "ちょっと寒いけど、あなたは元気そうだね",
-      "expression": "happy"
-    },
-    {
-      "line": "朝のこの涼しさ、なんだか落ち着くね",
-      "expression": "normal"
-    },
-    {
-      "line": "今日は薄手の上着がぴったりかも",
-      "expression": "happy"
-    },
-    {
-      "line": "朝は過ごしやすくて最高だね！",
-      "expression": "normal"
-    },
-    {
-      "line": "このくらいの気温がずっと続けばいいのに〜",
-      "expression": "happy"
-    },
-    {
-      "line": "朝からもう暑いね〜！水分補給忘れずに",
-      "expression": "normal"
-    },
-    {
-      "line": "この暑さ…アイス食べたい気分だな",
-      "expression": "happy"
-    }
-  ],
-  "noon": [
-    {
-      "line": "昼なのに…寒すぎるよ…ブルブル…",
-      "expression": "normal"
-    },
-    {
-      "line": "今日の寒さは本当に厳しいね。風邪ひかないでね",
-      "expression": "happy"
-    },
-    {
-      "line": "昼は空気が冷たくてキリッとするね",
-      "expression": "normal"
-    },
-    {
-      "line": "ちょっと寒いけど、あなたは元気そうだね",
-      "expression": "happy"
-    },
-    {
-      "line": "昼のこの涼しさ、なんだか落ち着くね",
-      "expression": "normal"
-    },
-    {
-      "line": "今日は薄手の上着がぴったりかも",
-      "expression": "happy"
-    },
-    {
-      "line": "昼は過ごしやすくて最高だね！",
-      "expression": "normal"
-    },
-    {
-      "line": "このくらいの気温がずっと続けばいいのに〜",
-      "expression": "happy"
-    },
-    {
-      "line": "昼からもう暑いね〜！水分補給忘れずに",
-      "expression": "normal"
-    },
-    {
-      "line": "この暑さ…アイス食べたい気分だな",
-      "expression": "happy"
-    }
-  ],
-  "afternoon": [
-    {
-      "line": "午後なのに…寒すぎるよ…ブルブル…",
-      "expression": "normal"
-    },
-    {
-      "line": "今日の寒さは本当に厳しいね。風邪ひかないでね",
-      "expression": "happy"
-    },
-    {
-      "line": "午後は空気が冷たくてキリッとするね",
-      "expression": "normal"
-    },
-    {
-      "line": "ちょっと寒いけど、あなたは元気そうだね",
-      "expression": "happy"
-    },
-    {
-      "line": "午後のこの涼しさ、なんだか落ち着くね",
-      "expression": "normal"
-    },
-    {
-      "line": "今日は薄手の上着がぴったりかも",
-      "expression": "happy"
-    },
-    {
-      "line": "午後は過ごしやすくて最高だね！",
-      "expression": "normal"
-    },
-    {
-      "line": "このくらいの気温がずっと続けばいいのに〜",
-      "expression": "happy"
-    },
-    {
-      "line": "午後からもう暑いね〜！水分補給忘れずに",
-      "expression": "normal"
-    },
-    {
-      "line": "この暑さ…アイス食べたい気分だな",
-      "expression": "happy"
-    }
-  ],
-  "evening": [
-    {
-      "line": "夜なのに…寒すぎるよ…ブルブル…",
-      "expression": "normal"
-    },
-    {
-      "line": "今日の寒さは本当に厳しいね。風邪ひかないでね",
-      "expression": "happy"
-    },
-    {
-      "line": "夜は空気が冷たくてキリッとするね",
-      "expression": "normal"
-    },
-    {
-      "line": "ちょっと寒いけど、あなたは元気そうだね",
-      "expression": "happy"
-    },
-    {
-      "line": "夜のこの涼しさ、なんだか落ち着くね",
-      "expression": "normal"
-    },
-    {
-      "line": "今日は薄手の上着がぴったりかも",
-      "expression": "happy"
-    },
-    {
-      "line": "夜は過ごしやすくて最高だね！",
-      "expression": "normal"
-    },
-    {
-      "line": "このくらいの気温がずっと続けばいいのに〜",
-      "expression": "happy"
-    },
-    {
-      "line": "夜からもう暑いね〜！水分補給忘れずに",
-      "expression": "normal"
-    },
-    {
-      "line": "この暑さ…アイス食べたい気分だな",
-      "expression": "happy"
-    }
-  ],
-  "freezing": [
-    {
-      "line": "夜中なのに…寒すぎるよ…ブルブル…",
-      "expression": "normal"
-    },
-    {
-      "line": "今日の寒さは本当に厳しいね。風邪ひかないでね",
-      "expression": "happy"
-    },
-    {
-      "line": "早朝なのに…寒すぎるよ…ブルブル…",
-      "expression": "normal"
-    },
-    {
-      "line": "今日の寒さは本当に厳しいね。風邪ひかないでね",
-      "expression": "happy"
-    },
-    {
-      "line": "朝なのに…寒すぎるよ…ブルブル…",
-      "expression": "normal"
-    },
-    {
-      "line": "今日の寒さは本当に厳しいね。風邪ひかないでね",
-      "expression": "happy"
-    },
-    {
-      "line": "昼なのに…寒すぎるよ…ブルブル…",
-      "expression": "normal"
-    },
-    {
-      "line": "今日の寒さは本当に厳しいね。風邪ひかないでね",
-      "expression": "happy"
-    },
-    {
-      "line": "午後なのに…寒すぎるよ…ブルブル…",
-      "expression": "normal"
-    },
-    {
-      "line": "今日の寒さは本当に厳しいね。風邪ひかないでね",
-      "expression": "happy"
-    },
-    {
-      "line": "夜なのに…寒すぎるよ…ブルブル…",
-      "expression": "normal"
-    },
-    {
-      "line": "今日の寒さは本当に厳しいね。風邪ひかないでね",
-      "expression": "happy"
-    }
-  ],
-  "cold": [
-    {
-      "line": "夜中は空気が冷たくてキリッとするね",
-      "expression": "normal"
-    },
-    {
-      "line": "ちょっと寒いけど、あなたは元気そうだね",
-      "expression": "happy"
-    },
-    {
-      "line": "早朝は空気が冷たくてキリッとするね",
-      "expression": "normal"
-    },
-    {
-      "line": "ちょっと寒いけど、あなたは元気そうだね",
-      "expression": "happy"
-    },
-    {
-      "line": "朝は空気が冷たくてキリッとするね",
-      "expression": "normal"
-    },
-    {
-      "line": "ちょっと寒いけど、あなたは元気そうだね",
-      "expression": "happy"
-    },
-    {
-      "line": "昼は空気が冷たくてキリッとするね",
-      "expression": "normal"
-    },
-    {
-      "line": "ちょっと寒いけど、あなたは元気そうだね",
-      "expression": "happy"
-    },
-    {
-      "line": "午後は空気が冷たくてキリッとするね",
-      "expression": "normal"
-    },
-    {
-      "line": "ちょっと寒いけど、あなたは元気そうだね",
-      "expression": "happy"
-    },
-    {
-      "line": "夜は空気が冷たくてキリッとするね",
-      "expression": "normal"
-    },
-    {
-      "line": "ちょっと寒いけど、あなたは元気そうだね",
-      "expression": "happy"
-    }
-  ],
-  "cool": [
-    {
-      "line": "夜中のこの涼しさ、なんだか落ち着くね",
-      "expression": "normal"
-    },
-    {
-      "line": "今日は薄手の上着がぴったりかも",
-      "expression": "happy"
-    },
-    {
-      "line": "早朝のこの涼しさ、なんだか落ち着くね",
-      "expression": "normal"
-    },
-    {
-      "line": "今日は薄手の上着がぴったりかも",
-      "expression": "happy"
-    },
-    {
-      "line": "朝のこの涼しさ、なんだか落ち着くね",
-      "expression": "normal"
-    },
-    {
-      "line": "今日は薄手の上着がぴったりかも",
-      "expression": "happy"
-    },
-    {
-      "line": "昼のこの涼しさ、なんだか落ち着くね",
-      "expression": "normal"
-    },
-    {
-      "line": "今日は薄手の上着がぴったりかも",
-      "expression": "happy"
-    },
-    {
-      "line": "午後のこの涼しさ、なんだか落ち着くね",
-      "expression": "normal"
-    },
-    {
-      "line": "今日は薄手の上着がぴったりかも",
-      "expression": "happy"
-    },
-    {
-      "line": "夜のこの涼しさ、なんだか落ち着くね",
-      "expression": "normal"
-    },
-    {
-      "line": "今日は薄手の上着がぴったりかも",
-      "expression": "happy"
-    }
-  ],
-  "comfortable": [
-    {
-      "line": "夜中は過ごしやすくて最高だね！",
-      "expression": "normal"
-    },
-    {
-      "line": "このくらいの気温がずっと続けばいいのに〜",
-      "expression": "happy"
-    },
-    {
-      "line": "早朝は過ごしやすくて最高だね！",
-      "expression": "normal"
-    },
-    {
-      "line": "このくらいの気温がずっと続けばいいのに〜",
-      "expression": "happy"
-    },
-    {
-      "line": "朝は過ごしやすくて最高だね！",
-      "expression": "normal"
-    },
-    {
-      "line": "このくらいの気温がずっと続けばいいのに〜",
-      "expression": "happy"
-    },
-    {
-      "line": "昼は過ごしやすくて最高だね！",
-      "expression": "normal"
-    },
-    {
-      "line": "このくらいの気温がずっと続けばいいのに〜",
-      "expression": "happy"
-    },
-    {
-      "line": "午後は過ごしやすくて最高だね！",
-      "expression": "normal"
-    },
-    {
-      "line": "このくらいの気温がずっと続けばいいのに〜",
-      "expression": "happy"
-    },
-    {
-      "line": "夜は過ごしやすくて最高だね！",
-      "expression": "normal"
-    },
-    {
-      "line": "このくらいの気温がずっと続けばいいのに〜",
-      "expression": "happy"
-    }
-  ],
-  "hot": [
-    {
-      "line": "夜中からもう暑いね〜！水分補給忘れずに",
-      "expression": "normal"
-    },
-    {
-      "line": "この暑さ…アイス食べたい気分だな",
-      "expression": "happy"
-    },
-    {
-      "line": "早朝からもう暑いね〜！水分補給忘れずに",
-      "expression": "normal"
-    },
-    {
-      "line": "この暑さ…アイス食べたい気分だな",
-      "expression": "happy"
-    },
-    {
-      "line": "朝からもう暑いね〜！水分補給忘れずに",
-      "expression": "normal"
-    },
-    {
-      "line": "この暑さ…アイス食べたい気分だな",
-      "expression": "happy"
-    },
-    {
-      "line": "昼からもう暑いね〜！水分補給忘れずに",
-      "expression": "normal"
-    },
-    {
-      "line": "この暑さ…アイス食べたい気分だな",
-      "expression": "happy"
-    },
-    {
-      "line": "午後からもう暑いね〜！水分補給忘れずに",
-      "expression": "normal"
-    },
-    {
-      "line": "この暑さ…アイス食べたい気分だな",
-      "expression": "happy"
-    },
-    {
-      "line": "夜からもう暑いね〜！水分補給忘れずに",
-      "expression": "normal"
-    },
-    {
-      "line": "この暑さ…アイス食べたい気分だな",
-      "expression": "happy"
-    }
-  ]
-}
+[
+  {
+    "time": "midnight",
+    "temperature": "freezing",
+    "line": "こんな寒い夜中に起きてるの？ちゃんと暖かくしてね。",
+    "expression": "normal"
+  },
+  {
+    "time": "early_morning",
+    "temperature": "freezing",
+    "line": "寒すぎてお布団から出られないよ…",
+    "expression": "happy"
+  },
+  {
+    "time": "morning",
+    "temperature": "freezing",
+    "line": "おはよう…さむっ！今日もがんばろうね。",
+    "expression": "surprised"
+  },
+  {
+    "time": "noon",
+    "temperature": "freezing",
+    "line": "お昼なのにまだ寒いね。体調崩さないでね。",
+    "expression": "troubled"
+  },
+  {
+    "time": "afternoon",
+    "temperature": "freezing",
+    "line": "寒さで手がかじかんじゃう…休憩しよっか。",
+    "expression": "normal"
+  },
+  {
+    "time": "evening",
+    "temperature": "freezing",
+    "line": "夜は一段と冷えるね。ゆっくり温まってね。",
+    "expression": "happy"
+  },
+  {
+    "time": "midnight",
+    "temperature": "cold",
+    "line": "寒い夜だね、ちゃんと眠れてる？",
+    "expression": "surprised"
+  },
+  {
+    "time": "early_morning",
+    "temperature": "cold",
+    "line": "ちょっと寒い朝だけど、顔洗ってシャキッとね！",
+    "expression": "troubled"
+  },
+  {
+    "time": "morning",
+    "temperature": "cold",
+    "line": "朝の空気が冷たいね。今日も応援してるよ。",
+    "expression": "normal"
+  },
+  {
+    "time": "noon",
+    "temperature": "cold",
+    "line": "日差しはあるけど空気はまだ冷たいね。",
+    "expression": "happy"
+  },
+  {
+    "time": "afternoon",
+    "temperature": "cold",
+    "line": "冷たい風が吹いてるから、羽織るもの忘れずに。",
+    "expression": "surprised"
+  },
+  {
+    "time": "evening",
+    "temperature": "cold",
+    "line": "寒い夜はあったかい飲み物が恋しいね。",
+    "expression": "troubled"
+  },
+  {
+    "time": "midnight",
+    "temperature": "cool",
+    "line": "今夜は涼しくて寝やすいね。",
+    "expression": "normal"
+  },
+  {
+    "time": "early_morning",
+    "temperature": "cool",
+    "line": "ひんやりした朝、気持ちいいね。",
+    "expression": "happy"
+  },
+  {
+    "time": "morning",
+    "temperature": "cool",
+    "line": "少し肌寒いけど、すっきりした朝だね。",
+    "expression": "surprised"
+  },
+  {
+    "time": "noon",
+    "temperature": "cool",
+    "line": "過ごしやすいお昼だね。一緒に頑張ろう！",
+    "expression": "troubled"
+  },
+  {
+    "time": "afternoon",
+    "temperature": "cool",
+    "line": "この涼しさ、なんだか落ち着くね。",
+    "expression": "normal"
+  },
+  {
+    "time": "evening",
+    "temperature": "cool",
+    "line": "気持ちいい夜だね。ゆっくりしてね。",
+    "expression": "happy"
+  },
+  {
+    "time": "midnight",
+    "temperature": "comfortable",
+    "line": "ちょうどいい気温だね。よく眠れそう。",
+    "expression": "surprised"
+  },
+  {
+    "time": "early_morning",
+    "temperature": "comfortable",
+    "line": "気持ちのいい朝！今日も素敵な1日になりそう！",
+    "expression": "troubled"
+  },
+  {
+    "time": "morning",
+    "temperature": "comfortable",
+    "line": "快適な朝だと、やる気も出るよね！",
+    "expression": "normal"
+  },
+  {
+    "time": "noon",
+    "temperature": "comfortable",
+    "line": "お昼もいい感じの気温だね。お弁当食べたいな〜",
+    "expression": "happy"
+  },
+  {
+    "time": "afternoon",
+    "temperature": "comfortable",
+    "line": "この時間は外でお散歩も気持ちよさそう。",
+    "expression": "surprised"
+  },
+  {
+    "time": "evening",
+    "temperature": "comfortable",
+    "line": "夜風が心地いいね。いい夢見てね。",
+    "expression": "troubled"
+  },
+  {
+    "time": "midnight",
+    "temperature": "hot",
+    "line": "暑くて寝苦しいかも。水分とってね。",
+    "expression": "normal"
+  },
+  {
+    "time": "early_morning",
+    "temperature": "hot",
+    "line": "朝から暑いと一日が大変そうだね。",
+    "expression": "happy"
+  },
+  {
+    "time": "morning",
+    "temperature": "hot",
+    "line": "もう暑いね。帽子と飲み物、忘れずに！",
+    "expression": "surprised"
+  },
+  {
+    "time": "noon",
+    "temperature": "hot",
+    "line": "お昼は特に熱中症に気をつけてね。",
+    "expression": "troubled"
+  },
+  {
+    "time": "afternoon",
+    "temperature": "hot",
+    "line": "この暑さ…ちょっと休憩しよう？",
+    "expression": "normal"
+  },
+  {
+    "time": "evening",
+    "temperature": "hot",
+    "line": "夜になってもまだ暑いね。お風呂でスッキリしよ！",
+    "expression": "happy"
+  }
+]
