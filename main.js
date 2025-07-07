@@ -1,22 +1,33 @@
 console.log("✅ main.js 読み込み完了");
 
-const characterKey = new URLSearchParams(window.location.search).get("ch") || "alice";
-const weatherApiKey = "your_api_key_here"; // ご自身のAPIキーに置き換えてください
+const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
+const characterName = new URLSearchParams(window.location.search).get("ch") || "alice";
 
-const getTimeSlotA = (hour) => {
-  if (hour < 6) return "late_night";
-  if (hour < 10) return "morning";
-  if (hour < 14) return "noon";
+async function fetchWeather() {
+  const response = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=35.6895&lon=139.6917&units=metric&lang=ja&appid=" + apiKey);
+  const data = await response.json();
+  return {
+    temp: Math.round(data.main.temp),
+    weather: data.weather[0].main.toLowerCase(),
+    sunrise: data.sys.sunrise,
+    sunset: data.sys.sunset
+  };
+}
+
+function getTimeSlotA(hour) {
+  if (hour < 6) return "midnight";
+  if (hour < 9) return "early_morning";
+  if (hour < 12) return "morning";
+  if (hour < 15) return "noon";
   if (hour < 18) return "afternoon";
-  if (hour < 22) return "evening";
-  return "night";
+  return "evening";
 };
 
-const getTimeSlotB = (hour, sunrise, sunset) => {
-  if (hour < sunrise) return "before_sunrise";
-  if (hour < sunset - 1) return "daytime";
-  if (hour < sunset + 1) return "sunset";
-  return "night";
+  const oneHour = 60 * 60;
+  if (now < sunrise - oneHour || now > sunset + oneHour) return "night";
+  if (now >= sunrise - oneHour && now <= sunrise + oneHour) return "before_sunrise";
+  if (now >= sunset - oneHour && now <= sunset + oneHour) return "sunset";
+  return "daytime";
 };
 
 const getTempCategory = (feelsLike) => {
