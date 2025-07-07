@@ -38,22 +38,26 @@
       padding: 5px 10px;
       border-radius: 10px;
       z-index: 2;
-    }
-    #line {
-      position: fixed;
-      bottom: 12%;
-      left: 5%;
-      width: 90%;
-      font-size: 1em;
-      color: #fff;
-      background-color: rgba(0, 0, 0, 0.65);
-      padding: 16px;
-      border-radius: 14px;
-      text-align: center;
-      text-shadow: 2px 2px 4px #000;
-      font-weight: bold;
-      z-index: 3;
-      line-height: 1.5em;
+  #line {
+    position: fixed;
+    bottom: 12%;
+    left: 5%;
+    width: 90%;
+    font-size: 1em;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.65);
+    padding: 16px;
+    border-radius: 14px;
+    text-align: center;
+    text-shadow: 2px 2px 4px #000;
+    font-weight: bold;
+    z-index: 3;
+    line-height: 1.5em;
+    white-space: pre-wrap;         /* 改行・折返しを許可 */
+    word-break: break-word;        /* 長すぎる単語も折返し */
+    max-height: 35%;               /* 高さ制限（オーバーフロー防止） */
+    overflow-y: auto;              /* はみ出たときだけスクロール */
+    box-sizing: border-box;
     }
   </style>
 </head>
