@@ -46,13 +46,14 @@ async function main() {
   const now = new Date();
   const hour = now.getHours();
   const timeSlotA = getTimeSlotA(hour);
+  console.log("現在の時刻:", hour, "→ timeSlotA:", timeSlotA);
 
   const currentTime = Math.floor(Date.now() / 1000);
   const sunrise = weatherData.sunrise;
   const sunset = weatherData.sunset;
   const timeSlotB = getTimeSlotB(currentTime, sunrise, sunset);
-
   const weather = normalizeWeather(weatherData.weather);
+
   const bgPath = `img/bg_${timeSlotB}_${weather}.png`;
   document.getElementById("background").src = bgPath;
 
@@ -60,9 +61,14 @@ async function main() {
   document.getElementById("character").src = character.expressions[expression];
 
   const lines = character.lines[timeSlotA];
+  console.log("セリフ候補:", lines);
+
   if (lines && lines.length > 0) {
-    document.getElementById("line").textContent = lines[Math.floor(Math.random() * lines.length)];
+    const chosen = lines[Math.floor(Math.random() * lines.length)];
+    console.log("表示セリフ:", chosen);
+    document.getElementById("line").textContent = chosen;
   } else {
+    console.warn("セリフが見つかりません（timeSlotA: " + timeSlotA + "）");
     document.getElementById("line").textContent = "セリフが見つかりません";
   }
 }
