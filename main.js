@@ -1,93 +1,93 @@
-// main.js
 
-const weatherApiKey = 'a8bc86e4c135f3c44f72bb4b957aa213';
-const weatherApiBase = 'https://api.openweathermap.org/data/2.5/weather';
-const weatherLang = 'ja';
-const weatherUnits = 'metric';
+const params = new URLSearchParams(window.location.search);
+const characterName = params.get('ch') || 'alice';
 
-const characterName = new URLSearchParams(window.location.search).get('ch') || 'alice';
-const characterJsonPath = `./characters/${characterName}.json`;
-
-let character = null;
-
-function getTimePeriodA(date) {
-  const hour = date.getHours();
-  if (hour < 6) return 'midnight';
-  if (hour < 9) return 'early_morning';
-  if (hour < 12) return 'morning';
-  if (hour < 15) return 'noon';
-  if (hour < 18) return 'afternoon';
-  return 'evening';
+async function loadCharacterData(name) {
+    try {
+        const response = await fetch(`characters/${name}.json`);
+        return await response.json();
+    } catch (error) {
+        console.error("キャラクターJSONの読み込みに失敗しました:", error);
+        document.getElementById('message').textContent = "キャラクターデータを取得できませんでした。";
+        throw error;
+    }
 }
 
-function getTimePeriodB(date, sunrise, sunset) {
-  const now = date.getTime() / 1000;
-  if (now < sunrise - 3600 || now >= sunset + 3600) {
+function getTimeSegmentA(date) {
+    const hour = date.getHours();
+    if (hour < 6) return 'midnight';
+    if (hour < 9) return 'early_morning';
+    if (hour < 12) return 'morning';
+    if (hour < 15) return 'noon';
+    if (hour < 18) return 'afternoon';
+    return 'evening';
+}
+
+function getTimeSegmentB(date, sunrise, sunset) {
+    const hour = date.getHours();
+    const time = date.getTime();
+    const beforeSunrise = new Date(sunrise.getTime() - 60 * 60 * 1000);
+    const afterSunrise = new Date(sunrise.getTime() + 60 * 60 * 1000);
+    const beforeSunset = new Date(sunset.getTime() - 60 * 60 * 1000);
+    const afterSunset = new Date(sunset.getTime() + 60 * 60 * 1000);
+
+    if (time >= beforeSunrise.getTime() && time <= afterSunrise.getTime()) return 'before_sunrise';
+    if (time > afterSunrise.getTime() && time < beforeSunset.getTime()) return 'daytime';
+    if (time >= beforeSunset.getTime() && time <= afterSunset.getTime()) return 'sunset';
     return 'night';
-  } else if (now >= sunrise - 3600 && now < sunrise + 3600) {
-    return 'before_sunrise';
-  } else if (now >= sunrise + 3600 && now < sunset - 3600) {
-    return 'daytime';
-  } else {
-    return 'sunset';
-  }
 }
 
-function getWeatherCategory(weatherId) {
-  if (weatherId >= 200 && weatherId < 600) return 'rainy';
-  if (weatherId >= 600 && weatherId < 700) return 'snowy';
-  if (weatherId === 800) return 'sunny';
-  return 'cloudy';
+const weatherImageMap = {
+    Clear: 'sunny',
+    Clouds: 'cloudy',
+    Rain: 'rainy',
+    Drizzle: 'rainy',
+    Thunderstorm: 'rainy',
+    Snow: 'snowy'
+};
+
+async function loadWeatherData() {
+    try {
+        const lat = 35.8572;
+        const lon = 139.4196;
+        const apiKey = 'a8bc86e4c135f3c44f72bb4b957aa213';
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
+        return await response.json();
+    } catch (error) {
+        console.error("天気データの取得に失敗:", error);
+        document.getElementById('message').textContent = "天気情報の取得に失敗しました。";
+        throw error;
+    }
 }
 
-async function loadCharacter() {
-  const response = await fetch(characterJsonPath);
-  character = await response.json();
+function getTodayEntry(data, segment) {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const day = days[new Date().getDay()];
+    return data[segment][day] || null;
 }
 
-async function fetchWeather() {
-  const pos = await new Promise((resolve, reject) => {
-    navigator.geolocation.getCurrentPosition(resolve, reject);
-  });
+async function main() {
+    const character = await loadCharacterData(characterName);
+    const weather = await loadWeatherData();
 
-  const lat = pos.coords.latitude;
-  const lon = pos.coords.longitude;
-
-  const url = `${weatherApiBase}?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=${weatherUnits}&lang=${weatherLang}`;
-  const response = await fetch(url);
-  return await response.json();
-}
-
-function updateView(timePeriodA, timePeriodB, weatherCategory, temperature) {
-  const entry = character.dialogues.find(d =>
-    d.time === timePeriodA && (d.weather === weatherCategory || d.weather === 'any')
-  );
-
-  const imagePath = `./img/${characterName}_${entry.expression}.png`;
-  const backgroundPath = `./img/bg_${timePeriodB}_${weatherCategory}.png`;
-
-  document.getElementById('character').src = imagePath;
-  document.getElementById('background').src = backgroundPath;
-  document.getElementById('message').textContent = entry.message;
-  document.getElementById('temperature').textContent = `${Math.round(temperature)}℃`;
-}
-
-async function initialize() {
-  try {
-    await loadCharacter();
-    const weather = await fetchWeather();
-
+    const weatherMain = weather.weather[0].main;
+    const weatherType = weatherImageMap[weatherMain] || 'sunny';
+    const temp = weather.main.temp;
+    const sunrise = new Date(weather.sys.sunrise * 1000);
+    const sunset = new Date(weather.sys.sunset * 1000);
     const now = new Date();
-    const timePeriodA = getTimePeriodA(now);
-    const timePeriodB = getTimePeriodB(now, weather.sys.sunrise, weather.sys.sunset);
-    const weatherCategory = getWeatherCategory(weather.weather[0].id);
-    const temperature = weather.main.temp;
 
-    updateView(timePeriodA, timePeriodB, weatherCategory, temperature);
-  } catch (error) {
-    console.error('初期化エラー:', error);
-    document.getElementById('message').textContent = 'データを取得できませんでした。';
-  }
+    const timeSegmentA = getTimeSegmentA(now);
+    const timeSegmentB = getTimeSegmentB(now, sunrise, sunset);
+
+    const entry = getTodayEntry(character, timeSegmentA);
+
+    const bgFilename = `bg_${timeSegmentB}_${weatherType}.png`;
+
+    document.getElementById('background').src = `img/${bgFilename}`;
+    document.getElementById('character').src = `img/${character.expressions[entry.expression]}`;
+    document.getElementById('message').textContent = entry.text;
+    document.getElementById('temp').textContent = `${Math.round(temp)}°C`;
 }
 
-window.addEventListener('load', initialize);
+main();
