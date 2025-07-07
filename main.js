@@ -64,8 +64,8 @@ async function main() {
   const expression = character.expressions[timeSlotA] || "alice_normal.png";
   document.getElementById("character").src = `img/${expression}`;
 
-  // ✅ セリフ選択（時間帯A＋天気＋曜日）
-  const lines = character.lines?.[timeSlotA]?.[weather]?.[weekday];
+  // ✅ セリフ選択（時間帯A＋曜日）
+  const lines = character.lines?.[timeSlotA]?.[weekday];
   const message = (lines && lines.length > 0)
     ? lines[Math.floor(Math.random() * lines.length)]
     : "セリフが見つかりません";
