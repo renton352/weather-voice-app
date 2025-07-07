@@ -6,7 +6,9 @@ async function fetchWeather() {
   const data = await response.json();
   return {
     temp: Math.round(data.main.temp),
-    weather: data.weather[0].main.toLowerCase()
+    weather: data.weather[0].main.toLowerCase(),
+    sunrise: data.sys.sunrise,
+    sunset: data.sys.sunset
   };
 }
 
@@ -39,22 +41,22 @@ async function main() {
   const character = await res.json();
 
   const weatherData = await fetchWeather();
-
   document.getElementById("temp").textContent = `気温: ${weatherData.temp}℃`;
 
   const now = new Date();
   const hour = now.getHours();
   const timeSlotA = getTimeSlotA(hour);
 
-  const oneCall = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=35.6895&lon=139.6917&appid=${apiKey}`);
-  const oneCallData = await oneCall.json();
-  const timeSlotB = getTimeSlotB(Math.floor(Date.now() / 1000), oneCallData.current.sunrise, oneCallData.current.sunset);
-  const weather = normalizeWeather(weatherData.weather);
+  const currentTime = Math.floor(Date.now() / 1000);
+  const sunrise = weatherData.sunrise;
+  const sunset = weatherData.sunset;
+  const timeSlotB = getTimeSlotB(currentTime, sunrise, sunset);
 
+  const weather = normalizeWeather(weatherData.weather);
   const bgPath = `img/bg_${timeSlotB}_${weather}.png`;
   document.getElementById("background").src = bgPath;
 
-  const expression = "normal"; // 表情切替は後日拡張可能
+  const expression = "normal";
   document.getElementById("character").src = character.expressions[expression];
 
   const lines = character.lines[timeSlotA];
