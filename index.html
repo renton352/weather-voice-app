@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -10,8 +9,8 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
-      font-family: 'Arial', sans-serif;
-      background-color: black;
+      font-family: sans-serif;
+      position: relative;
     }
     #background {
       position: fixed;
@@ -25,43 +24,53 @@
     #character {
       position: fixed;
       bottom: 0;
-      right: 0;
-      height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 80vh;
       z-index: 1;
     }
-    #line {
-      position: fixed;
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.6);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-size: 1.4rem;
-      max-width: 80%;
-      z-index: 2;
-      text-align: center;
-    }
-    #temp {
-      position: fixed;
-      top: 5%;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 5px 15px;
-      border-radius: 15px;
-      font-size: 1.2rem;
-      z-index: 2;
-    }
+#temp {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.2em;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 5px 10px;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+#line {
+  position: fixed;
+  bottom: 3%;
+  left: 50%;  /* ← 中央に修正 */
+  transform: translateX(-50%);
+  max-width: 90%;
+  width: 80%;
+  font-size: 1em;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 16px 20px;
+  border-radius: 14px;
+  text-align: center;
+  text-shadow: 2px 2px 4px #000;
+  font-weight: bold;
+  z-index: 3;
+  line-height: 1.6em;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 35%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
   </style>
 </head>
 <body>
-  <img id="background" src="" alt="" />
+  <img id="background" src="" alt="background" />
   <img id="character" src="" alt="character" />
   <div id="temp">気温: --℃</div>
   <div id="line">セリフを読み込み中...</div>
+
   <script src="main.js"></script>
 </body>
 </html>

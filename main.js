@@ -1,5 +1,3 @@
-console.log("✅ main.js 読み込み完了");
-
 const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
 const characterName = new URLSearchParams(window.location.search).get("ch") || "alice";
 
@@ -21,68 +19,67 @@ function getTimeSlotA(hour) {
   if (hour < 15) return "noon";
   if (hour < 18) return "afternoon";
   return "evening";
-};
+}
 
+function getTimeSlotB(now, sunrise, sunset) {
   const oneHour = 60 * 60;
   if (now < sunrise - oneHour || now > sunset + oneHour) return "night";
   if (now >= sunrise - oneHour && now <= sunrise + oneHour) return "before_sunrise";
   if (now >= sunset - oneHour && now <= sunset + oneHour) return "sunset";
   return "daytime";
-};
+}
 
-const getTempCategory = (feelsLike) => {
-  if (feelsLike < 0) return "freezing";
-  if (feelsLike < 10) return "cold";
-  if (feelsLike < 20) return "cool";
-  if (feelsLike < 28) return "warm";
-  return "hot";
-};
+function normalizeWeather(w) {
+  if (w.includes("rain")) return "rainy";
+  if (w.includes("cloud")) return "cloudy";
+  if (w.includes("snow")) return "snowy";
+  return "sunny";
+}
 
-const loadCharacterData = async () => {
-  const res = await fetch(`./data/${characterKey}.json`);
-  return res.json();
-};
+function getWeekdayName(date) {
+  return ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][date.getDay()];
+}
 
-const displayContent = async () => {
-  try {
-    const character = await loadCharacterData();
-    const now = new Date();
-    const hour = now.getHours();
-    const day = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"][now.getDay()];
-    const timeSlotA = getTimeSlotA(hour);
+async function main() {
+  const res = await fetch(`characters/${characterName}.json`);
+  const character = await res.json();
 
-    const weatherRes = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=35.6895&lon=139.6917&appid=${weatherApiKey}&units=metric`);
-    const weatherData = await weatherRes.json();
-    const feelsLike = weatherData.main.feels_like;
-    const sunrise = new Date(weatherData.sys.sunrise * 1000).getHours();
-    const sunset = new Date(weatherData.sys.sunset * 1000).getHours();
-    const timeSlotB = getTimeSlotB(hour, sunrise, sunset);
+  const weatherData = await fetchWeather();
+  document.getElementById("temp").textContent = `気温: ${weatherData.temp}℃`;
 
-    const bgFileName = `bg_${timeSlotB}_sunny.png`; // 天気要素は背景だけに使用
-    document.body.style.backgroundImage = `url('./img/${bgFileName}')`;
+  const now = new Date();
+  const hour = now.getHours();
+  const timeSlotA = getTimeSlotA(hour);
+  const weekday = getWeekdayName(now);
 
-    document.getElementById("character").src = `./img/${character.expressions.default}`;
-    document.getElementById("temp").textContent = `${feelsLike.toFixed(1)}℃`;
+  const currentTime = Math.floor(Date.now() / 1000);
+  const sunrise = weatherData.sunrise;
+  const sunset = weatherData.sunset;
+  const timeSlotB = getTimeSlotB(currentTime, sunrise, sunset);
 
-    const tempCategory = getTempCategory(feelsLike);
-    const lineOptions = character.lines[tempCategory]?.[timeSlotA]?.[day];
+  const weather = normalizeWeather(weatherData.weather);
+  const bgPath = `img/bg_${timeSlotB}_${weather}.png`;
+  document.getElementById("background").src = bgPath;
 
-    console.log("🕐 時間帯A:", timeSlotA);
-    console.log("🕒 時間帯B:", timeSlotB);
-    console.log("📅 曜日:", day);
-    console.log("🌡️ 体感温度:", feelsLike, "=>", tempCategory);
-    console.log("🗨️ 候補セリフ:", lineOptions);
+  const expression = character.expressions[timeSlotA] || "alice_normal.png";
+  document.getElementById("character").src = `img/${expression}`;
 
-    if (lineOptions && lineOptions.length > 0) {
-      const selectedLine = lineOptions[Math.floor(Math.random() * lineOptions.length)];
-      document.getElementById("line").textContent = selectedLine;
-    } else {
-      document.getElementById("line").textContent = "セリフが見つかりません";
-    }
-  } catch (error) {
-    console.error("エラー:", error);
-    document.getElementById("line").textContent = "情報の取得に失敗しました";
-  }
-};
+  // ✅ セリフ選択（時間帯A＋天気＋曜日）
+  const lines = character.lines?.[timeSlotA]?.[weather]?.[weekday];
+  const message = (lines && lines.length > 0)
+    ? lines[Math.floor(Math.random() * lines.length)]
+    : "セリフが見つかりません";
 
-window.addEventListener("DOMContentLoaded", displayContent);
+  document.getElementById("line").textContent = message;
+
+  // ✅ デバッグ表示
+  console.log("[DEBUG] timeSlotA:", timeSlotA);
+  console.log("[DEBUG] timeSlotB:", timeSlotB);
+  console.log("[DEBUG] weekday:", weekday);
+  console.log("[DEBUG] weather:", weather);
+  console.log("[DEBUG] line:", message);
+  console.log("[DEBUG] background:", bgPath);
+  console.log("[DEBUG] expression:", expression);
+}
+
+main();
