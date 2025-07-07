@@ -38,23 +38,29 @@
       padding: 5px 10px;
       border-radius: 10px;
       z-index: 2;
-    }
-    #line {
-      position: fixed;
-      bottom: 12%;
-      left: 5%;
-      width: 90%;
-      font-size: 2em;
-      color: #fff;
-      background-color: rgba(0, 0, 0, 0.65);
-      padding: 16px;
-      border-radius: 14px;
-      text-align: center;
-      text-shadow: 2px 2px 4px #000;
-      font-weight: bold;
-      z-index: 3;
-      line-height: 1.5em;
-    }
+	#line {
+	  position: fixed;
+	  bottom: 5%;
+	  left: 50%;
+	  transform: translateX(-50%);
+	  max-width: 80%;  /* ← ここを90%→80%に調整 */
+	  width: 80%;      /* ← 必要であればこちらも追加 */
+	  font-size: 1em;
+	  color: #fff;
+	  background-color: rgba(0, 0, 0, 0.65);
+	  padding: 16px 20px;
+	  border-radius: 14px;
+	  text-align: center;
+	  text-shadow: 2px 2px 4px #000;
+	  font-weight: bold;
+	  z-index: 3;
+	  line-height: 1.6em;
+	  white-space: pre-wrap;
+	  word-break: break-word;
+	  max-height: 35%;
+	  overflow-y: auto;
+	  box-sizing: border-box;
+	}
   </style>
 </head>
 <body>
