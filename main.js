@@ -1,3 +1,5 @@
+console.log("✅ main.js は読み込まれています");
+
 const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
 const characterName = new URLSearchParams(window.location.search).get("ch") || "alice";
 
@@ -37,10 +39,15 @@ function normalizeWeather(w) {
 }
 
 async function main() {
+  console.log("▶ main() が呼び出されました");
+
   const res = await fetch(`characters/${characterName}.json`);
   const character = await res.json();
+  console.log("キャラクター情報:", character);
 
   const weatherData = await fetchWeather();
+  console.log("天気データ:", weatherData);
+
   document.getElementById("temp").textContent = `気温: ${weatherData.temp}℃`;
 
   const now = new Date();
@@ -52,12 +59,15 @@ async function main() {
   const sunrise = weatherData.sunrise;
   const sunset = weatherData.sunset;
   const timeSlotB = getTimeSlotB(currentTime, sunrise, sunset);
-  const weather = normalizeWeather(weatherData.weather);
+  console.log("timeSlotB:", timeSlotB);
 
+  const weather = normalizeWeather(weatherData.weather);
   const bgPath = `img/bg_${timeSlotB}_${weather}.png`;
+  console.log("背景画像パス:", bgPath);
   document.getElementById("background").src = bgPath;
 
   const expression = "normal";
+  console.log("キャラクター表情パス:", character.expressions[expression]);
   document.getElementById("character").src = character.expressions[expression];
 
   const lines = character.lines[timeSlotA];
