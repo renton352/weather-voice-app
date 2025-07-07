@@ -1,182 +1,254 @@
 [
   {
+    "weekday": "monday",
     "time": "midnight",
-    "temperature": "freezing",
-    "line": "こんな寒い夜中に起きてるの？ちゃんと暖かくしてね。",
+    "line": "新しい週が始まる前に、しっかり休もうね。",
     "expression": "normal"
   },
   {
+    "weekday": "monday",
     "time": "early_morning",
-    "temperature": "freezing",
-    "line": "寒すぎてお布団から出られないよ…",
+    "line": "月曜日の朝、一緒にがんばろう！",
     "expression": "happy"
   },
   {
+    "weekday": "monday",
     "time": "morning",
-    "temperature": "freezing",
-    "line": "おはよう…さむっ！今日もがんばろうね。",
+    "line": "今週も元気にスタートしよう♪",
     "expression": "surprised"
   },
   {
+    "weekday": "monday",
     "time": "noon",
-    "temperature": "freezing",
-    "line": "お昼なのにまだ寒いね。体調崩さないでね。",
+    "line": "少し休憩して午後も頑張っていこう！",
     "expression": "troubled"
   },
   {
+    "weekday": "monday",
     "time": "afternoon",
-    "temperature": "freezing",
-    "line": "寒さで手がかじかんじゃう…休憩しよっか。",
+    "line": "もう少しで1日目が終わるよ。がんばったね。",
     "expression": "normal"
   },
   {
+    "weekday": "monday",
     "time": "evening",
-    "temperature": "freezing",
-    "line": "夜は一段と冷えるね。ゆっくり温まってね。",
+    "line": "月曜日お疲れさま。ゆっくり休んでね。",
     "expression": "happy"
   },
   {
+    "weekday": "tuesday",
     "time": "midnight",
-    "temperature": "cold",
-    "line": "寒い夜だね、ちゃんと眠れてる？",
+    "line": "火曜日ももうすぐ。おやすみなさい。",
     "expression": "surprised"
   },
   {
+    "weekday": "tuesday",
     "time": "early_morning",
-    "temperature": "cold",
-    "line": "ちょっと寒い朝だけど、顔洗ってシャキッとね！",
+    "line": "おはよう！今日は火曜日、昨日より慣れてきたかな？",
     "expression": "troubled"
   },
   {
+    "weekday": "tuesday",
     "time": "morning",
-    "temperature": "cold",
-    "line": "朝の空気が冷たいね。今日も応援してるよ。",
+    "line": "朝の空気、気持ちいいね。",
     "expression": "normal"
   },
   {
+    "weekday": "tuesday",
     "time": "noon",
-    "temperature": "cold",
-    "line": "日差しはあるけど空気はまだ冷たいね。",
+    "line": "お昼ごはん、しっかり食べた？",
     "expression": "happy"
   },
   {
+    "weekday": "tuesday",
     "time": "afternoon",
-    "temperature": "cold",
-    "line": "冷たい風が吹いてるから、羽織るもの忘れずに。",
+    "line": "集中力が切れてない？ちょっと深呼吸しよ。",
     "expression": "surprised"
   },
   {
+    "weekday": "tuesday",
     "time": "evening",
-    "temperature": "cold",
-    "line": "寒い夜はあったかい飲み物が恋しいね。",
+    "line": "火曜日もおつかれさま。夜は自分の時間を楽しんでね。",
     "expression": "troubled"
   },
   {
+    "weekday": "wednesday",
     "time": "midnight",
-    "temperature": "cool",
-    "line": "今夜は涼しくて寝やすいね。",
+    "line": "週の真ん中、水曜日に向けてそろそろ寝よっか。",
     "expression": "normal"
   },
   {
+    "weekday": "wednesday",
     "time": "early_morning",
-    "temperature": "cool",
-    "line": "ひんやりした朝、気持ちいいね。",
+    "line": "水曜日の朝、週の折り返しだよ〜！",
     "expression": "happy"
   },
   {
+    "weekday": "wednesday",
     "time": "morning",
-    "temperature": "cool",
-    "line": "少し肌寒いけど、すっきりした朝だね。",
+    "line": "今日はちょっと肩の力を抜いてみるのもアリかも。",
     "expression": "surprised"
   },
   {
+    "weekday": "wednesday",
     "time": "noon",
-    "temperature": "cool",
-    "line": "過ごしやすいお昼だね。一緒に頑張ろう！",
+    "line": "週の真ん中、無理しすぎないでね。",
     "expression": "troubled"
   },
   {
+    "weekday": "wednesday",
     "time": "afternoon",
-    "temperature": "cool",
-    "line": "この涼しさ、なんだか落ち着くね。",
+    "line": "眠くなる時間だね…少し体を動かしてみよう♪",
     "expression": "normal"
   },
   {
+    "weekday": "wednesday",
     "time": "evening",
-    "temperature": "cool",
-    "line": "気持ちいい夜だね。ゆっくりしてね。",
+    "line": "もう水曜日の夜、早いね〜。あと半分だよ。",
     "expression": "happy"
   },
   {
+    "weekday": "thursday",
     "time": "midnight",
-    "temperature": "comfortable",
-    "line": "ちょうどいい気温だね。よく眠れそう。",
+    "line": "木曜日も頑張ったね。ゆっくり寝てね。",
     "expression": "surprised"
   },
   {
+    "weekday": "thursday",
     "time": "early_morning",
-    "temperature": "comfortable",
-    "line": "気持ちのいい朝！今日も素敵な1日になりそう！",
+    "line": "週も後半戦だよ！木曜の朝、がんばろっ♪",
     "expression": "troubled"
   },
   {
+    "weekday": "thursday",
     "time": "morning",
-    "temperature": "comfortable",
-    "line": "快適な朝だと、やる気も出るよね！",
+    "line": "そろそろ週末の予定が気になってきた？",
     "expression": "normal"
   },
   {
+    "weekday": "thursday",
     "time": "noon",
-    "temperature": "comfortable",
-    "line": "お昼もいい感じの気温だね。お弁当食べたいな〜",
+    "line": "お昼だ〜、あと少しで午後もがんばろう！",
     "expression": "happy"
   },
   {
+    "weekday": "thursday",
     "time": "afternoon",
-    "temperature": "comfortable",
-    "line": "この時間は外でお散歩も気持ちよさそう。",
+    "line": "ふぅ、午後の時間ってなんだか長く感じるね。",
     "expression": "surprised"
   },
   {
+    "weekday": "thursday",
     "time": "evening",
-    "temperature": "comfortable",
-    "line": "夜風が心地いいね。いい夢見てね。",
+    "line": "明日で1週間も終わり！今夜はのんびりしてね。",
     "expression": "troubled"
   },
   {
+    "weekday": "friday",
     "time": "midnight",
-    "temperature": "hot",
-    "line": "暑くて寝苦しいかも。水分とってね。",
+    "line": "金曜日に向けてもう一眠りしよう〜。",
     "expression": "normal"
   },
   {
+    "weekday": "friday",
     "time": "early_morning",
-    "temperature": "hot",
-    "line": "朝から暑いと一日が大変そうだね。",
+    "line": "金曜の朝ってちょっとウキウキするね♪",
     "expression": "happy"
   },
   {
+    "weekday": "friday",
     "time": "morning",
-    "temperature": "hot",
-    "line": "もう暑いね。帽子と飲み物、忘れずに！",
+    "line": "週のラストスパート！一緒に駆け抜けよ〜！",
     "expression": "surprised"
   },
   {
+    "weekday": "friday",
     "time": "noon",
-    "temperature": "hot",
-    "line": "お昼は特に熱中症に気をつけてね。",
+    "line": "あと半日で週末！お昼ごはんも美味しくね。",
     "expression": "troubled"
   },
   {
+    "weekday": "friday",
     "time": "afternoon",
-    "temperature": "hot",
-    "line": "この暑さ…ちょっと休憩しよう？",
+    "line": "夕方まであとひと踏ん張り！",
     "expression": "normal"
   },
   {
+    "weekday": "friday",
     "time": "evening",
-    "temperature": "hot",
-    "line": "夜になってもまだ暑いね。お風呂でスッキリしよ！",
+    "line": "一週間おつかれさま！今日はごほうび時間にしよう。",
+    "expression": "happy"
+  },
+  {
+    "weekday": "saturday",
+    "time": "midnight",
+    "line": "土曜日の夜ふかし、ほどほどにね〜。",
+    "expression": "surprised"
+  },
+  {
+    "weekday": "saturday",
+    "time": "early_morning",
+    "line": "おはよう、今日は週末だよ！",
+    "expression": "troubled"
+  },
+  {
+    "weekday": "saturday",
+    "time": "morning",
+    "line": "ちょっとゆっくりめの朝も悪くないよね。",
+    "expression": "normal"
+  },
+  {
+    "weekday": "saturday",
+    "time": "noon",
+    "line": "お昼から何する？自由な時間を楽しんで♪",
+    "expression": "happy"
+  },
+  {
+    "weekday": "saturday",
+    "time": "afternoon",
+    "line": "週末の午後、気ままに過ごそう〜！",
+    "expression": "surprised"
+  },
+  {
+    "weekday": "saturday",
+    "time": "evening",
+    "line": "土曜の夜って、なんだか特別な気がするね。",
+    "expression": "troubled"
+  },
+  {
+    "weekday": "sunday",
+    "time": "midnight",
+    "line": "もう日曜日。寝る準備しよっか。",
+    "expression": "normal"
+  },
+  {
+    "weekday": "sunday",
+    "time": "early_morning",
+    "line": "日曜の朝って少しさみしいけど、今日もいい日になるよ♪",
+    "expression": "happy"
+  },
+  {
+    "weekday": "sunday",
+    "time": "morning",
+    "line": "リラックスしてゆっくり過ごそう。",
+    "expression": "surprised"
+  },
+  {
+    "weekday": "sunday",
+    "time": "noon",
+    "line": "午後からは何しようか？まったりするのもいいね。",
+    "expression": "troubled"
+  },
+  {
+    "weekday": "sunday",
+    "time": "afternoon",
+    "line": "そろそろ月曜の準備しないと…でも焦らなくて大丈夫。",
+    "expression": "normal"
+  },
+  {
+    "weekday": "sunday",
+    "time": "evening",
+    "line": "日曜の夜、次の週も一緒に乗り切ろう！",
     "expression": "happy"
   }
 ]
