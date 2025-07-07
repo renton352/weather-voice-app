@@ -36,6 +36,10 @@ function normalizeWeather(w) {
   return "sunny";
 }
 
+function getWeekdayName(date) {
+  return ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][date.getDay()];
+}
+
 async function main() {
   const res = await fetch(`characters/${characterName}.json`);
   const character = await res.json();
@@ -46,6 +50,7 @@ async function main() {
   const now = new Date();
   const hour = now.getHours();
   const timeSlotA = getTimeSlotA(hour);
+  const weekday = getWeekdayName(now);
 
   const currentTime = Math.floor(Date.now() / 1000);
   const sunrise = weatherData.sunrise;
@@ -56,15 +61,25 @@ async function main() {
   const bgPath = `img/bg_${timeSlotB}_${weather}.png`;
   document.getElementById("background").src = bgPath;
 
-  const expression = "normal";
-  document.getElementById("character").src = character.expressions[expression];
+  const expression = character.expressions[timeSlotA] || "alice_normal.png";
+  document.getElementById("character").src = `img/${expression}`;
 
-  const lines = character.lines[timeSlotA];
-  if (lines && lines.length > 0) {
-    document.getElementById("line").textContent = lines[Math.floor(Math.random() * lines.length)];
-  } else {
-    document.getElementById("line").textContent = "セリフが見つかりません";
-  }
+  // ✅ セリフ選択（時間帯A＋天気＋曜日）
+  const lines = character.lines?.[timeSlotA]?.[weather]?.[weekday];
+  const message = (lines && lines.length > 0)
+    ? lines[Math.floor(Math.random() * lines.length)]
+    : "セリフが見つかりません";
+
+  document.getElementById("line").textContent = message;
+
+  // ✅ デバッグ表示
+  console.log("[DEBUG] timeSlotA:", timeSlotA);
+  console.log("[DEBUG] timeSlotB:", timeSlotB);
+  console.log("[DEBUG] weekday:", weekday);
+  console.log("[DEBUG] weather:", weather);
+  console.log("[DEBUG] line:", message);
+  console.log("[DEBUG] background:", bgPath);
+  console.log("[DEBUG] expression:", expression);
 }
 
 main();
