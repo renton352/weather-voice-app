@@ -1,49 +1,49 @@
 {
   "morning": {
     "Monday": {
-      "expression": "alice_happy.png",
+      "expression": "alice_normal.png",
       "lines": [
         "うぅ…月曜だね。でも一緒にがんばろ？",
         "月曜日ってちょっと憂鬱…だけどリズム整えていこう！"
       ]
     },
     "Tuesday": {
-      "expression": "alice_happy.png",
+      "expression": "alice_normal.png",
       "lines": [
         "おはよう！昨日よりちょっと元気出てきた？",
         "火曜日も一緒にスタートしよう♪"
       ]
     },
     "Wednesday": {
-      "expression": "alice_happy.png",
+      "expression": "alice_normal.png",
       "lines": [
         "水曜の朝だね、ちょっと一息入れてもいいかも",
         "週の真ん中！あと半分がんばろ！"
       ]
     },
     "Thursday": {
-      "expression": "alice_happy.png",
+      "expression": "alice_normal.png",
       "lines": [
         "木曜の朝は、意外と落ち着いてるよね",
         "もうすぐ週末だよ〜！"
       ]
     },
     "Friday": {
-      "expression": "alice_happy.png",
+      "expression": "alice_normal.png",
       "lines": [
         "やった、もう金曜日！あとひとふんばりっ",
         "金曜の朝ってちょっと特別な感じがするよね"
       ]
     },
     "Saturday": {
-      "expression": "alice_happy.png",
+      "expression": "alice_normal.png",
       "lines": [
         "今日はお休み？のんびり起きてもいいよ〜",
         "朝ごはん、ゆっくり一緒に食べたいな〜"
       ]
     },
     "Sunday": {
-      "expression": "alice_happy.png",
+      "expression": "alice_normal.png",
       "lines": [
         "日曜の朝って、なんだか特別な感じがするよね",
         "日差しが気持ちいい朝だね〜"
@@ -154,49 +154,49 @@
   },
   "evening": {
     "Monday": {
-      "expression": "alice_happy.png",
+      "expression": "alice_normal.png",
       "lines": [
         "今日も一日お疲れさま、ゆっくりしてね",
         "月曜の夜は早めに休んでもいいよね"
       ]
     },
     "Tuesday": {
-      "expression": "alice_happy.png",
+      "expression": "alice_normal.png",
       "lines": [
         "火曜日もがんばったね！少しリラックスしよう",
         "おうちでゆっくりタイム〜♪"
       ]
     },
     "Wednesday": {
-      "expression": "alice_happy.png",
+      "expression": "alice_normal.png",
       "lines": [
         "水曜の夜、ホッと一息つこう",
         "半分終わったね、おつかれさま！"
       ]
     },
     "Thursday": {
-      "expression": "alice_happy.png",
+      "expression": "alice_normal.png",
       "lines": [
         "木曜の夜って、ちょっと静かで好き",
         "もう週末が見えてきたね！"
       ]
     },
     "Friday": {
-      "expression": "alice_happy.png",
+      "expression": "alice_normal.png",
       "lines": [
         "一週間お疲れさま！今夜はちょっとご褒美ありかも？",
         "金曜の夜、ゆったり過ごそ〜"
       ]
     },
     "Saturday": {
-      "expression": "alice_happy.png",
+      "expression": "alice_normal.png",
       "lines": [
         "今日は楽しかった？夜はまったりタイムだね",
         "週末の夜って、なんだかワクワクしちゃうね！"
       ]
     },
     "Sunday": {
-      "expression": "alice_happy.png",
+      "expression": "alice_normal.png",
       "lines": [
         "明日からまた1週間…でも今はのんびりしよ",
         "日曜の夜は、ちょっぴりさみしい？"
