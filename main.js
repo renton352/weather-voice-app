@@ -1,92 +1,82 @@
-const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
-const characterName = new URLSearchParams(window.location.search).get("ch") || "alice";
 
-async function fetchWeather() {
-  const response = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=35.6895&lon=139.6917&units=metric&lang=ja&appid=" + apiKey);
-  const data = await response.json();
-  return {
-    temp: Math.round(data.main.feels_like), // 体感温度
-    weather: data.weather[0].main.toLowerCase(),
-    sunrise: data.sys.sunrise,
-    sunset: data.sys.sunset
-  };
-}
-
-function getTempCategory(temp) {
-  if (temp <= 4) return "very_cold";
-  if (temp <= 14) return "cold";
-  if (temp <= 24) return "mild";
-  if (temp <= 30) return "hot";
-  return "very_hot";
-}
-
-function getTimeSlotA(hour) {
-  if (hour < 6) return "midnight";
-  if (hour < 9) return "early_morning";
-  if (hour < 12) return "morning";
-  if (hour < 15) return "noon";
-  if (hour < 18) return "afternoon";
-  return "evening";
-}
-
-function getTimeSlotB(now, sunrise, sunset) {
-  const oneHour = 60 * 60;
-  if (now < sunrise - oneHour || now > sunset + oneHour) return "night";
-  if (now >= sunrise - oneHour && now <= sunrise + oneHour) return "before_sunrise";
-  if (now >= sunset - oneHour && now <= sunset + oneHour) return "sunset";
-  return "daytime";
-}
+console.log("✅ main.js は読み込まれています");
 
 async function main() {
-  const res = await fetch(`characters/${characterName}.json`);
-  const character = await res.json();
-
-  const weatherData = await fetchWeather();
-  const temp = weatherData.temp;
-  const tempCategory = getTempCategory(temp);
-
-  document.getElementById("temp").textContent = `気温: ${temp}℃`;
+  const urlParams = new URLSearchParams(window.location.search);
+  const characterName = urlParams.get("ch") || "alice";
+  const response = await fetch(`./characters/${characterName}.json`);
+  const character = await response.json();
 
   const now = new Date();
   const hour = now.getHours();
-  const timeSlotA = getTimeSlotA(hour);
+  const weekday = now.toLocaleDateString("en-US", { weekday: "long" }).toLowerCase();
 
-  const currentTime = Math.floor(Date.now() / 1000);
-  const sunrise = weatherData.sunrise;
-  const sunset = weatherData.sunset;
-  const timeSlotB = getTimeSlotB(currentTime, sunrise, sunset);
+  // 時間帯A判定（セリフ用）
+  let timeSlotA = "";
+  if (hour <= 5) timeSlotA = "midnight";
+  else if (hour <= 8) timeSlotA = "early_morning";
+  else if (hour <= 11) timeSlotA = "morning";
+  else if (hour <= 14) timeSlotA = "noon";
+  else if (hour <= 17) timeSlotA = "afternoon";
+  else timeSlotA = "evening";
 
-  const weather = weatherData.weather;
-  const bgPath = `img/bg_${timeSlotB}_${normalizeWeather(weather)}.png`;
-  document.getElementById("background").src = bgPath;
+  console.log("⏰ 現在時刻:", now);
+  console.log("🗓️ 曜日:", weekday);
+  console.log("🕒 時間帯A:", timeSlotA);
 
-  const expression = character.expressions?.[timeSlotA] || "alice_normal.png";
-  document.getElementById("character").src = `img/${expression}`;
+  // セリフ検索
+  const match = character.find(item => item.weekday === weekday && item.time === timeSlotA);
+  const message = match ? match.line : "セリフが見つかりません";
+  const expression = match ? `${characterName}_${match.expression}.png` : `${characterName}_normal.png`;
 
-  // ✅ セリフ選択（体感温度カテゴリ × 時間帯A）
-  const lines = character.lines?.[tempCategory]?.[timeSlotA];
-  const message = (lines && lines.length > 0)
-    ? lines[Math.floor(Math.random() * lines.length)]
-    : "セリフが見つかりません";
+  console.log("💬 セリフ:", message);
+  console.log("🖼️ 表情ファイル:", expression);
 
   document.getElementById("line").textContent = message;
+  document.getElementById("character").src = `img/${expression}`;
 
-  // ✅ デバッグ表示
-  console.log("[DEBUG] temp:", temp);
-  console.log("[DEBUG] tempCategory:", tempCategory);
-  console.log("[DEBUG] timeSlotA:", timeSlotA);
-  console.log("[DEBUG] timeSlotB:", timeSlotB);
-  console.log("[DEBUG] weather:", weather);
-  console.log("[DEBUG] line:", message);
-  console.log("[DEBUG] background:", bgPath);
-  console.log("[DEBUG] expression:", expression);
-}
+  // 天気・背景・気温取得
+  const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
+  navigator.geolocation.getCurrentPosition(async (position) => {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
 
-function normalizeWeather(w) {
-  if (w.includes("rain")) return "rainy";
-  if (w.includes("cloud")) return "cloudy";
-  if (w.includes("snow")) return "snowy";
-  return "sunny";
+    const weatherResponse = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
+    );
+    const weatherData = await weatherResponse.json();
+    const weather = weatherData.weather[0].main.toLowerCase();
+    const temp = Math.round(weatherData.main.temp);
+    const sunrise = new Date(weatherData.sys.sunrise * 1000);
+    const sunset = new Date(weatherData.sys.sunset * 1000);
+
+    document.getElementById("temp").textContent = `${temp}℃`;
+
+    const current = new Date();
+    const oneHour = 60 * 60 * 1000;
+    let timeSlotB = "";
+
+    if (current >= new Date(sunrise.getTime() - oneHour) && current <= new Date(sunrise.getTime() + oneHour)) {
+      timeSlotB = "before_sunrise";
+    } else if (current > new Date(sunrise.getTime() + oneHour) && current < new Date(sunset.getTime() - oneHour)) {
+      timeSlotB = "daytime";
+    } else if (current >= new Date(sunset.getTime() - oneHour) && current <= new Date(sunset.getTime() + oneHour)) {
+      timeSlotB = "sunset";
+    } else {
+      timeSlotB = "night";
+    }
+
+    let weatherCategory = "sunny";
+    if (weather.includes("cloud")) weatherCategory = "cloudy";
+    else if (weather.includes("rain") || weather.includes("drizzle")) weatherCategory = "rainy";
+    else if (weather.includes("snow")) weatherCategory = "snowy";
+
+    const bgFileName = `bg_${timeSlotB}_${weatherCategory}.png`;
+    document.body.style.backgroundImage = `url('./img/${bgFileName}')`;
+
+    console.log("🌤️ 天気:", weather);
+    console.log("📷 背景画像:", bgFileName);
+  });
 }
 
 main();
