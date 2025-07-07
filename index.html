@@ -2,48 +2,75 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>推し天気予報</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
+      overflow: hidden;
       font-family: sans-serif;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center center;
-    }
-    #container {
       position: relative;
-      height: 100vh;
+    }
+    #background {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 0;
     }
     #character {
-      position: absolute;
+      position: fixed;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      max-height: 90%;
+      height: 80vh;
+      z-index: 1;
     }
-    #text-box {
-      position: absolute;
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      background-color: rgba(0, 0, 0, 0.7);
-      color: #fff;
-      padding: 1em;
-      border-radius: 12px;
-      text-align: center;
-      font-size: 1.2em;
-    }
+#temp {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.2em;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 5px 10px;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+#line {
+  position: fixed;
+  bottom: 3%;
+  left: 50%;  /* ← 中央に修正 */
+  transform: translateX(-50%);
+  max-width: 90%;
+  width: 80%;
+  font-size: 1em;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 16px 20px;
+  border-radius: 14px;
+  text-align: center;
+  text-shadow: 2px 2px 4px #000;
+  font-weight: bold;
+  z-index: 3;
+  line-height: 1.6em;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 35%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
   </style>
 </head>
 <body>
-  <div id="container">
-    <img id="character" src="" alt="キャラクター">
-    <div id="text-box">セリフ読み込み中...</div>
-  </div>
+  <img id="background" src="" alt="background" />
+  <img id="character" src="" alt="character" />
+  <div id="temp">気温: --℃</div>
+  <div id="line">セリフを読み込み中...</div>
+
   <script src="main.js"></script>
 </body>
 </html>

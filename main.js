@@ -1,33 +1,85 @@
-async function loadData() {
-  const character = 'alice';
-  const response = await fetch(`${character}.json`);
+const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
+const characterName = new URLSearchParams(window.location.search).get("ch") || "alice";
+
+async function fetchWeather() {
+  const response = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=35.6895&lon=139.6917&units=metric&lang=ja&appid=" + apiKey);
   const data = await response.json();
-
-  const now = new Date();
-  const day = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][now.getDay()];
-  const hour = now.getHours();
-  let timeOfDay;
-
-  if (hour < 6) timeOfDay = 'early_morning';
-  else if (hour < 10) timeOfDay = 'morning';
-  else if (hour < 14) timeOfDay = 'noon';
-  else if (hour < 17) timeOfDay = 'afternoon';
-  else if (hour < 20) timeOfDay = 'evening';
-  else timeOfDay = 'night';
-
-  const key = `${day}_${timeOfDay}`;
-  console.log(`🔍 セリフキー: ${key}`);
-
-  const lineOptions = data.lines[key];
-  let selectedLine = 'セリフが見つかりません';
-
-  if (lineOptions && lineOptions.length > 0) {
-    selectedLine = lineOptions[Math.floor(Math.random() * lineOptions.length)];
-  }
-
-  document.getElementById('text-box').textContent = selectedLine;
-  document.getElementById('character').src = `./img/${data.expressions.default}`;
-  document.body.style.backgroundImage = 'url(./img/bg_sample.jpg)';
+  return {
+    temp: Math.round(data.main.temp),
+    weather: data.weather[0].main.toLowerCase(),
+    sunrise: data.sys.sunrise,
+    sunset: data.sys.sunset
+  };
 }
 
-window.onload = loadData;
+function getTimeSlotA(hour) {
+  if (hour < 6) return "midnight";
+  if (hour < 9) return "early_morning";
+  if (hour < 12) return "morning";
+  if (hour < 15) return "noon";
+  if (hour < 18) return "afternoon";
+  return "evening";
+}
+
+function getTimeSlotB(now, sunrise, sunset) {
+  const oneHour = 60 * 60;
+  if (now < sunrise - oneHour || now > sunset + oneHour) return "night";
+  if (now >= sunrise - oneHour && now <= sunrise + oneHour) return "before_sunrise";
+  if (now >= sunset - oneHour && now <= sunset + oneHour) return "sunset";
+  return "daytime";
+}
+
+function normalizeWeather(w) {
+  if (w.includes("rain")) return "rainy";
+  if (w.includes("cloud")) return "cloudy";
+  if (w.includes("snow")) return "snowy";
+  return "sunny";
+}
+
+function getWeekdayName(date) {
+  return ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][date.getDay()];
+}
+
+async function main() {
+  const res = await fetch(`characters/${characterName}.json`);
+  const character = await res.json();
+
+  const weatherData = await fetchWeather();
+  document.getElementById("temp").textContent = `気温: ${weatherData.temp}℃`;
+
+  const now = new Date();
+  const hour = now.getHours();
+  const timeSlotA = getTimeSlotA(hour);
+  const weekday = getWeekdayName(now);
+
+  const currentTime = Math.floor(Date.now() / 1000);
+  const sunrise = weatherData.sunrise;
+  const sunset = weatherData.sunset;
+  const timeSlotB = getTimeSlotB(currentTime, sunrise, sunset);
+
+  const weather = normalizeWeather(weatherData.weather);
+  const bgPath = `img/bg_${timeSlotB}_${weather}.png`;
+  document.getElementById("background").src = bgPath;
+
+  const expression = character.expressions[timeSlotA] || "alice_normal.png";
+  document.getElementById("character").src = `img/${expression}`;
+
+  // ✅ セリフ選択（時間帯A＋天気＋曜日）
+  const lines = character.lines?.[timeSlotA]?.[weather]?.[weekday];
+  const message = (lines && lines.length > 0)
+    ? lines[Math.floor(Math.random() * lines.length)]
+    : "セリフが見つかりません";
+
+  document.getElementById("line").textContent = message;
+
+  // ✅ デバッグ表示
+  console.log("[DEBUG] timeSlotA:", timeSlotA);
+  console.log("[DEBUG] timeSlotB:", timeSlotB);
+  console.log("[DEBUG] weekday:", weekday);
+  console.log("[DEBUG] weather:", weather);
+  console.log("[DEBUG] line:", message);
+  console.log("[DEBUG] background:", bgPath);
+  console.log("[DEBUG] expression:", expression);
+}
+
+main();
