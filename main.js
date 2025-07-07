@@ -54,7 +54,7 @@ async function main() {
   const bgPath = `img/bg_${timeSlotB}_${weather}.png`;
   document.getElementById("background").src = bgPath;
 
-  const expression = "normal"; // can expand logic here
+  const expression = "normal"; // 表情切替は後日拡張可能
   document.getElementById("character").src = character.expressions[expression];
 
   const lines = character.lines[timeSlotA];
