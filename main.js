@@ -76,7 +76,7 @@ async function main() {
   document.getElementById("character").src = `img/${expression}`;
 
   // ✅ セリフ選択（時間帯A＋天気＋曜日）
-  const lines = character.lines?.[timeSlotA]?.[weather]?.[weekday];
+  const lines = character.lines?.[timeSlotA]?.[feelingCategory]?.[weekday];
   const message = (lines && lines.length > 0)
     ? lines[Math.floor(Math.random() * lines.length)]
     : "セリフが見つかりません";
