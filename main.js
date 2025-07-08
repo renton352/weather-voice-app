@@ -55,6 +55,7 @@ async function main() {
 
   const weatherData = await fetchWeather();
   const feelsLike = weatherData.feels_like;
+  const feelingCategory = getFeelingCategory(feelsLike);
   document.getElementById("temp").textContent = `気温: ${weatherData.temp}℃`;
 
   const now = new Date();
