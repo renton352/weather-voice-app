@@ -2,7 +2,7 @@
 // ✅ NFC経由チェック（fromNFCがない場合は拒否）
 if (!sessionStorage.getItem("fromNFC")) {
   alert("このページは正規のNFCタグからのみアクセスできます。");
-  window.location.href = "/denied.html";  // 任意の拒否ページ
+  window.location.href = "denied.html";  // 任意の拒否ページ
   throw new Error("不正アクセス：NFCタグ経由でない");
 }
 
