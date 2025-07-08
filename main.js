@@ -84,10 +84,8 @@ async function main() {
   const expression = character.expressions[timeSlotA] || "alice_normal.png";
   document.getElementById("character").src = `img/${expression}`;
 
-  const lines = character.lines?.[timeSlotA]?.[feelingCategory]?.[weekday];
-  const message = (lines && lines.length > 0)
-    ? lines[Math.floor(Math.random() * lines.length)]
-    : "セリフが見つかりません";
+const lines = character.lines?.[timeSlotA]?.[feelingCategory]?.[weekday];
+const message = lines?.[0] || "セリフが見つかりません";
 
   document.getElementById("line").textContent = message;
 
