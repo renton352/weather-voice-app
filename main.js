@@ -1,102 +1,89 @@
+// ƒ†[ƒU[‚ªURL‚Åw’è‚µ‚½ƒLƒƒƒ‰IDi—áF?ch=alicej
+const getCharacterIdFromURL = () => {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('ch') || 'alice'; // ƒfƒtƒHƒ‹ƒg‚Íalice
+};
 
-// âœ… NFCçµŒç”±ãƒã‚§ãƒƒã‚¯ï¼ˆfromNFCãŒãªã„å ´åˆã¯æ‹’å¦ï¼‰
-if (!sessionStorage.getItem("fromNFC")) {
-  alert("ã“ã®ãƒšãƒ¼ã‚¸ã¯æ­£è¦ã®NFCã‚¿ã‚°ã‹ã‚‰ã®ã¿ã‚¢ã‚¯ã‚»ã‚¹ã§ãã¾ã™ã€‚");
-  window.location.href = "denied.html";  // ä»»æ„ã®æ‹’å¦ãƒšãƒ¼ã‚¸
-  throw new Error("ä¸æ­£ã‚¢ã‚¯ã‚»ã‚¹ï¼šNFCã‚¿ã‚°çµŒç”±ã§ãªã„");
-}
+const getTimeSlotA = hour => {
+  if (hour < 5) return 'midnight';
+  if (hour < 8) return 'early_morning';
+  if (hour < 12) return 'morning';
+  if (hour < 15) return 'noon';
+  if (hour < 18) return 'afternoon';
+  return 'evening';
+};
 
+const getTimeSlotB = hour => {
+  if (hour < 5) return 'night';
+  if (hour < 7) return 'before_sunrise';
+  if (hour < 17) return 'daytime';
+  if (hour < 19) return 'sunset';
+  return 'night';
+};
 
-const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
-const characterName = new URLSearchParams(window.location.search).get("ch") || "alice";
+const getTemperatureCategory = feelsLike => {
+  if (feelsLike >= 33) return 'veryhot';
+  if (feelsLike >= 28) return 'hot';
+  if (feelsLike >= 20) return 'warm';
+  if (feelsLike >= 15) return 'cool';
+  return 'cold';
+};
 
-async function fetchWeather() {
-  const response = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=35.6895&lon=139.6917&units=metric&lang=ja&appid=" + apiKey);
-  const data = await response.json();
-  return {
-    temp: Math.round(data.main.temp),
-    feels_like: Math.round(data.main.feels_like),
-    weather: data.weather[0].main.toLowerCase(),
-    sunrise: data.sys.sunrise,
-    sunset: data.sys.sunset
-  };
-}
+const getWeekday = () => {
+  return ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'][(new Date()).getDay()];
+};
 
-function getTimeSlotA(hour) {
-  if (hour < 6) return "midnight";
-  if (hour < 9) return "early_morning";
-  if (hour < 12) return "morning";
-  if (hour < 15) return "noon";
-  if (hour < 18) return "afternoon";
-  return "evening";
-}
+const updateView = async () => {
+  const characterId = getCharacterIdFromURL();
+  const weatherApiKey = 'a8bc86e4c135f3c44f72bb4b957aa213'; // © ‚±‚±‚ÍŠe©‚ÌƒL[‚ğƒZƒbƒg
+  const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Tokyo&units=metric&appid=' + weatherApiKey;
 
-function getTimeSlotB(now, sunrise, sunset) {
-  const oneHour = 60 * 60;
-  if (now < sunrise - oneHour || now > sunset + oneHour) return "night";
-  if (now >= sunrise - oneHour && now <= sunrise + oneHour) return "before_sunrise";
-  if (now >= sunset - oneHour && now <= sunset + oneHour) return "sunset";
-  return "daytime";
-}
+  try {
+    const [weatherRes, charRes, bgRes] = await Promise.all([
+      fetch(weatherUrl),
+      fetch(`./data/${characterId}.json`),
+      fetch(`./data/backgrounds.json`)
+    ]);
+    const weatherData = await weatherRes.json();
+    const character = await charRes.json();
+    const backgrounds = await bgRes.json();
 
-function normalizeWeather(w) {
-  if (w.includes("rain")) return "rainy";
-  if (w.includes("cloud")) return "cloudy";
-  if (w.includes("snow")) return "snowy";
-  return "sunny";
-}
+    const now = new Date();
+    const hour = now.getHours();
+    const timeSlotA = getTimeSlotA(hour);
+    const timeSlotB = getTimeSlotB(hour);
+    const weekday = getWeekday();
+    const weather = weatherData.weather[0].main.toLowerCase(); // "Clear", "Clouds", "Rain"...
+    const feelsLike = weatherData.main.feels_like;
+    const tempCategory = getTemperatureCategory(feelsLike);
 
-function getFeelingCategory(feelsLike){
-  if (feelsLike >= 33) return "veryhot";
-  if (feelsLike >= 28) return "hot";
-  if (feelsLike >= 20) return "warm";
-  if (feelsLike >= 10) return "cool";
-  return "cold";
-}
+    // “V‹C‚ğ4•ª—Ş‚Éƒ}ƒbƒsƒ“ƒO
+    const weatherMap = {
+      clear: 'sunny',
+      clouds: 'cloudy',
+      rain: 'rainy',
+      drizzle: 'rainy',
+      thunderstorm: 'rainy',
+      snow: 'snowy',
+      mist: 'cloudy',
+      haze: 'cloudy',
+      fog: 'cloudy'
+    };
+    const weatherKey = weatherMap[weather] || 'sunny';
 
-function getWeekdayName(date) {
-  return ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][date.getDay()];
-}
+    const expression = character.expressions?.[timeSlotA] || '';
+    const line = character.lines?.[timeSlotA]?.[tempCategory]?.[weekday] || 'ƒZƒŠƒt‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ';
+    const bgPath = `./img/${backgrounds[timeSlotB]?.[weatherKey] || 'bg_default.png'}`;
 
-async function main() {
-  const res = await fetch(`characters/${characterName}.json`);
-  const character = await res.json();
+    // XV
+    document.getElementById('character').src = `./img/${expression}`;
+    document.getElementById('text').innerText = line;
+    document.getElementById('background').style.backgroundImage = `url('${bgPath}')`;
 
-  const weatherData = await fetchWeather();
-  const feelsLike = weatherData.feels_like;
-  const feelingCategory = getFeelingCategory(feelsLike);
-  document.getElementById("temp").textContent = `æ°—æ¸©: ${weatherData.temp}â„ƒ`;
+  } catch (err) {
+    console.error('ƒGƒ‰[:', err);
+    document.getElementById('text').innerText = 'ƒf[ƒ^æ“¾ƒGƒ‰[';
+  }
+};
 
-  const now = new Date();
-  const hour = now.getHours();
-  const timeSlotA = getTimeSlotA(hour);
-  const weekday = getWeekdayName(now);
-
-  const currentTime = Math.floor(Date.now() / 1000);
-  const sunrise = weatherData.sunrise;
-  const sunset = weatherData.sunset;
-  const timeSlotB = getTimeSlotB(currentTime, sunrise, sunset);
-
-  const weather = normalizeWeather(weatherData.weather);
-  const bgPath = `img/bg_${timeSlotB}_${weather}.png`;
-  document.getElementById("background").src = bgPath;
-
-  const expression = character.expressions[timeSlotA] || "alice_normal.png";
-  document.getElementById("character").src = `img/${expression}`;
-
-const lines = character.lines?.[timeSlotA]?.[feelingCategory]?.[weekday];
-const message = lines?.[0] || "ã‚»ãƒªãƒ•ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“";
-
-  document.getElementById("line").textContent = message;
-
-  console.log("[DEBUG] timeSlotA:", timeSlotA);
-  console.log("[DEBUG] timeSlotB:", timeSlotB);
-  console.log("[DEBUG] weekday:", weekday);
-  console.log("[DEBUG] weather:", weather);
-  console.log("[DEBUG] feelingCategory:", feelingCategory);
-  console.log("[DEBUG] line:", message);
-  console.log("[DEBUG] background:", bgPath);
-  console.log("[DEBUG] expression:", expression);
-}
-
-main();
+updateView();
