@@ -6,6 +6,7 @@ async function fetchWeather() {
   const data = await response.json();
   return {
     temp: Math.round(data.main.temp),
+    feels_like: Math.round(data.main.feels_like),
     weather: data.weather[0].main.toLowerCase(),
     sunrise: data.sys.sunrise,
     sunset: data.sys.sunset
@@ -53,6 +54,7 @@ async function main() {
   const character = await res.json();
 
   const weatherData = await fetchWeather();
+  const feelsLike = weatherData.feels_like;
   document.getElementById("temp").textContent = `気温: ${weatherData.temp}℃`;
 
   const now = new Date();
