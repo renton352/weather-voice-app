@@ -87,7 +87,7 @@ async function main() {
   console.log("[DEBUG] timeSlotB:", timeSlotB);
   console.log("[DEBUG] weekday:", weekday);
   console.log("[DEBUG] weather:", weather);
-  console.log("[DEBUG] feelsLike:", feelsLike);
+  console.log("[DEBUG] feelsLike:", feelingCategory);
   console.log("[DEBUG] line:", message);
   console.log("[DEBUG] background:", bgPath);
   console.log("[DEBUG] expression:", expression);
