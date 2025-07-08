@@ -36,6 +36,14 @@ function normalizeWeather(w) {
   return "sunny";
 }
 
+function getFeelingCategory(feelsLike){
+  if (feelsLike >= 33) return "veryhot";
+  if (feelsLike >= 28) return "hot";
+  if (feelsLike >= 20) return "warm";
+  if (feelsLike >= 10) return "cool";
+  return "cold";
+}
+
 function getWeekdayName(date) {
   return ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][date.getDay()];
 }
@@ -77,6 +85,7 @@ async function main() {
   console.log("[DEBUG] timeSlotB:", timeSlotB);
   console.log("[DEBUG] weekday:", weekday);
   console.log("[DEBUG] weather:", weather);
+  console.log("[DEBUG] feelsLike:", feelsLike);
   console.log("[DEBUG] line:", message);
   console.log("[DEBUG] background:", bgPath);
   console.log("[DEBUG] expression:", expression);
