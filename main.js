@@ -1,3 +1,12 @@
+
+// ✅ NFC経由チェック（fromNFCがない場合は拒否）
+if (!sessionStorage.getItem("fromNFC")) {
+  alert("このページは正規のNFCタグからのみアクセスできます。");
+  window.location.href = "/denied.html";  // 任意の拒否ページ
+  throw new Error("不正アクセス：NFCタグ経由でない");
+}
+
+
 const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
 const characterName = new URLSearchParams(window.location.search).get("ch") || "alice";
 
@@ -75,7 +84,6 @@ async function main() {
   const expression = character.expressions[timeSlotA] || "alice_normal.png";
   document.getElementById("character").src = `img/${expression}`;
 
-  // ✅ セリフ選択（時間帯A＋天気＋曜日）
   const lines = character.lines?.[timeSlotA]?.[feelingCategory]?.[weekday];
   const message = (lines && lines.length > 0)
     ? lines[Math.floor(Math.random() * lines.length)]
@@ -83,7 +91,6 @@ async function main() {
 
   document.getElementById("line").textContent = message;
 
-  // ✅ デバッグ表示
   console.log("[DEBUG] timeSlotA:", timeSlotA);
   console.log("[DEBUG] timeSlotB:", timeSlotB);
   console.log("[DEBUG] weekday:", weekday);

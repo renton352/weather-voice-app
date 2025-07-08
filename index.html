@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -29,48 +30,53 @@
       height: 80vh;
       z-index: 1;
     }
-#temp {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.2em;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 5px 10px;
-  border-radius: 10px;
-  z-index: 2;
-}
-
-#line {
-  position: fixed;
-  bottom: 3%;
-  left: 50%;  /* ← 中央に修正 */
-  transform: translateX(-50%);
-  max-width: 90%;
-  width: 80%;
-  font-size: 1em;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.65);
-  padding: 16px 20px;
-  border-radius: 14px;
-  text-align: center;
-  text-shadow: 2px 2px 4px #000;
-  font-weight: bold;
-  z-index: 3;
-  line-height: 1.6em;
-  white-space: pre-wrap;
-  word-break: break-word;
-  max-height: 35%;
-  overflow-y: auto;
-  box-sizing: border-box;
-}
+    #temp {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.2em;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 5px 10px;
+      border-radius: 10px;
+      z-index: 2;
+    }
+    #line {
+      position: fixed;
+      bottom: 3%;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 90%;
+      width: 80%;
+      font-size: 1em;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.65);
+      padding: 16px 20px;
+      border-radius: 14px;
+      text-align: center;
+      text-shadow: 2px 2px 4px #000;
+      font-weight: bold;
+      z-index: 3;
+      line-height: 1.6em;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 35%;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
   </style>
+  <script>
+    // NFCタグ起動かどうかの判定とsessionStorageへの保存
+    if (window.location.hash === "#fromNFC") {
+      sessionStorage.setItem("fromNFC", "true");
+      history.replaceState(null, null, window.location.pathname + window.location.search);
+    }
+  </script>
 </head>
 <body>
   <img id="background" src="" alt="background" />
   <img id="character" src="" alt="character" />
   <div id="temp">気温: --℃</div>
   <div id="line">セリフを読み込み中...</div>
-
   <script src="main.js"></script>
 </body>
 </html>
