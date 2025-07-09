@@ -1,3 +1,8 @@
+// NFCタグチェック
+if (window.location.hash !== "#NfcTag") {
+  window.location.href = "denied.html";
+  throw new Error("アクセス拒否：NFCタグからのアクセスではありません");
+}
 
 const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
 const params = new URLSearchParams(window.location.search);
