@@ -104,7 +104,14 @@ async function main() {
 
   // Debug log
   console.log("[DEBUG] Selected Categories:", selected);
+  console.log("[DEBUG] timeSlotA:", timeSlotA);
+  console.log("[DEBUG] timeSlotB:", timeSlotB);
+  console.log("[DEBUG] weekday:", weekday);
+  console.log("[DEBUG] weather:", weather);
+  console.log("[DEBUG] feelsLike:", feelsLike);
+  console.log("[DEBUG] feelingCategory:", feelingCategory);
   console.log("[DEBUG] Lines:", messages);
+  console.log("[DEBUG] background:", bgPath);
 }
 
 main();
