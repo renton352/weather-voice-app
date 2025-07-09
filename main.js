@@ -85,33 +85,26 @@ async function main() {
   const expression = character.expressions[timeSlotA] || `${ch}_normal.png`;
   document.getElementById("character").src = `${imgBasePath}${expression}`;
 
-  // --- 3カテゴリ中からランダムに2つ選び、それぞれからセリフ1件ずつ取得 ---
-  const keys = ["timeSlotA", "feelingCategory", "weekday"];
-  const selectedKeys = keys.sort(() => 0.5 - Math.random()).slice(0, 2); // ランダム2つ選択
-
-  const keyValues = {
+  // 3カテゴリ中からランダムに2つ選んで、それぞれ1セリフ取得
+  const values = {
     timeSlotA: timeSlotA,
     feelingCategory: feelingCategory,
     weekday: weekday
   };
 
+  const categories = ["timeSlotA", "feelingCategory", "weekday"];
+  const selected = categories.sort(() => 0.5 - Math.random()).slice(0, 2);
+
   const lines = character.lines || {};
-  const selectedLines = selectedKeys.map(key => {
-    const options = lines[key]?.[keyValues[key]];
-    if (options && options.length > 0) {
-      return options[Math.floor(Math.random() * options.length)];
-    }
-    return "セリフが見つかりません";
+  const messages = selected.map(key => {
+    return lines[key]?.[values[key]] || "セリフが見つかりません";
   });
 
-  document.getElementById("line").textContent = selectedLines.join("\n");
+  document.getElementById("line").textContent = messages.join("\n");
 
-  // Debug
-  console.log("[DEBUG] Selected Axes:", selectedKeys);
-  console.log("[DEBUG] Background:", bgPath);
-  console.log("[DEBUG] Expression:", expression);
-  console.log("[DEBUG] Line1:", selectedLines[0]);
-  console.log("[DEBUG] Line2:", selectedLines[1]);
+  // Debug log
+  console.log("[DEBUG] Selected Categories:", selected);
+  console.log("[DEBUG] Lines:", messages);
 }
 
 main();
