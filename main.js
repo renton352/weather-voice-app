@@ -1,5 +1,11 @@
+
 const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
-const characterName = new URLSearchParams(window.location.search).get("ch") || "alice";
+const params = new URLSearchParams(window.location.search);
+const ip = params.get("ip") || "animeA";
+const ch = params.get("ch") || "alice";
+
+const characterJsonPath = `characters/${ip}/${ch}.json`;
+const imgBasePath = `img/${ip}/`;
 
 async function fetchWeather() {
   const response = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=35.6895&lon=139.6917&units=metric&lang=ja&appid=" + apiKey);
@@ -50,7 +56,11 @@ function getWeekdayName(date) {
 }
 
 async function main() {
-  const res = await fetch(`characters/${characterName}.json`);
+  const res = await fetch(characterJsonPath);
+  if (!res.ok) {
+    window.location.href = "denied.html";
+    return;
+  }
   const character = await res.json();
 
   const weatherData = await fetchWeather();
@@ -69,27 +79,25 @@ async function main() {
   const timeSlotB = getTimeSlotB(currentTime, sunrise, sunset);
 
   const weather = normalizeWeather(weatherData.weather);
-  const bgPath = `img/bg_${timeSlotB}_${weather}.png`;
+  const bgPath = `${imgBasePath}bg_${timeSlotB}_${weather}.png`;
   document.getElementById("background").src = bgPath;
 
-  const expression = character.expressions[timeSlotA] || "alice_normal.png";
-  document.getElementById("character").src = `img/${expression}`;
+  const expression = character.expressions[timeSlotA] || `${ch}_normal.png`;
+  document.getElementById("character").src = `${imgBasePath}${expression}`;
 
-  // ✅ セリフ選択（時間帯A＋天気＋曜日）
   const lines = character.lines?.[timeSlotA]?.[feelingCategory]?.[weekday];
-  const message = (lines && lines.length > 0)
-    ? lines[Math.floor(Math.random() * lines.length)]
+  const selected = (lines && lines.length > 0)
+    ? lines.sort(() => 0.5 - Math.random()).slice(0, 2).join("\n")
     : "セリフが見つかりません";
 
-  document.getElementById("line").textContent = message;
+  document.getElementById("line").textContent = selected;
 
-  // ✅ デバッグ表示
   console.log("[DEBUG] timeSlotA:", timeSlotA);
   console.log("[DEBUG] timeSlotB:", timeSlotB);
   console.log("[DEBUG] weekday:", weekday);
   console.log("[DEBUG] weather:", weather);
   console.log("[DEBUG] feelingCategory:", feelingCategory);
-  console.log("[DEBUG] line:", message);
+  console.log("[DEBUG] line:", selected);
   console.log("[DEBUG] background:", bgPath);
   console.log("[DEBUG] expression:", expression);
 }
