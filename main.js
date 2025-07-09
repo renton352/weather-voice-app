@@ -85,21 +85,33 @@ async function main() {
   const expression = character.expressions[timeSlotA] || `${ch}_normal.png`;
   document.getElementById("character").src = `${imgBasePath}${expression}`;
 
-  const lines = character.lines?.[timeSlotA]?.[feelingCategory]?.[weekday];
-  const selected = (lines && lines.length > 0)
-    ? lines.sort(() => 0.5 - Math.random()).slice(0, 2).join("\n")
-    : "セリフが見つかりません";
+  // --- 3カテゴリ中からランダムに2つ選び、それぞれからセリフ1件ずつ取得 ---
+  const keys = ["timeSlotA", "feelingCategory", "weekday"];
+  const selectedKeys = keys.sort(() => 0.5 - Math.random()).slice(0, 2); // ランダム2つ選択
 
-  document.getElementById("line").textContent = selected;
+  const keyValues = {
+    timeSlotA: timeSlotA,
+    feelingCategory: feelingCategory,
+    weekday: weekday
+  };
 
-  console.log("[DEBUG] timeSlotA:", timeSlotA);
-  console.log("[DEBUG] timeSlotB:", timeSlotB);
-  console.log("[DEBUG] weekday:", weekday);
-  console.log("[DEBUG] weather:", weather);
-  console.log("[DEBUG] feelingCategory:", feelingCategory);
-  console.log("[DEBUG] line:", selected);
-  console.log("[DEBUG] background:", bgPath);
-  console.log("[DEBUG] expression:", expression);
+  const lines = character.lines || {};
+  const selectedLines = selectedKeys.map(key => {
+    const options = lines[key]?.[keyValues[key]];
+    if (options && options.length > 0) {
+      return options[Math.floor(Math.random() * options.length)];
+    }
+    return "セリフが見つかりません";
+  });
+
+  document.getElementById("line").textContent = selectedLines.join("\n");
+
+  // Debug
+  console.log("[DEBUG] Selected Axes:", selectedKeys);
+  console.log("[DEBUG] Background:", bgPath);
+  console.log("[DEBUG] Expression:", expression);
+  console.log("[DEBUG] Line1:", selectedLines[0]);
+  console.log("[DEBUG] Line2:", selectedLines[1]);
 }
 
 main();
