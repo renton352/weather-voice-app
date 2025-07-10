@@ -1,0 +1,2 @@
+ƒAƒhƒŒƒX‚Écmd
+python generate_character_json.py
