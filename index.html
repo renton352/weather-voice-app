@@ -68,6 +68,9 @@
   max-height: 35%;
   overflow-y: auto;
   box-sizing: border-box;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
   
     #character-cover {
@@ -137,7 +140,14 @@
       e.preventDefault();
     }, { passive: false });
   </script>
+
+  <script>
+    document.getElementById("line").addEventListener("touchstart", function(e) {
+      e.preventDefault();
+    }, { passive: false });
+  </script>
 </body>
 </html>
+
 
 
