@@ -106,11 +106,13 @@ async function main() {
     return lines[key]?.[values[key]] || "セリフが見つかりません";
   });
 
+  document.getElementById("line").textContent = messages.join("\n");
+
+  document.body.addEventListener("click", () => {
   const audio = new Audio(`voice/${ip}/${ch}/${timeSlotA}.wav`);
   audio.play();
+}, { once: true });
 
-
-  document.getElementById("line").textContent = messages.join("\n");
 
   // Debug log
   console.log("[DEBUG] Selected Categories:", selected);
