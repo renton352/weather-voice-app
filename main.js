@@ -49,11 +49,12 @@ function normalizeWeather(w) {
 }
 
 function getFeelingCategory(feelsLike){
-  if (feelsLike >= 33) return "veryhot";
-  if (feelsLike >= 28) return "hot";
-  if (feelsLike >= 20) return "warm";
-  if (feelsLike >= 10) return "cool";
-  return "cold";
+  if (feelsLike >= 35) return "veryhot";
+  if (feelsLike >= 30) return "hot";
+  if (feelsLike >= 22) return "warm";
+  if (feelsLike >= 15) return "cool";
+  if (feelsLike >= 7)  return "cold";
+  return "verycold";
 }
 
 function getWeekdayName(date) {
