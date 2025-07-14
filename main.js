@@ -108,12 +108,6 @@ async function main() {
 
   document.getElementById("line").textContent = messages.join("\n");
 
-  document.body.addEventListener("click", () => {
-  const audio = new Audio(`voice/${ip}/${ch}/${timeSlotA}.wav`);
-  audio.play();
-}, { once: true });
-
-
   // Debug log
   console.log("[DEBUG] Selected Categories:", selected);
   console.log("[DEBUG] timeSlotA:", timeSlotA);
@@ -124,6 +118,16 @@ async function main() {
   console.log("[DEBUG] feelingCategory:", feelingCategory);
   console.log("[DEBUG] Lines:", messages);
   console.log("[DEBUG] background:", bgPath);
+  ["background", "character", "character-cover", "line", "temp"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("click", () => {
+        const audio = new Audio(`voice/${ip}/${ch}/${timeSlotA}.wav`);
+        audio.play();
+      }, { once: true });
+    }
+  });
+
 }
 
 main();
