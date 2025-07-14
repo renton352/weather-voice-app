@@ -99,5 +99,23 @@
 -->
 
 
+
+  <script>
+    // スマホの長押し防止
+    document.addEventListener("touchstart", preventLongPress, { passive: false });
+    document.addEventListener("touchend", clearLongPress, { passive: false });
+
+    let pressTimer;
+    function preventLongPress(e) {
+      pressTimer = setTimeout(() => {
+        e.preventDefault();
+      }, 500);
+    }
+
+    function clearLongPress() {
+      clearTimeout(pressTimer);
+    }
+  </script>
 </body>
 </html>
+
