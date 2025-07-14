@@ -1,7 +1,12 @@
 import csv
 import json
+import os
 
-def csv_to_json(csv_file_path, json_file_path, character_name="alice"):
+def csv_to_json(csv_file_path):
+    # キャラクター名をファイル名から自動で取得（拡張子除去）
+    character_name = os.path.splitext(os.path.basename(csv_file_path))[0]
+    json_file_path = f"{character_name}.json"
+
     result = {
         "name": character_name,
         "expressions": {},
@@ -25,8 +30,10 @@ def csv_to_json(csv_file_path, json_file_path, character_name="alice"):
 
     with open(json_file_path, "w", encoding="utf-8") as jsonfile:
         json.dump(result, jsonfile, ensure_ascii=False, indent=2)
-    print(f"✅ JSONファイル出力完了: {json_file_path}")
+    print(f"✅ {character_name}.json を生成しました")
 
-# 実行例
 if __name__ == "__main__":
-    csv_to_json("character_template_from_json.csv", "alice.json", character_name="alice")
+    # カレントディレクトリ内の .csv ファイルを全て処理
+    for file in os.listdir("."):
+        if file.endswith(".csv"):
+            csv_to_json(file)
