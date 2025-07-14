@@ -106,7 +106,7 @@ async function main() {
     return lines[key]?.[values[key]] || "セリフが見つかりません";
   });
 
-  const audio = new Audio(`voice/${ch}/${timeSlotA}.wav`);
+  const audio = new Audio(`voice/${ip}/${ch}/${timeSlotA}.wav`);
   audio.play();
 
 
