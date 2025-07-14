@@ -118,9 +118,15 @@ async function main() {
   console.log("[DEBUG] feelingCategory:", feelingCategory);
   console.log("[DEBUG] Lines:", messages);
   console.log("[DEBUG] background:", bgPath);
-  ["background", "character", "character-cover", "line", "temp"].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) {
+  const cover = document.getElementById("character-cover");
+  if (cover) {
+    cover.addEventListener("click", () => {
+      const audio = new Audio(`voice/${ip}/${ch}/${timeSlotA}.wav`);
+      audio.play();
+    }, { once: true });
+  }
+
+      if (el) {
       el.addEventListener("click", () => {
         const audio = new Audio(`voice/${ip}/${ch}/${timeSlotA}.wav`);
         audio.play();
