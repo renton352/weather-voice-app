@@ -124,7 +124,7 @@ async function main() {
       const audio = new Audio(`voice/${ip}/${ch}/${timeSlotA}.wav`);
       audio.play();
     }, { once: true });
-  });
+  };
 
 }
 
