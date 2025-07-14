@@ -106,6 +106,10 @@ async function main() {
     return lines[key]?.[values[key]] || "セリフが見つかりません";
   });
 
+  const audio = new Audio(`voice/${ch}/${timeSlotA}.wav`);
+  audio.play();
+
+
   document.getElementById("line").textContent = messages.join("\n");
 
   // Debug log
