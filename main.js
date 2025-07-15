@@ -76,7 +76,7 @@ async function main() {
 
   const now = new Date();
   const hour = now.getHours();
-  const timeSlotA = getTimeSlotA(hour);
+  window.timeSlotA = getTimeSlotA(hour);
   const weekday = getWeekdayName(now);
 
   const currentTime = Math.floor(Date.now() / 1000);
@@ -128,7 +128,7 @@ async function main() {
     const el = document.getElementById(id);
     if (el) {
       el.addEventListener("click", () => {
-        const audioPath = `voice/${ip}/${ch}/${timeSlotA}.wav`;
+        const audioPath = `voice/${ip}/${ch}/${window.timeSlotA}.wav`;
         console.log("[DEBUG] Tap detected on:", id);
         console.log("[DEBUG] Attempting to play:", audioPath);
         const audio = new Audio(audioPath);
