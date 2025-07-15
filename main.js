@@ -6,7 +6,12 @@ if (window.location.hash !== "#NfcTag") {
 
 const apiKey = "a8bc86e4c135f3c44f72bb4b957aa213";
 const params = new URLSearchParams(window.location.search);
-const ip = params.get("ip") || "animeA";
+const ip = 
+
+// URLからパラメータを取得した後に、アドレスバーの表示を消す
+if (window.history.replaceState) {
+  window.history.replaceState(null, "", location.pathname);
+}params.get("ip") || "animeA";
 const ch = params.get("ch") || "alice";
 
 const characterJsonPath = `characters/${ip}/${ch}.json`;
