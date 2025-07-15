@@ -121,13 +121,21 @@ async function main() {
   
 
 
-  const cover = document.getElementById("character-cover");
-  if (cover) {
-    cover.addEventListener("click", () => {
-      const audio = new Audio(`voice/${ip}/${ch}/${timeSlotA}.wav`);
-      audio.play();
-    }, { once: true });
-  }
+  
+
+
+  ["character-cover", "line", "background", "character", "temp"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("click", () => {
+        const audioPath = `voice/${ip}/${ch}/${timeSlotA}.wav`;
+        console.log("[DEBUG] Tap detected on:", id);
+        console.log("[DEBUG] Attempting to play:", audioPath);
+        const audio = new Audio(audioPath);
+        audio.play().catch(e => console.warn("再生失敗:", e));
+      }, { once: true });
+    }
+  });
 
 }
 
