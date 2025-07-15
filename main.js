@@ -120,11 +120,7 @@ async function main() {
   console.log("[DEBUG] background:", bgPath);
   
 
-}
 
-main();
-
-document.addEventListener("DOMContentLoaded", () => {
   const cover = document.getElementById("character-cover");
   if (cover) {
     cover.addEventListener("click", () => {
@@ -132,4 +128,8 @@ document.addEventListener("DOMContentLoaded", () => {
       audio.play();
     }, { once: true });
   }
-});
+
+}
+
+main();
+
